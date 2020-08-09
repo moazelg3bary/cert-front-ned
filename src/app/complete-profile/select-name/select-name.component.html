@@ -1,0 +1,85 @@
+<body>
+    <div class="hole-layout">
+        <div class="row">
+    
+    
+            <!----------------------left side----------------------------->
+            <div class="col-md-4 col-sm-12 all">
+                <div class="overlay-left"></div>
+    
+                <div class=" header">
+                    <div class="container">
+                        <div class="row">
+                            <div class=" logo-i"><img src="assets/img/iprotect-logo.svg" alt="logo"></div>
+                            <div class="text-bold lang">EN|ع</div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="welcome" style="height:75%;">
+    
+                    <div class="info text-center">
+                        <img src="assets/img/profile/id-logo.svg" alt="">
+                    </div>
+                </div>
+            </div>
+    
+            <!---------------------------------------------->
+    
+    
+            <div class="col-md-8 col-sm-12 content">
+    
+    
+                <div class="register-form">
+                    <div class="container">
+    
+                        <div class="title ">
+                            <h6 (click)="back()" class="back"><b><i class="fa fa-arrow-left"></i> Back</b></h6>
+                            <h3><b>Full Name</b></h3>
+                            <h2>Please enter your first and last name as per your ID.
+                                <br />That’s the name in which the certificate will be generated.</h2>
+                        </div>
+                        <div class="row" style="margin-top: 20px">
+                            <div class="col-lg-12">
+                                <div class="form-body">
+                                    <form class="px-4 py-3" id="simple_form" novalidate="novalidate">
+            
+                                        <div class="control-group">
+                                            <label for="exampleDropdownFormEmail1">FIRST NAME (AS PER ID)</label>
+                                            <input type="text" class="form-control" id="contact_email"
+                                                placeholder="Start typing..."
+                                                data-validation-required-message="Please enter your Email." />
+                                            <p class="text-danger help-block"></p>
+                                        </div>
+            
+                                        <div class="control-group">
+                                            <label for="exampleDropdownFormPassword1">LAST NAME (AS PER ID)</label>
+                                            <!--  <span class="eye"><i class="fa fa-eye"></i><span>-->
+                                            <input type="text" class="form-control" id="mypassword"
+                                                placeholder="Start typing..." required="required"
+                                                data-validation-required-message="Please enter your Password.">
+                                            <p class="text-danger help-block"></p>
+                                        </div>
+            
+            
+            
+            
+                                        <div class="buton-login text-center text-lg-right">
+                                            <button (click)="navTo('select-id-number')" type="submit" class="btn btn-primary next" id="send_button"> next <i class="fa fa-arrow-right"></i></button>
+                                        </div>
+            
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+    
+                </div>
+            </div>
+    
+    
+            <!-------------------------------------------------------------->
+        </div>
+    </div>
+</body>

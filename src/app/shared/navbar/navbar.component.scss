@@ -1,0 +1,62 @@
+
+/***********************************************************/
+.navbar .navbar-collapse {
+    position: relative;
+    height: 70px;
+}
+.bg-light {
+    background-color: #ebeced !important;
+}
+.navbar .List ul li {
+    margin-left: 30px;
+}
+.navbar .List ul li img {
+    width: 35px;
+    height: 35px;
+}
+.navbar .List i {
+    font-size: 20px;
+    color: #2673e5;
+}
+.navbar .List .lang {
+    font-weight: bold;
+    font-size: 14px;
+}
+.navbar .navbar-nav {
+    flex-direction: row;
+}
+
+@media only screen and (max-width: 991px) and (min-width: 767px) {
+    .navbar .navbar-nav {
+        position: relative;
+        left: 40%;
+    }
+}
+@media only screen and (max-width: 766px) and (min-width: 501px) {
+    .navbar .navbar-nav {
+        position: relative;
+        left: 30%;
+    }
+}
+@media only screen and (max-width: 500px) and (min-width: 360px) {
+    .navbar .navbar-nav {
+        position: relative;
+        left: 25%;
+    }
+}
+@media only screen and (max-width: 259px) {
+    .navbar .navbar-nav {
+        position: relative;
+        left: 0%;
+    }
+}
+@media only screen and (max-width: 336px) {
+    .navbar-brand {
+        margin-right: 0;
+    }
+    .navbar-toggler {
+        padding: 0.25rem 0.5rem;
+        font-size: 1rem;
+    }
+}
+/****************************************************/

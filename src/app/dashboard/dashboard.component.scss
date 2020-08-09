@@ -1,0 +1,121 @@
+
+.message {
+    padding: 20px;
+}
+.message .message-info span {
+    font-weight: bold;
+}
+.message .message-info {
+    margin-top: 30px;
+    position: relative;
+    line-height: .7em;
+}
+.message .message-info p:last-child {
+    padding-bottom: 15px;
+}
+.message .message-info p::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 45%;
+    width: 100px;
+    height: 4px;
+    border-radius: 4px;
+    background-color: #2673e5;
+}
+@media only screen and (max-width: 300px) {
+    .message .message-info p::after {
+        left: 22% !important;
+    }
+}
+@media only screen and (max-width: 767.98px) {
+    .message .message-info p::after {
+        left: 35%;
+    }
+}
+.form-inline {
+    display: inline-block;
+    position: relative;
+}
+.form-inline input {
+    border-radius: 2px;
+    background-color: #eaeaea;
+    border: 0;
+    height: 44px;
+    padding-left: 45px;
+    width: 250px;
+}
+.form-inline span {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.generate {
+    background-color: #2673E5;
+    color: white;
+    height: 44px;
+    width: 253px;
+}
+
+/*****************************/
+/*****************************************/
+.data-table {
+    margin-top: 20px;
+	.table-striped {
+		tbody {
+			tr {
+				&:nth-of-type(even) {
+					background-color: rgba(163, 171, 189, 0.1);
+				}
+				&:nth-of-type(odd) {
+					background-color: rgba(0, 0, 0, 0);
+				}
+				height: 88px;
+				font-size: 14px;
+				h4 {
+					font-size: 16px;
+					font-weight: bold;
+				}
+			}
+		}
+	}
+	thead {
+		border-bottom: 1px solid #e5e5e5;
+	}
+	.suc {
+		color: #2673e5;
+	}
+	.rev {
+		color: #dbb205;
+	}
+	.action {
+		color: #2673e5;
+	}
+	i {
+		margin-right: 5px;
+	}
+	img {
+		margin-right: 5px;
+	}
+	.t-light {
+		color: #a3abbd;
+        font-size: 14px;
+        font-weight: 400;
+		.v {
+			color: #000;
+			text-decoration: underline;
+		}
+	}
+}
+.message {
+	.message-img {
+		margin-top: 50px;
+	}
+	.message-text {
+		font-size: 15px;
+		color: #c4c4c4;
+		margin: 20px 0;
+	}
+}

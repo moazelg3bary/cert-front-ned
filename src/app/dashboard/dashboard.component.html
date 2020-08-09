@@ -1,0 +1,131 @@
+<body>
+
+    <app-navbar></app-navbar>
+
+    <section class="message text-center">
+        <div class="container">
+            <div class="message-info">
+                <p>Good day <span>Ahmed,</span></p>
+                <p>Here you can find all your generated certificates.</p>
+            </div>
+        </div>
+    </section>
+
+    <div *ngIf="showDashboard">
+        <section class="search">
+            <div class="container">
+                <div class="row">
+    
+                    <div class="col-md text-center text-md-left">
+                        <form class="form-inline my-2 my-lg-0">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search certificates...">
+                            <span><i class="fa fa-search"></i></span>
+                        </form>
+                    </div>
+    
+                    <div class="col-md text-center text-md-right">
+                        <button type="submit" class="btn generate" id="send_button">+ Generate new certificates</button>
+                    </div>
+    
+                </div>
+            </div>
+        </section>
+    
+        <section class="data-table">
+            <div class="container">
+                <table class="table table-striped table-borderless">
+                    <thead>
+                        <tr>
+                            <th class="t-light" scope="col">Certificate</th>
+                            <th class="t-light" scope="col">Status</th>
+                            <th class="t-light" scope="col">Date created</th>
+                            <th class="t-light" scope="col ">Actions</th>
+                            <th class="t-light" scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td scope="row">
+                                <h4>My graduation thesis</h4>
+                                <p class="t-light">
+                                    <i class="fa fa-paperclip"></i>
+                                    <span>One or more files are attached </span>
+                                    <a class="v">view</a>
+                                </p>
+    
+                            </td>
+                            <td class="rev text-bold">Under review</td>
+                            <td class="t-light">25.06.2020</td>
+                            <td class="action"> <img src="assets/img/iprotect/Group 182.png">Order hard copy</td>
+                            <td class="action"> <i class="fa fa-share-alt"></i>Share attachment</td>
+                        </tr>
+                        <tr>
+                            <td scope="row">
+                                <h4>My graduation thesis</h4>
+                                <p class="t-light">
+                                    <i class="fa fa-paperclip"></i>
+                                    <span>One or more files are attached</span>
+    
+                                </p>
+    
+                            </td>
+                            <td class="text-bold">Incomplete</td>
+                            <td class="t-light">25.06.2020</td>
+                            <td class="action"><img src="assets/img/iprotect/Group 182.png">Order hard copy</td>
+                            <td class="action"> <i class="fa fa-share-alt"></i>Share attachment</td>
+    
+                        </tr>
+                        <tr>
+                            <td scope="row">
+                                <h4>My graduation thesis</h4>
+                                <p class="t-light">
+                                    <i class="fa fa-paperclip"></i>
+                                    <span>One or more files are attached</span>
+                                    <a class="v">view</a>
+                                </p>
+    
+                            </td>
+                            <td class="rev text-bold">Under review</td>
+                            <td class="t-light">25.06.2020</td>
+                            <td class="action"><img src="assets/img/iprotect/Group 182.png">Order hard copy</td>
+                            <td class="action"> <i class="fa fa-share-alt"></i>Share attachment</td>
+    
+                        </tr>
+                        <tr>
+                            <td scope="row">
+                                <h4>My graduation thesis</h4>
+                                <p class="t-light">
+                                    <i class="fa fa-paperclip"></i>
+                                    <span>One or more files are attached</span>
+    
+                                </p>
+    
+                            </td>
+                            <td class="suc text-bold">Successful</td>
+                            <td class="t-light">25.06.2020</td>
+                            <td class="action"><img src="assets/img/iprotect/Group 182.png">Order hard copy</td>
+                            <td class="action"> <i class="fa fa-share-alt"></i>Share attachment</td>
+    
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <section class="message text-center" *ngIf="!showDashboard">
+        <div class="container">
+
+            <div class="message-img">
+                <img src="assets/img/iprotect/Group 193.png">
+            </div>
+
+            <p class="message-text">
+                You don’t have any certificates at the moment.<br> Once you generate one, it’ll come directly into here.
+            </p>
+
+            <button type="submit" class="btn btn-primary " id="send_button" (click)="showDashboard = true">+ Generate new certificates</button>
+
+        </div>
+    </section>
+</body>
