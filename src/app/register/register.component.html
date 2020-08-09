@@ -71,7 +71,7 @@
 
                             <div class="container text-center text-lg-right">
                                 <button type="submit" class="btn btn-primary " id="send_button">
-                                    <a href="/select-id-type" class="text-bold">Create Your Account</a>
+                                    <a (click)="navTo('select-id-type')" class="text-bold">Create Your Account</a>
                                 </button>
                             </div>
                         </form>
@@ -91,7 +91,7 @@
                     <h1>welcome to</h1>
                     <img src="assets/img/iprotect/Group 184.png" alt="">
                     <p>Already have <br>an account?</p>
-                    <a class="btn btn-outline-light text-bold" href="/login">Login to your account</a>
+                    <a class="btn btn-outline-light text-bold" (click)="navTo('login')">Login to your account</a>
 
                 </div>
             </div>

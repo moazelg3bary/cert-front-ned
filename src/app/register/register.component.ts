@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 declare var jQuery: any;
 
@@ -20,7 +21,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   'The Hague', 'Turin', 'Valencia', 'Vienna', 'Vilnius', 'Warsaw', 'Wrocław',
   'Zagreb', 'Zaragoza', 'Łódź'];
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
@@ -29,6 +30,10 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     // $(function () {
       jQuery('[data-toggle="tooltip"]').tooltip()
     // })
+  }
+
+  navTo(page) {
+    this.router.navigate([page]);
   }
 
 }

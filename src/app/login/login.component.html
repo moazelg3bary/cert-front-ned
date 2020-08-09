@@ -22,7 +22,7 @@
                         <h1 class="text-bold">welcome <br>Back !</h1>
                         <p>Don't have <br>an account yet?</p>
     
-                        <a class="btn btn-outline-light text-bold" href="register">Create a new account</a>
+                        <a class="btn btn-outline-light text-bold" (click)="navTo('register')">Create a new account</a>
                     </div>
                 </div>
             </div>
@@ -65,8 +65,7 @@
     
     
                                 <div class="buton-login text-center text-lg-right">
-                                    <button type="submit" class="btn btn-primary " id="send_button"><a class="text-bold"
-                                            href="/register">Login</a></button>
+                                    <button type="submit" (click)="navTo('register')" class="btn btn-primary " id="send_button">>Login</button>
                                 </div>
     
                             </form>
