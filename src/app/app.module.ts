@@ -12,6 +12,7 @@ import { SelectIdTypeComponent } from './complete-profile/select-id-type/select-
 import { SelectNameComponent } from './complete-profile/select-name/select-name.component';
 import { SelectIdNumberComponent } from './complete-profile/select-id-number/select-id-number.component';
 import { SelectProfilePictureComponent } from './complete-profile/select-profile-picture/select-profile-picture.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { SelectProfilePictureComponent } from './complete-profile/select-profile
     BrowserModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
