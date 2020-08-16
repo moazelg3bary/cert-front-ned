@@ -12,7 +12,7 @@ export class StepOneComponent implements OnInit {
   @ViewChild('rightPanel', {static: true}) rightPanel: ElementRef;
 
   steps: any[] = [];
-  currentStep: number = 2;
+  currentStep: number = 1;
   
   constructor(private location: Location, private router: Router) { }
   
