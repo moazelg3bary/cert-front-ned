@@ -13,6 +13,10 @@ import { SelectNameComponent } from './complete-profile/select-name/select-name.
 import { SelectIdNumberComponent } from './complete-profile/select-id-number/select-id-number.component';
 import { SelectProfilePictureComponent } from './complete-profile/select-profile-picture/select-profile-picture.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { StepOneComponent } from './new-certificate/step-one/step-one.component';
+import { StepTwoComponent } from './new-certificate/step-two/step-two.component';
+import { StepThreeComponent } from './new-certificate/step-three/step-three.component';
+import { StepFourComponent } from './new-certificate/step-four/step-four.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,11 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     SelectIdTypeComponent,
     SelectNameComponent,
     SelectIdNumberComponent,
-    SelectProfilePictureComponent
+    SelectProfilePictureComponent,
+    StepOneComponent,
+    StepTwoComponent,
+    StepThreeComponent,
+    StepFourComponent
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,7 @@ import { SelectIdTypeComponent } from './complete-profile/select-id-type/select-
 import { SelectNameComponent } from './complete-profile/select-name/select-name.component';
 import { SelectIdNumberComponent } from './complete-profile/select-id-number/select-id-number.component';
 import { SelectProfilePictureComponent } from './complete-profile/select-profile-picture/select-profile-picture.component';
+import { StepOneComponent } from './new-certificate/step-one/step-one.component';
 
 
 const routes: Routes = [
@@ -43,6 +44,20 @@ const routes: Routes = [
   {
     path: 'select-profile-picture',
     component: SelectProfilePictureComponent,
+  },
+  {
+    path: 'new-certificate',
+    children: [
+      {
+        path: '',
+        redirectTo: 'step-one',
+        pathMatch: 'full'
+      },
+      {
+        path: 'step-one',
+        component: StepOneComponent
+      }
+    ]
   },
 ];
 

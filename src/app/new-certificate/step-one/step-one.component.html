@@ -1,0 +1,116 @@
+<div class="vh-100" style="overflow-x: hidden">
+	<app-navbar></app-navbar>
+	<div class="stepper">
+		<div class="row">
+			<div>
+				<div class="stepper__left vh-100">
+					<p class="title">Get your certificate <br>
+						in <span>4</span> simple steps:</p>
+					<div>
+						<div *ngFor="let step of steps; let i = index" class="stepper__row"
+							[ngClass]="{'stepper__row--active': currentStep == step.number, 'stepper__row--disabled': currentStep != step.number}">
+							<div class="stepper--vertical">
+								<div class="stepper--vertical__circle">
+									<span class="stepper--vertical__circle__text">
+										{{step.number}}
+									</span>
+								</div>
+								<div class="stepper--vertical__details">
+									<h3 class="heading__three" [innerHTML]="step.title"></h3>
+									<p class="paragraph" [innerHTML]="step.desc"></p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div>
+				<div class="stepper__right vh-100" #rightPanel>
+
+					<div class="register-form">
+						<div class="container">
+
+							<div class="title ">
+								<h6 (click)="back()" class="back"><b><i class="fa fa-arrow-left"></i> Back</b></h6>
+							</div>
+							<div class="row" style="margin-top: 20px">
+								<div class="col-lg-12">
+									<div class="form-body">
+										<form class="px-4 py-3" id="simple_form" novalidate="novalidate">
+											<div class="stepper__content">
+												<div *ngIf="currentStep == 1">
+													<div class="control-group">
+														<label for="exampleDropdownFormEmail1">CHOOSE TYPE OF INTELLECTUAL
+															PROPERTY</label>
+														<div class="properties">
+															<div class="row">
+																<div class="col-4">
+																	<div class="type">Concept design/Artwork</div>
+																</div>
+																<div class="col-4">
+																	<div class="type">Original idea</div>
+																</div>
+																<div class="col-4">
+																	<div class="type">Research work/Code</div>
+																</div>
+															</div>
+														</div>
+													</div>
+	
+													<div class="control-group">
+														<label for="exampleDropdownFormEmail1">TITLE OF YOUR WORK</label>
+														<input type="text" class="form-control" id="contact_email"
+															placeholder="Start typing..."
+															data-validation-required-message="Please enter your Email." />
+														<p class="text-danger help-block"></p>
+													</div>
+	
+													<div class="control-group">
+														<label for="exampleDropdownFormPassword1">WORK DESCRIPTION</label>
+														<!--  <span class="eye"><i class="fa fa-eye"></i><span>-->
+														<textarea rows="5" type="text" class="form-control" id="mypassword"
+															placeholder="Start typing..." required="required"
+															data-validation-required-message="Please enter your Password."></textarea>
+														<p class="text-danger help-block"></p>
+													</div>
+												</div>
+
+												<div *ngIf="currentStep == 2">
+													<div class="upload">
+														<p class="header">Please upload files with details <br>
+															of your idea/design/code… <span>(Maximum 2 files)</span></p>
+															<div class="profile-picture">
+																<div class="drag">
+																	<p>Drag a picture here.</p>
+																	<p>or</p>
+																	<button type="submit" class="btn btn-primary " id="send_button">Choose a file</button>
+																</div>
+															</div>					
+													</div>
+												</div>
+
+												<div *ngIf="currentStep == 3">
+													
+												</div>
+											</div>
+
+
+
+											<div class="buton-login text-center text-lg-right">
+												<button (click)="nextStep($event)" class="btn btn-primary next"
+													id="send_button"> next <i class="fa fa-arrow-right"></i></button>
+											</div>
+
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
