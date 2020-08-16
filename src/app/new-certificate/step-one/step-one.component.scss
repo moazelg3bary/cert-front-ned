@@ -6,23 +6,23 @@
     display: table-cell;
     text-align: center;
     // vertical-align: middle
-    padding-top: 50px;
-    padding-bottom: 50px;
-    width: 480px;
+    padding-top: 3.125em;
+    padding-bottom: 3.125em;
+    width: 30em;
     height: 100%;
     background-color: #ebeced;
     .title {
-      font-size: 16px;
+      font-size: 1em;
       span {
-        font-size: 20px;
+        font-size: 1.25em;
         font-weight: bold;
       }
     }
   }
   &__right {
     display: table-cell;
-    padding-top: 100px;
-    padding-bottom: 100px;
+    padding-top: 6.25em;
+    padding-bottom: 6.25em;
     width: 0;
     height: 100%;
   }
@@ -33,17 +33,17 @@
   margin: 0 auto;
 }
 
-@media only screen and (max-width: 767.98px) {
+@media only screen and (max-width: 767.6.125em) {
   .content,
   .content-right {
-    margin: 30px 0;
+    margin: 1.875em 0;
   }
   .register-form {
     width: 100%;
     margin: 0;
   }
   .register-form .title {
-    font-size: 14px;
+    font-size: 0.875em;
   }
   .register-form .form-body .col-lg-5 {
     padding-right: 0;
@@ -51,20 +51,20 @@
 }
 
 .register-form .title {
-  margin-left: 40px;
+  margin-left: 2.5em;
   position: relative;
 }
 .register-form h2 {
-  font-size: 20px;
-  // line-height: 36px;
-  padding-bottom: 20px;
-  // width: 300px;
+  font-size: 1.25em;
+  // line-height: 2.25em;
+  padding-bottom: 1.25em;
+  // width: 18.75em;
 }
 .back {
-  margin-bottom: 15px;
+  margin-bottom: 0.938em;
   cursor: pointer;
   i {
-    margin-right: 5px;
+    margin-right: 0.313em;
   }
 }
 .register-form h2::after {
@@ -72,24 +72,24 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 100px;
-  height: 3px;
-  margin-top: 10px;
+  width: 6.25em;
+  height: 0.188em;
+  margin-top: 0.625em;
   background-color: #2673e5;
 }
 ::placeholder {
-  font-size: 14px;
+  font-size: 0.875em;
 }
 .register-form .control-group {
-  margin-bottom: 30px;
+  margin-bottom: 1.875em;
 }
 .register-form .form-body label {
-  font-size: 14px;
-  padding-left: 15px;
-  line-height: 17px;
+  font-size: 0.875em;
+  padding-left: 0.938em;
+  line-height: 1.063em;
 }
 .register-form .form-body .forgot {
-  padding-left: 20px;
+  padding-left: 1.25em;
 }
 .register-form .form-body input[type="password"] {
   position: relative;
@@ -97,19 +97,19 @@
 
 .register-form .form-body input,
 .register-form .form-body select {
-  border-radius: 2px;
+  border-radius: 0.125em;
   background-color: #eaeaea;
   border: 0;
-  height: 58px;
+  height: 3.625em;
 }
 .register-form .form-body textarea {
-  border-radius: 2px;
+  border-radius: 0.125em;
   background-color: #eaeaea;
   border: 0;
 }
 .register-form .form-body .col-lg-5 {
   padding-left: 0;
-  padding-bottom: 30px;
+  padding-bottom: 1.875em;
 }
 .register-form .form-body .col-lg-7 {
   padding-right: 0;
@@ -117,15 +117,15 @@
 }
 .register-form .form-body .container {
   padding-right: 0;
-  padding-top: 20px;
+  padding-top: 1.25em;
 }
 
 .properties {
-  margin-top: 10px;
+  margin-top: 0.625em;
   .type {
-    border: 1px solid black;
-    border-radius: 2px;
-    padding: 20px;
+    border: 0.063em solid black;
+    border-radius: 0.125em;
+    padding: 1.25em;
     text-align: center;
     cursor: pointer;
   }
@@ -139,7 +139,7 @@
 
 .upload {
   .header {
-    padding-left: 30px;
+    padding-left: 1.875em;
     font-size: 20;
     span {
       font-size: 14;
@@ -147,36 +147,36 @@
     }
   }
   .profile-picture {
-    margin-left: 25px;
-    margin-top: 20px;
-    margin-bottom: 50px;
+    margin-left: 1.563em;
+    margin-top: 1.25em;
+    margin-bottom: 3.125em;
     width: 100%;
-    height: 300px;
+    height: 18.75em;
     background-color: #eaeaea;
-    border-radius: 4px;
-    border: 3px dashed #707070;
+    border-radius: 0.25em;
+    border: 0.188em dashed #707070;
     display: table;
-    padding-bottom: 20px;
+    padding-bottom: 1.25em;
     .drag {
       display: table-cell;
       width: 100%;
       text-align: center;
       vertical-align: middle;
       color: #a3abbd;
-      font-size: 20px;
-      // margin-top: 40px;
+      font-size: 1.25em;
+      // margin-top: 2.5em;
     }
   }
 }
 
 .next {
-  margin-top: 10px;
-  border: 1px solid #2673e5;
+  margin-top: 0.625em;
+  border: 0.063em solid #2673e5;
   background-color: white;
   color: #2673e5;
-  width: 130px;
+  width: 8.125em;
   i {
-    margin-left: 5px;
+    margin-left: 0.313em;
     color: #2673e5;
   }
 }
@@ -190,20 +190,20 @@
 
 // stepper
 .heading__three {
-  font-size: 14px;
+  font-size: 0.875em;
   font-weight: bold;
   color: black;
-  line-height: 26px;
+  line-height: 1.625em;
   margin: 0;
   font-family: proxima-nova, sans-serif;
   font-style: normal;
   text-align: left;
 }
 .paragraph {
-  font-size: 12px;
+  font-size: 0.75em;
   font-weight: 500;
   color: #a3abbd;
-  line-height: 22px;
+  line-height: 1.375em;
   margin: 0;
   font-family: proxima-nova, sans-serif;
   font-style: normal;
@@ -213,10 +213,10 @@
 
 .stepper__row {
   cursor: default;
-  width: 400px;
+  width: 25em;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 67px;
+  margin-bottom: 4.188em;
   margin-left: auto;
   margin-right: auto;
   transition: margin 0.4s;
@@ -233,8 +233,8 @@
   position: relative;
   &__circle {
     background: url("~/assets/img/stepper-active.svg");
-    width: 60px;
-    height: 60px;
+    width: 3.75em;
+    height: 3.75em;
     display: flex;
     justify-content: center;
     position: relative;
@@ -242,29 +242,29 @@
     &:after {
       content: url("~/assets/img/stepper-line.svg");
       position: absolute;
-      top: 75px;
+      top: 4.688em;
       z-index: 0;
       transform-origin: 100% 0%;
       transition: transform 0.2s;
     }
     &__text {
       align-self: center;
-      font-size: 18px;
+      font-size: 1.125em;
       font-weight: 500;
       color: #ffce00;
     }
   }
   &__details {
-    margin-left: 24px;
-    margin-top: 10px;
+    margin-left: 1.5em;
+    margin-top: 0.625em;
     align-self: center;
-    max-width: 539px;
+    max-width: 33.688em;
     .paragraph {
-      margin-top: 12px;
+      margin-top: 0.75em;
       transition: all 0.2s;
     }
     .button__rectangle {
-      margin-top: 24px;
+      margin-top: 1.5em;
     }
   }
 }
@@ -277,7 +277,7 @@
   }
 }
 .stepper__row--disabled {
-  margin-bottom: 45px;
+  margin-bottom: 2.813em;
   .button__rectangle {
     display: none;
   }
@@ -310,10 +310,10 @@
 /*  */
 /*  */
 .button__circle {
-  border: 2px solid #388cf3;
-  border-radius: 96px;
-  height: 44px;
-  width: 44px;
+  border: 0.125em solid #388cf3;
+  border-radius: 6em;
+  height: 2.75em;
+  width: 2.75em;
   position: relative;
   transition: all 0.05s;
   background: #fff;
@@ -330,28 +330,28 @@
   display: flex;
   .button__rectangle__button,
   .button__circle {
-    margin-left: 32px;
+    margin-left: 2em;
   }
   .button__rectangle__button:first-child,
   .button__circle:first-child {
-    margin-left: 0px;
+    margin-left: 0em;
   }
   &--margin-top {
-    margin-top: 32px;
+    margin-top: 2em;
   }
 }
 .button__rectangle__button__icon svg {
   fill: #fff;
 }
 .button__circle:hover {
-  transform: scale(1.025) translateY(-1px);
+  transform: scale(1.025) translateY(-0.063em);
   background: #388cf3;
 }
 .button__circle:hover .button__arrow {
   fill: #fff;
 }
 .button__circle:active {
-  transform: scale(0.975) translateY(1px);
+  transform: scale(0.975) translateY(0.063em);
 }
 .button__arrow {
   fill: #388cf3;
@@ -359,13 +359,13 @@
 
 .button__rectangle__button {
   border: none;
-  padding: 10px 30px;
+  padding: 0.625em 1.875em;
   background: #388cf3;
   outline: 0;
   cursor: pointer;
-  border-radius: 3px;
+  border-radius: 0.188em;
   color: #fff;
-  font-size: 14px;
+  font-size: 0.875em;
   transition: all 0.05s;
   font-weight: 600;
   margin: 0 auto;
@@ -382,7 +382,7 @@
 
 /* Icon Handlers */
 .button__rectangle__button__icon {
-  padding-right: 8px;
+  padding-right: 0.5em;
 }
 
 .button__rectangle__button--default--secondary--icon {
@@ -421,15 +421,15 @@
 .button__rectangle__button--default--secondary,
 .button__rectangle__button--default--secondary--icon {
   border: none;
-  padding: 10px 30px;
+  padding: 0.625em 1.875em;
   background: #fff;
   outline: 0;
   cursor: pointer;
-  border-radius: 3px;
+  border-radius: 0.188em;
   color: #388cf3;
-  font-size: 14px;
+  font-size: 0.875em;
   transition: all 0.05s;
-  border: 2px solid #388cf3;
+  border: 0.125em solid #388cf3;
   font-weight: 600;
   background: #fff;
 }
@@ -439,7 +439,7 @@
 }
 .button__rectangle__button--neutral--secondary,
 .button__rectangle__button--neutral--secondary--icon {
-  border: 2px solid #647a89;
+  border: 0.125em solid #647a89;
   color: #647a89;
   background: #fff;
 }
@@ -449,7 +449,7 @@
 }
 .button__rectangle__button--negative--secondary,
 .button__rectangle__button--negative--secondary--icon {
-  border: 2px solid #ff4876;
+  border: 0.125em solid #ff4876;
   color: #ff4876;
   background: #fff;
 }
@@ -458,18 +458,18 @@
   color: #ff4876;
 }
 .button__rectangle__button:hover {
-  transform: scale(1.05) translateY(-1px);
+  transform: scale(1.05) translateY(-0.063em);
   background: #2a476d;
 }
 .button__rectangle__button--default--secondary:hover,
 .button__rectangle__button--default--secondary--icon:hover {
-  transform: scale(1.05) translateY(-1px);
+  transform: scale(1.05) translateY(-0.063em);
   border-color: #2a476d;
   color: #2a476d;
   background: #fff;
 }
 .button__rectangle__button:active {
-  transform: scale(0.995) translateY(1px);
+  transform: scale(0.995) translateY(0.063em);
 }
 .button__rectangle__button--neutral:hover {
   background: #3e4e68;
@@ -490,5 +490,5 @@
   background: #fff;
 }
 .button__rectangle__button--default__icon {
-  margin-right: 10px;
+  margin-right: 0.625em;
 }
