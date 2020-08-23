@@ -112,6 +112,7 @@ a:hover {
 .hole-layout .welcome .info {
     position: relative;
     z-index: 10;
+    margin-top: 100px;
 }
 .hole-layout .welcome .info h1 {
     letter-spacing: 3px;
@@ -124,7 +125,7 @@ a:hover {
 }
 .shape {
     position: absolute;
-    top: 40px;
+    top: 0px;
     left: 40px;
     width: 312px;
     height: 309px;

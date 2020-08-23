@@ -90,7 +90,308 @@
 												</div>
 
 												<div *ngIf="currentStep == 3">
-													
+													<div class="control-group" *ngIf="!steps[currentStep - 1].data.selectedType">
+														<label for="exampleDropdownFormEmail1">The rights of this intellectual property belongs to:</label>
+														<div class="properties" style="margin-bottom: 200px">
+															<div class="row">
+																<div class="col-4" *ngFor="let type of steps[currentStep - 1].data.types" (click)="steps[currentStep - 1].data.selectedType = type">
+																	<div class="type">{{type.text}}</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div *ngIf="steps[currentStep - 1].data.selectedType?.id == 1">
+														<div class="control-group">
+															<div class="row">
+																<div class="col-lg-9">
+																	<label for="exampleDropdownFormEmail1">FULL NAME (AS PER ID)</label>
+																	<input type="email" class="form-control" id="contact_email"
+																		placeholder="Start typing..."
+																		data-validation-required-message="Please enter your Email." />
+									
+																	<p class="text-danger help-block"></p>
+																</div>
+																<div class="col-lg-3">
+																	<label class="tooltip-main" for="exampleDropdownFormEmail1">
+																		NATIONALITY
+																	</label>
+																		<div class="dropdown">
+																			<button class="btn nationality dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+																			  Select
+																			  <i class="fa fa-caret-down"></i>
+																			  <!-- <i class="fas fa-caret-circle-down"></i> -->
+																			</button>
+																			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+																			  <a class="dropdown-item" style="cursor: pointer">
+																				  <img width="20px" style="margin-right: 10px" src="https://upload.wikimedia.org/wikipedia/commons/f/fe/Flag_of_Egypt.svg" alt="">
+																				  Egypt
+																				</a>
+																			</div>
+																		  </div>                                              
+																	<p class="text-danger help-block"></p>
+																</div>
+															</div>
+														</div>	
+														<div class="control-group">
+															<div class="row">
+																<div class="col-lg-9">
+																	<label for="exampleDropdownFormEmail1">ID NUMBER</label>
+																	<input type="email" class="form-control" id="contact_email"
+																		placeholder="Start typing..."
+																		data-validation-required-message="Please enter your Email." />
+									
+																	<p class="text-danger help-block"></p>
+																</div>
+																<div class="col-lg-3">
+																	<label class="tooltip-main" for="exampleDropdownFormEmail1">
+																		COUNTRY OF RESIDENCY
+																	</label>
+																		<div class="dropdown">
+																			<button class="btn nationality dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+																			  Select
+																			  <i class="fa fa-caret-down"></i>
+																			  <!-- <i class="fas fa-caret-circle-down"></i> -->
+																			</button>
+																			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+																			  <a class="dropdown-item" style="cursor: pointer">
+																				  <img width="20px" style="margin-right: 10px" src="https://upload.wikimedia.org/wikipedia/commons/f/fe/Flag_of_Egypt.svg" alt="">
+																				  Egypt
+																				</a>
+																			</div>
+																		  </div>                                              
+																	<p class="text-danger help-block"></p>
+																</div>
+															</div>
+														</div>
+														<div class="control-group">
+															<div class="row">
+																<div class="col-lg-9">
+																	<label for="exampleDropdownFormEmail1">EMAIL ADDRESS</label>
+																	<input type="email" class="form-control" id="contact_email"
+																		placeholder="Start typing..."
+																		data-validation-required-message="Please enter your Email." />
+									
+																	<p class="text-danger help-block"></p>
+																</div>
+																<div class="col-lg-3">
+																	<label class="tooltip-main" for="exampleDropdownFormEmail1">
+																		PHONE NUMBER
+																	</label>
+																	<div class="input-group">
+																		<input type="tel" class="form-control tele">
+																	  </div>                                            
+																	<p class="text-danger help-block"></p>
+																</div>
+															</div>
+														</div>
+														<div class="form-check">
+															<input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+															<label class="form-check-label" for="defaultCheck1">
+																I’m a student (only select if you’re under the age of 20)
+															</label>
+														</div>																	  
+													</div>
+													<div *ngIf="steps[currentStep - 1].data.selectedType?.id == 2">
+														<div class="control-group">
+															<div class="row">
+																<div class="col-lg-9">
+																	<label for="exampleDropdownFormEmail1">COMPANY NAME</label>
+																	<input type="email" class="form-control" id="contact_email"
+																		placeholder="Start typing..."
+																		data-validation-required-message="Please enter your Email." />
+									
+																	<p class="text-danger help-block"></p>
+																</div>
+																<div class="col-lg-3">
+																	<label class="tooltip-main" for="exampleDropdownFormEmail1">
+																		VAT NUMBER
+																	</label>
+																	<input type="email" class="form-control" id="contact_email"
+																		placeholder="Enter number…"
+																		data-validation-required-message="Please enter your Email." />
+																	<p class="text-danger help-block"></p>
+																</div>
+															</div>
+														</div>	
+														<div class="control-group">
+															<div class="row">
+																<div class="col-lg-5" style="padding-left: 15px">
+																	<label class="tooltip-main" for="exampleDropdownFormEmail1">
+																		COUNTRY
+																	</label>
+																		<div class="dropdown">
+																			<button class="btn nationality dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+																			  Select
+																			  <i class="fa fa-caret-down"></i>
+																			  <!-- <i class="fas fa-caret-circle-down"></i> -->
+																			</button>
+																			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+																			  <a class="dropdown-item" style="cursor: pointer">
+																				  <img width="20px" style="margin-right: 10px" src="https://upload.wikimedia.org/wikipedia/commons/f/fe/Flag_of_Egypt.svg" alt="">
+																				  Egypt
+																				</a>
+																			</div>
+																		  </div>                                              
+																</div>
+																<div class="col-lg-3">
+																	<label class="tooltip-main" for="exampleDropdownFormEmail1">
+																		CITY
+																	</label>
+																		<div class="dropdown">
+																			<button class="btn nationality dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+																			  Select
+																			  <i class="fa fa-caret-down"></i>
+																			  <!-- <i class="fas fa-caret-circle-down"></i> -->
+																			</button>
+																			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+																			  <a class="dropdown-item" style="cursor: pointer">
+																				  <img width="20px" style="margin-right: 10px" src="https://upload.wikimedia.org/wikipedia/commons/f/fe/Flag_of_Egypt.svg" alt="">
+																				  Egypt
+																				</a>
+																			</div>
+																		  </div>                                              
+																</div>
+																<div class="col-lg-4">
+																	<label class="tooltip-main" for="exampleDropdownFormEmail1">
+																		ZIP CODE
+																	</label>
+																	<input type="email" class="form-control" id="contact_email"
+																		placeholder="Start typing..."
+																		data-validation-required-message="Please enter your Email." />
+																</div>
+															</div>
+														</div>	
+													</div>
+													<div *ngIf="steps[currentStep - 1].data.selectedType?.id == 3">
+														<p class="owner">Owner #1</p>
+														<div class="control-group">
+															<div class="row">
+																<div class="col-lg-9">
+																	<label for="exampleDropdownFormEmail1">FULL NAME (AS PER ID)</label>
+																	<input type="email" class="form-control" id="contact_email"
+																		placeholder="Start typing..."
+																		data-validation-required-message="Please enter your Email." />
+									
+																	<p class="text-danger help-block"></p>
+																</div>
+																<div class="col-lg-3">
+																	<label class="tooltip-main" for="exampleDropdownFormEmail1">
+																		NATIONALITY
+																	</label>
+																		<div class="dropdown">
+																			<button class="btn nationality dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+																			  Select
+																			  <i class="fa fa-caret-down"></i>
+																			  <!-- <i class="fas fa-caret-circle-down"></i> -->
+																			</button>
+																			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+																			  <a class="dropdown-item" style="cursor: pointer">
+																				  <img width="20px" style="margin-right: 10px" src="https://upload.wikimedia.org/wikipedia/commons/f/fe/Flag_of_Egypt.svg" alt="">
+																				  Egypt
+																				</a>
+																			</div>
+																		  </div>                                              
+																	<p class="text-danger help-block"></p>
+																</div>
+															</div>
+														</div>	
+														<div class="control-group">
+															<div class="row">
+																<div class="col-lg-9">
+																	<label for="exampleDropdownFormEmail1">ID NUMBER</label>
+																	<input type="email" class="form-control" id="contact_email"
+																		placeholder="Start typing..."
+																		data-validation-required-message="Please enter your Email." />
+									
+																	<p class="text-danger help-block"></p>
+																</div>
+																<div class="col-lg-3">
+																	<label class="tooltip-main" for="exampleDropdownFormEmail1">
+																		COUNTRY OF RESIDENCY
+																	</label>
+																		<div class="dropdown">
+																			<button class="btn nationality dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+																			  Select
+																			  <i class="fa fa-caret-down"></i>
+																			  <!-- <i class="fas fa-caret-circle-down"></i> -->
+																			</button>
+																			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+																			  <a class="dropdown-item" style="cursor: pointer">
+																				  <img width="20px" style="margin-right: 10px" src="https://upload.wikimedia.org/wikipedia/commons/f/fe/Flag_of_Egypt.svg" alt="">
+																				  Egypt
+																				</a>
+																			</div>
+																		  </div>                                              
+																	<p class="text-danger help-block"></p>
+																</div>
+															</div>
+														</div>
+														<p class="owner">Owner #2</p>
+														<div class="control-group">
+															<div class="row">
+																<div class="col-lg-9">
+																	<label for="exampleDropdownFormEmail1">FULL NAME (AS PER ID)</label>
+																	<input type="email" class="form-control" id="contact_email"
+																		placeholder="Start typing..."
+																		data-validation-required-message="Please enter your Email." />
+									
+																	<p class="text-danger help-block"></p>
+																</div>
+																<div class="col-lg-3">
+																	<label class="tooltip-main" for="exampleDropdownFormEmail1">
+																		NATIONALITY
+																	</label>
+																		<div class="dropdown">
+																			<button class="btn nationality dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+																			  Select
+																			  <i class="fa fa-caret-down"></i>
+																			  <!-- <i class="fas fa-caret-circle-down"></i> -->
+																			</button>
+																			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+																			  <a class="dropdown-item" style="cursor: pointer">
+																				  <img width="20px" style="margin-right: 10px" src="https://upload.wikimedia.org/wikipedia/commons/f/fe/Flag_of_Egypt.svg" alt="">
+																				  Egypt
+																				</a>
+																			</div>
+																		  </div>                                              
+																	<p class="text-danger help-block"></p>
+																</div>
+															</div>
+															<div class="row">
+																<div class="col-lg-9">
+																	<label for="exampleDropdownFormEmail1">ID NUMBER</label>
+																	<input type="email" class="form-control" id="contact_email"
+																		placeholder="Start typing..."
+																		data-validation-required-message="Please enter your Email." />
+									
+																	<p class="text-danger help-block"></p>
+																</div>
+																<div class="col-lg-3">
+																	<label class="tooltip-main" for="exampleDropdownFormEmail1">
+																		COUNTRY OF RESIDENCY
+																	</label>
+																		<div class="dropdown">
+																			<button class="btn nationality dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+																			  Select
+																			  <i class="fa fa-caret-down"></i>
+																			  <!-- <i class="fas fa-caret-circle-down"></i> -->
+																			</button>
+																			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+																			  <a class="dropdown-item" style="cursor: pointer">
+																				  <img width="20px" style="margin-right: 10px" src="https://upload.wikimedia.org/wikipedia/commons/f/fe/Flag_of_Egypt.svg" alt="">
+																				  Egypt
+																				</a>
+																			</div>
+																		  </div>                                              
+																	<p class="text-danger help-block"></p>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+
+												<div *ngIf="currentStep == 4">
+													<img src="assets/img/payment.png" width="100%" alt="">
 												</div>
 											</div>
 

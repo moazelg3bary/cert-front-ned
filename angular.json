@@ -29,11 +29,13 @@
             ],
             "styles": [
               "./node_modules/bootstrap/dist/css/bootstrap.css",
+              "./node_modules/intl-tel-input/build/css/intlTelInput.css",
               "./node_modules/font-awesome/css/font-awesome.css",
               "src/styles.scss"
             ],
             "scripts": [
               "./node_modules/jquery/dist/jquery.js",
+              "./node_modules/intl-tel-input/build/js/intlTelInput.js",
               "./node_modules/popper.js/dist/umd/popper.js",
               "./node_modules/bootstrap/dist/js/bootstrap.js"
             ]
