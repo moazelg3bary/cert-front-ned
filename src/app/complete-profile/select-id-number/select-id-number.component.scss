@@ -10,7 +10,6 @@ a,
 button {
     color: #fff;
     padding: 14px 24px;
-    letter-spacing: 1px;
 }
 
 @media only screen and (max-width: 370px) {
@@ -114,7 +113,6 @@ a:hover {
     z-index: 10;
 }
 .hole-layout .welcome .info h1 {
-    letter-spacing: 3px;
 }
 .hole-layout .welcome .info p {
     margin-top: 20px;
@@ -190,7 +188,8 @@ a:hover {
     bottom: 0;
     left: 0;
     width: 100px;
-    height: 3px;
+    height: 6px;
+    border-radius: 10px;
     margin-top: 10px;
     background-color: #2673e5;
 }

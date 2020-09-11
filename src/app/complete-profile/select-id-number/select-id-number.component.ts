@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-select-id-number',
@@ -9,13 +9,19 @@ import { Router } from '@angular/router';
 })
 export class SelectIdNumberComponent implements OnInit {
 
-  constructor(private location: Location, private router: Router) { }
+  data: any = {};
+
+  constructor(private router: Router, private location: Location, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.data = JSON.parse(JSON.stringify(this.route.snapshot.queryParams));
   }
 
   navTo(page) {
-    this.router.navigate([page]);
+    this.router.navigate(['../' + page], {
+      relativeTo: this.route,
+      queryParams: this.data
+    });
   }
 
   back() {

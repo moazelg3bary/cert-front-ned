@@ -1,35 +1,57 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 declare var jQuery: any;
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'],
+  providers: [AuthService]
 })
 export class RegisterComponent implements OnInit, AfterViewInit {
-
-  public items: string[] = ['Amsterdam', 'Antwerp', 'Athens', 'Barcelona',
-  'Berlin', 'Birmingham', 'Bradford', 'Bremen', 'Brussels', 'Bucharest',
-  'Budapest', 'Cologne', 'Copenhagen', 'Dortmund', 'Dresden', 'Dublin',
-  'Düsseldorf', 'Essen', 'Frankfurt', 'Genoa', 'Glasgow', 'Gothenburg',
-  'Hamburg', 'Hannover', 'Helsinki', 'Kraków', 'Leeds', 'Leipzig', 'Lisbon',
-  'London', 'Madrid', 'Manchester', 'Marseille', 'Milan', 'Munich', 'Málaga',
-  'Naples', 'Palermo', 'Paris', 'Poznań', 'Prague', 'Riga', 'Rome',
-  'Rotterdam', 'Seville', 'Sheffield', 'Sofia', 'Stockholm', 'Stuttgart',
-  'The Hague', 'Turin', 'Valencia', 'Vienna', 'Vilnius', 'Warsaw', 'Wrocław',
-  'Zagreb', 'Zaragoza', 'Łódź'];
-
-  constructor(private router: Router) { }
+  countries: any[] = [];
+  user: any = {};
+  password_confirm: string = '';
+  errors: any = {};
+  constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
+    this.initErrors();
   }
 
   ngAfterViewInit() {
-    // $(function () {
-      jQuery('[data-toggle="tooltip"]').tooltip()
-    // })
+    jQuery('[data-toggle="tooltip"]').tooltip()
+    this.getCountries();
+  }
+
+  initErrors() {
+    this.errors = {nationality: [], email: [], password: [], password_confirm: ''};
+  }
+
+  getCountries() {
+    this.authService.getCountries().subscribe((res: any) => {
+      this.countries = res;
+    });
+  }
+
+  submit() {
+    this.initErrors();
+    if(this.user.password !== this.password_confirm) {
+      this.errors.password_confirm = 'Passwords does not match';
+      return;
+    }
+    this.authService.register(this.user).subscribe((res: any) => {
+      // this.router.navigate(['complete'])
+      localStorage.setItem('iprotect__token', res.data.token);
+      localStorage.setItem('iprotect__user', JSON.stringify(res.data));
+      this.router.navigate(['complete-profile']);
+    }, (err: any) => {
+      for(let k in this.errors) {
+        this.errors[k] = err.error.errors[k] || [];
+      }
+    })
   }
 
   navTo(page) {

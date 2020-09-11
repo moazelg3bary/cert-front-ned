@@ -46,14 +46,13 @@
             
                                         <div class="control-group">
                                             <label for="exampleDropdownFormEmail1">ID NUMBER</label>
-                                            <input type="text" class="form-control" id="contact_email"
-                                                placeholder="Start typing..."
-                                                data-validation-required-message="Please enter your Email." />
+                                            <input [(ngModel)]="data.id_number" type="text" class="form-control" name="id_number"
+                                                placeholder="Start typing..."/>
                                             <p class="text-danger help-block"></p>
                                         </div>
                         
-                                        <div class="buton-login text-center text-lg-right">
-                                            <button (click)="navTo('select-profile-picture')" type="submit" class="btn btn-primary next" id="send_button"> next <i class="fa fa-arrow-right"></i></button>
+                                        <div class="buton-login text-center text-lg-right" style="margin-top: 50px">
+                                            <button [disabled]="data.id_number?.length < 10" (click)="navTo('select-profile-picture')" type="submit" class="btn btn-primary next" id="send_button"> next <i class="fa fa-arrow-right"></i></button>
                                         </div>
             
                                     </form>

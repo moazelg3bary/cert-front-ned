@@ -17,9 +17,11 @@
     content: "";
     position: absolute;
     bottom: -10px;
-    left: 45%;
+	left: 50%;
+	transform: translateX(-50%);
     width: 100px;
-    height: 4px;
+    height: 6px;
+    border-radius: 10px;
     border-radius: 4px;
     background-color: #2673e5;
 }
@@ -56,7 +58,7 @@
     background-color: #2673E5;
     color: white;
     height: 44px;
-    width: 253px;
+	width: 253px;
 }
 
 /*****************************/

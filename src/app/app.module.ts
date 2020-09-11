@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -17,6 +18,8 @@ import { StepOneComponent } from './new-certificate/step-one/step-one.component'
 import { StepTwoComponent } from './new-certificate/step-two/step-two.component';
 import { StepThreeComponent } from './new-certificate/step-three/step-three.component';
 import { StepFourComponent } from './new-certificate/step-four/step-four.component';
+import { HttpClientModule } from '@angular/common/http';
+import { InterceptorModule } from './modules/interceptor.module';
 
 @NgModule({
   declarations: [
@@ -38,8 +41,11 @@ import { StepFourComponent } from './new-certificate/step-four/step-four.compone
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    InterceptorModule,
+    FormsModule
   ],
-  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

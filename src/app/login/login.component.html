@@ -19,7 +19,7 @@
                 <div class="welcome" style="height:75%;">
     
                     <div class="info text-center">
-                        <h1 class="text-bold">welcome <br>Back !</h1>
+                        <h1 class="text-bold">welcome <br>back!</h1>
                         <p>Don't have <br>an account yet?</p>
     
                         <a class="btn btn-outline-light text-bold" (click)="navTo('register')">Create a new account</a>
@@ -36,25 +36,25 @@
                 <div class="register-form">
                     <div class="container">
     
-                        <div class="title ">
+                        <div class="title">
                             <h2 class="text-bold">Login to your account</h2>
                         </div>
     
-                        <div class="form-body">
+                        <div class="form-body" style="margin-top: 50px">
                             <form class="px-4 py-3" id="simple_form" novalidate="novalidate">
     
                                 <div class="control-group">
                                     <label for="exampleDropdownFormEmail1">EMAIL ADDRESS</label>
-                                    <input type="email" class="form-control" id="contact_email"
+                                    <input [(ngModel)]="user.email" type="email" class="form-control" name="contact_email"
                                         placeholder="Start typing..."
                                         data-validation-required-message="Please enter your Email." />
-                                    <p class="text-danger help-block"></p>
+                                    <p class="text-danger help-block">{{error}}</p>
                                 </div>
     
                                 <div class="control-group">
                                     <label style="font-weight: bold !important;" for="exampleDropdownFormPassword1">PASSWORD</label>
                                      <!-- <span class="eye"><i class="fa fa-eye"></i></span> -->
-                                    <input type="password" class="form-control" id="mypassword"
+                                    <input [(ngModel)]="user.password" type="password" class="form-control" name="mypassword"
                                         placeholder="Start typing..." required="required"
                                         data-validation-required-message="Please enter your Password.">
                                     <p class="text-danger help-block"></p>
@@ -65,7 +65,7 @@
     
     
                                 <div class="buton-login text-center text-lg-right">
-                                    <button type="submit" (click)="navTo('register')" class="btn btn-primary ">Login ></button>
+                                    <button type="submit" (click)="login()" class="btn btn-primary" style="font-size: 16px"><b>Login</b></button>
                                 </div>
     
                             </form>

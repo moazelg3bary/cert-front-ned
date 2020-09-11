@@ -14,64 +14,71 @@
             <div class="register-form">
                 <div class="container">
 
-                    <div class="title" style="margin-top: 50px;">
+                    <div class="title" style="margin-top: 70px;">
                         <h2>Create an account</h2>
                     </div>
 
-                    <div class="form-body">
+                    <div class="form-body" style="margin-top: 50px;">
                         <form class="px-4 py-3" id="simple_form" novalidate="novalidate">
                             <div class="control-group">
                                 <div class="row">
                                     <div class="col-lg-9">
                                         <label for="exampleDropdownFormEmail1">EMAIL ADDRESS</label>
-                                        <input type="email" class="form-control" id="contact_email"
+                                        <input [(ngModel)]="user.email" type="email" class="form-control" name="email"
                                             placeholder="Start typing..."
                                             data-validation-required-message="Please enter your Email." />
-        
-                                        <p class="text-danger help-block"></p>
+                                        <p class="text-danger help-block">{{errors['email'][0]}}</p>
                                     </div>
                                     <div class="col-lg-3">
-                                        <label class="tooltip-main" data-toggle="tooltip" data-placement="top" data-original-title="If your country is not on the list, that means we're not operating there yet. But surely coming soon, Hang in there!" for="exampleDropdownFormEmail1">
+                                        <label class="tooltip-main" data-toggle="tooltip" data-placement="top"
+                                            data-original-title="If your country is not on the list, that means we're not operating there yet. But surely coming soon, Hang in there!"
+                                            for="exampleDropdownFormEmail1">
                                             NATIONALITY
                                             <i class="fa fa-question-circle"></i>
                                         </label>
-                                            <div class="dropdown">
-                                                <button class="btn nationality dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                  Select
-                                                  <i class="fa fa-caret-down"></i>
-                                                  <!-- <i class="fas fa-caret-circle-down"></i> -->
-                                                </button>
-                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                  <a class="dropdown-item" style="cursor: pointer">
-                                                      <img width="20px" style="margin-right: 10px" src="https://upload.wikimedia.org/wikipedia/commons/f/fe/Flag_of_Egypt.svg" alt="">
-                                                      Egypt
-                                                    </a>
-                                                </div>
-                                              </div>                                              
-                                        <p class="text-danger help-block"></p>
+                                        <div class="dropdown">
+                                            <button class="btn nationality dropdown-toggle" type="button"
+                                                id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false">
+                                                {{user.nationality || 'Select'}}
+                                                <i class="fa fa-caret-down"></i>
+                                                <!-- <i class="fas fa-caret-circle-down"></i> -->
+                                            </button>
+                                            <div class="dropdown-menu scrollable-menu"
+                                                style="height: auto; max-height: 200px; overflow-y: scroll; overflow-x: hidden"
+                                                aria-labelledby="dropdownMenuButton">
+                                                <a (click)="user.nationality = country.name" class="dropdown-item"
+                                                    style="cursor: pointer" *ngFor="let country of countries">
+                                                    <img width="20px" style="margin-right: 10px" [src]="country.flag"
+                                                        alt="">
+                                                    {{country.name}}
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <p class="text-danger help-block">{{errors['nationality'][0]}}</p>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="control-group">
                                 <label for="exampleDropdownFormPassword1">PASSWORD</label>
-                                <input type="password" class="form-control" id="mypassword" placeholder="Start typing..."
+                                <input type="password" class="form-control" placeholder="Start typing..." [(ngModel)]="user.password" name="password"
                                     required="required" data-validation-required-message="Please enter your Password.">
-                                <p class="text-danger help-block"></p>
-
+                                <p class="text-danger help-block">{{errors['password'][0]}}</p>
                             </div>
 
                             <div class="control-group">
-                                <label for="exampleDropdownFormPassword1">REPEAT PASSWORD</label>
-                                <input type="password" class="form-control" id="mypassword" placeholder="Start typing..."
+                                <label for="exampleDropdownFormPassword1">REPEAT
+                                    PASSWORD</label>
+                                <input type="password" class="form-control" placeholder="Start typing..." [(ngModel)]="password_confirm" name="password_confirm"
                                     required="required" data-validation-required-message="Please enter your Password.">
-                                <p class="text-danger help-block"></p>
+                                <p class="text-danger help-block">{{errors['password_confirm']}}</p>
 
                             </div>
 
-                            <div class="container text-center text-lg-right">
-                                <button type="submit" class="btn btn-primary " id="send_button">
-                                    <a (click)="navTo('select-id-type')" class="text-bold">Create Your Account</a>
+                            <div class="container text-center text-lg-right" style="margin-top: 50px;">
+                                <button type="submit" class="btn btn-primary shadow-hover">
+                                    <a (click)="submit()" class="text-bold">Create Your Account</a>
                                 </button>
                             </div>
                         </form>

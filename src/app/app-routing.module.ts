@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, Router } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -13,11 +13,6 @@ import { StepOneComponent } from './new-certificate/step-one/step-one.component'
 
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: 'login',
-    pathMatch: 'full'
-  },
-  {
     path: 'login',
     component: LoginComponent,
   },
@@ -30,20 +25,30 @@ const routes: Routes = [
     component: DashboardComponent,
   },
   {
-    path: 'select-id-type',
-    component: SelectIdTypeComponent,
-  },
-  {
-    path: 'select-name',
-    component: SelectNameComponent,
-  },
-  {
-    path: 'select-id-number',
-    component: SelectIdNumberComponent,
-  },
-  {
-    path: 'select-profile-picture',
-    component: SelectProfilePictureComponent,
+    path: 'complete-profile',
+    children: [
+      {
+        path: '',
+        redirectTo: 'select-id-type',
+        pathMatch: 'full'
+      },
+      {
+        path: 'select-id-type',
+        component: SelectIdTypeComponent,
+      },
+      {
+        path: 'select-name',
+        component: SelectNameComponent,
+      },
+      {
+        path: 'select-id-number',
+        component: SelectIdNumberComponent,
+      },
+      {
+        path: 'select-profile-picture',
+        component: SelectProfilePictureComponent,
+      },
+    ]
   },
   {
     path: 'new-certificate',
@@ -65,4 +70,19 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+  public constructor(private router: Router) {
+    this.loginOrHome();
+  }
+
+  protected loginOrHome() {
+    const accessToken = localStorage.getItem('iprotect__token');
+    const userData = JSON.parse(localStorage.getItem('iprotect__user') || '{}');
+
+    let page = accessToken ? (userData['profile_completed'] == 0 ? 'complete-profile' : 'dashboard') : 'login';
+    // page = 'complete-profile';
+
+    this.router.navigate([page]);
+  }
+
+}

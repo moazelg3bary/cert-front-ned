@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-select-id-type',
@@ -8,13 +8,16 @@ import { Router } from '@angular/router';
 })
 export class SelectIdTypeComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
   }
 
-  navTo(page) {
-    this.router.navigate([page]);
+  navTo(page, type) {
+    this.router.navigate(['../' + page], {
+      relativeTo: this.route,
+      queryParams: {id_type: type}
+    });
   }
 
 }
