@@ -29,13 +29,17 @@ export class StepOneComponent implements OnInit {
         Intellectual property`,
         desc: `What type of intellectual property is it? <br> Under which name shall it be registered?`,
         active: true,
-        data: {}
+        data: {},
+        togglers: ['Property type', 'Property description'],
+        activeToggler: 'Property type'
       },
       {
         number: 2,
         title: `Upload file(s)`,
         desc: `Upload supporting <br> documents that include the detailed <br> description of the intellectual property.`,
-        data: {}
+        data: {},
+        togglers: ['Upload files'],
+        activeToggler: 'Upload files'
       },
       {
         number: 3,
@@ -56,13 +60,17 @@ export class StepOneComponent implements OnInit {
               text: 'A group of owners'
             },
           ]
-        }
+        },
+        togglers: ['Owner(s) type', 'Owner(s) details'],
+        activeToggler: 'Owner(s) type'
       },
       {
         number: 4,
         title: `Payment`,
         desc: `Review your application <br> and finalise payment with the option <br> to have a hard copy delivered <br> at your doorstep.`,
-        data: {}
+        data: {},
+        togglers: ['Review', 'Payment'],
+        activeToggler: 'Review'
       },
     ] 
   }

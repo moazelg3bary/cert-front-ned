@@ -80,9 +80,9 @@ export class AppRoutingModule {
     const userData = JSON.parse(localStorage.getItem('iprotect__user') || '{}');
 
     let page = accessToken ? (userData['profile_completed'] == 0 ? 'complete-profile' : 'dashboard') : 'login';
-    // page = 'complete-profile';
+    page = 'new-certificate';
 
-    this.router.navigate([page]);
+    // this.router.navigate([page]);
   }
 
 }

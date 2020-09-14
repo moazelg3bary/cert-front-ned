@@ -189,17 +189,31 @@
 .properties {
   margin-top: 10px;
   .type {
-    border: 1px solid black;
     border-radius: 2px;
-    padding: 20px;
+    padding: 20px 40px;
     text-align: center;
+    min-height: 400px;
     cursor: pointer;
+    -webkit-box-shadow: 10px 30px 52px -6px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: 10px 30px 52px -6px rgba(0, 0, 0, 0.05);
+    box-shadow: 10px 30px 52px -6px rgba(0, 0, 0, 0.05);
+    font-size: 14;
+    img {
+      display: block;
+      margin: auto;
+    }
+    .title {
+      margin-top: 20px;
+      color: black;
+      margin-left: 0;
+    }
+    .desc {
+      color: #A3ABBD;
+      margin-left: 0;
+    }
   }
   .type:hover {
-    // background-color: #e5e5e5;
-    background-color: grey;
-    color: white;
-    border: none;
+    border: 1px solid #2673E5;
   }
 }
 
@@ -207,8 +221,10 @@
   .header {
     padding-left: 30px;
     font-size: 20;
+    font-size: 20px;
+    color: #A3ABBD;
     span {
-      font-size: 14;
+      font-size: 14px;
       font-weight: 500;
     }
   }
@@ -237,13 +253,19 @@
 
 .next {
   margin-top: 10px;
-  border: 1px solid #2673e5;
+  border: 1px solid #2673E5;
   background-color: white;
-  color: #2673e5;
+  color: #2673E5;
   width: 130px;
+  font-weight: 700;
+  font-size: 18px;
+  height: 50px;
   i {
-    margin-left: 5px;
-    color: #2673e5;
+      margin-left: 10px;
+      color: #2673E5;
+      font-weight: 100;
+      font-size: 14px;
+      transform: translateY(-1px);
   }
 }
 .next:hover {
@@ -364,6 +386,34 @@
     .heading__three {
       color: rgba(62, 78, 104, 0.7);
     }
+  }
+}
+
+.toggler {
+  .item {
+    font-size: 16px;
+    color: grey;
+    display: inline-block;
+    margin-right: 50px;
+    cursor: pointer;
+    position: relative;
+    i {
+      color: #5AB75A;
+    }
+  }
+  .active {
+    color: black;
+  }
+  .active::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 45px;
+    height: 6px;
+    border-radius: 10px;
+    top: 30px;
+    background-color: #2673e5;
   }
 }
 
