@@ -3,12 +3,11 @@ import { Routes, RouterModule, Router } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { CompleteProfileComponent } from './complete-profile/complete-profile.component';
 import { SelectIdTypeComponent } from './complete-profile/select-id-type/select-id-type.component';
 import { SelectNameComponent } from './complete-profile/select-name/select-name.component';
 import { SelectIdNumberComponent } from './complete-profile/select-id-number/select-id-number.component';
 import { SelectProfilePictureComponent } from './complete-profile/select-profile-picture/select-profile-picture.component';
-import { StepOneComponent } from './new-certificate/step-one/step-one.component';
+import { StepperComponent } from './new-certificate/stepper/stepper.component';
 
 
 const routes: Routes = [
@@ -55,12 +54,12 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'step-one',
+        redirectTo: 'stepper',
         pathMatch: 'full'
       },
       {
-        path: 'step-one',
-        component: StepOneComponent
+        path: 'stepper',
+        component: StepperComponent
       }
     ]
   },
@@ -80,7 +79,7 @@ export class AppRoutingModule {
     const userData = JSON.parse(localStorage.getItem('iprotect__user') || '{}');
 
     let page = accessToken ? (userData['profile_completed'] == 0 ? 'complete-profile' : 'dashboard') : 'login';
-    page = 'new-certificate';
+    // page = 'new-certificate';
 
     // this.router.navigate([page]);
   }

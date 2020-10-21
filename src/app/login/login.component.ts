@@ -18,6 +18,10 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  navTo(page) {
+
+  }
+
   login() {
     this.authService.login(this.user).subscribe((res: any) => {
       const accessToken = res.data.token;

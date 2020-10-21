@@ -1,8 +1,9 @@
 import { Injectable, NgModule } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpHeaders, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
-const SERVER = 'http://localhost:8000/api';
+const SERVER = environment.production ? 'http://iprotect-mena.com/api' : 'http://localhost:8000/api';
 
 @Injectable()
 export class HttpsRequestInterceptor implements HttpInterceptor {
@@ -11,7 +12,6 @@ export class HttpsRequestInterceptor implements HttpInterceptor {
         const dupReq = req.clone({
             url: `${SERVER}/${req.url}`,
             headers: new HttpHeaders({
-                "Content-Type": "application/json",
                 'Authorization': `Bearer ${localStorage.getItem('iprotect__token')}`,
             }),
         });

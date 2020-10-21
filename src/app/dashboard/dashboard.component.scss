@@ -68,29 +68,35 @@
 	.table-striped {
 		tbody {
 			tr {
+				font-size: 14px;
 				&:nth-of-type(even) {
 					background-color: rgba(163, 171, 189, 0.1);
 				}
 				&:nth-of-type(odd) {
 					background-color: rgba(0, 0, 0, 0);
 				}
-				height: 88px;
-				font-size: 14px;
 				h4 {
 					font-size: 16px;
 					font-weight: bold;
+				}
+				td {
+					padding: 30px 20px 10px 20px;
 				}
 			}
 		}
 	}
 	thead {
 		border-bottom: 1px solid #e5e5e5;
+		th {
+			padding-left: 20px;
+		}
 	}
 	.suc {
 		color: #2673e5;
 	}
 	.rev {
-		color: #dbb205;
+		text-align: center;
+		color: #2673E5;
 	}
 	.action {
 		color: #2673e5;
@@ -125,4 +131,8 @@
 .container-fluid {
     padding-left: 100px;
     padding-right: 100px;
+}
+
+.center {
+	text-align: center;
 }

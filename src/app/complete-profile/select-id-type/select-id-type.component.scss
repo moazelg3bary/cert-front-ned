@@ -3,7 +3,8 @@
     src: url(../../../assets/font/Rubik-Regular.ttf);
 }
 body,
-.all {
+.all,
+img {
     font-family: Rubik-regular;
 }
 a,
@@ -220,4 +221,31 @@ a:hover {
 .hole-layout .register-form .form-body .container {
     padding-right: 0;
     padding-top: 20px;
+}
+
+.box {
+    background-color: #EAEAEA;
+    border-radius: 10px;
+    width: 250px;
+    height: 250px;
+    position: relative;
+    margin-left: 20px;
+    margin-right: 30px;
+    img {
+        display: block;
+        margin: auto;
+        padding-top: 50px;
+        position: absolute;
+        bottom: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    p {
+        color: black;
+        font-weight: bold;
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
 }

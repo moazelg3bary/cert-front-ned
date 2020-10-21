@@ -5,12 +5,11 @@ import { AuthService } from 'src/app/services/auth.service';
 import { CertificatesService } from 'src/app/services/certificates.service';
 
 @Component({
-  selector: 'app-step-one',
-  templateUrl: './step-one.component.html',
-  styleUrls: ['./step-one.component.scss'],
-  providers: [AuthService, CertificatesService]
+  selector: 'app-stepper',
+  templateUrl: './stepper.component.html',
+  styleUrls: ['./stepper.component.scss']
 })
-export class StepOneComponent implements OnInit, OnDestroy {
+export class StepperComponent implements OnInit, OnDestroy {
 
   @ViewChild('rightPanel', { static: true }) rightPanel: ElementRef;
 

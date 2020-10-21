@@ -27,18 +27,18 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   }
 
   initErrors() {
-    this.errors = {nationality: [], email: [], password: [], password_confirm: ''};
+    this.errors = { nationality: [], email: [], password: [], password_confirm: '' };
   }
 
   getCountries() {
-    this.authService.getCountries().subscribe((res: any) => {
+    this.authService.getCountries(true).subscribe((res: any) => {
       this.countries = res;
     });
   }
 
   submit() {
     this.initErrors();
-    if(this.user.password !== this.password_confirm) {
+    if (this.user.password !== this.password_confirm) {
       this.errors.password_confirm = 'Passwords does not match';
       return;
     }
@@ -48,7 +48,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
       localStorage.setItem('iprotect__user', JSON.stringify(res.data));
       this.router.navigate(['complete-profile']);
     }, (err: any) => {
-      for(let k in this.errors) {
+      for (let k in this.errors) {
         this.errors[k] = err.error.errors[k] || [];
       }
     })

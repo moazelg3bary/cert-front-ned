@@ -1,24 +1,28 @@
 <body>
 
-    <app-navbar></app-navbar>
+    <app-navbar [avatar]="user.avatar_url"></app-navbar>
 
     <section class="message text-center">
         <div class="container-fluid">
             <div class="message-info">
-                <p>Good day <span>Ahmed,</span></p>
+                <p>Good day <span>{{user.first_name}}</span></p>
                 <p>Here you can find all your generated certificates.</p>
             </div>
         </div>
     </section>
-
-    <div *ngIf="showDashboard">
+    <div class="lds-ripple middle" *ngIf="loading">
+        <div></div>
+        <div></div>
+    </div>
+    <div *ngIf="certificates.length">
         <section class="search">
             <div class="container-fluid">
                 <div class="row">
 
                     <div class="col-md text-center text-md-left">
                         <form class="form-inline my-2 my-lg-0">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search certificates...">
+                            <input autocomplete="off" [(ngModel)]="search" name="search" class="form-control mr-sm-2"
+                                type="search" placeholder="Search certificates...">
                             <span><i class="fa fa-search"></i></span>
                         </form>
                     </div>
@@ -38,75 +42,50 @@
                     <thead>
                         <tr>
                             <th class="t-light" scope="col">Certificate</th>
-                            <th class="t-light" scope="col">Status</th>
-                            <th class="t-light" scope="col">Date created</th>
+                            <th class="t-light center" scope="col">Status</th>
+                            <th class="t-light center" scope="col">Date created</th>
                             <th class="t-light" scope="col ">Actions</th>
                             <th class="t-light" scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr *ngFor="let c of certificates | filter:search">
                             <td scope="row">
-                                <h4>My graduation thesis</h4>
+                                <h4>{{c.title}}</h4>
+                                <p class="t-light center">
+                                    <i class="fa fa-paperclip"></i>
+                                    <span>One or more files are attached </span>
+                                    <a class="v pointer">view</a>
+                                </p>
+
+                            </td>
+                            <td class="rev text-bold center"><b>Successful</b></td>
+                            <td class="t-light center">{{c.created_at | date: 'd MMMM y'}}</td>
+                            <td class="action pointer"> <img src="assets/img/iprotect/Group 182.png">Order hard copy
+                            </td>
+                            <td class="action pointer"> <i class="fa fa-share-alt"></i>Share attachment</td>
+                        </tr>
+                        <tr *ngFor="let c of drafts | filter:search">
+                            <td scope="row">
+                                <h4>{{c.title}}</h4>
                                 <p class="t-light">
                                     <i class="fa fa-paperclip"></i>
                                     <span>One or more files are attached </span>
-                                    <a class="v">view</a>
+                                    <a class="v pointer">view</a>
                                 </p>
 
                             </td>
-                            <td class="rev text-bold">Under review</td>
-                            <td class="t-light">25.06.2020</td>
-                            <td class="action"> <img src="assets/img/iprotect/Group 182.png">Order hard copy</td>
-                            <td class="action"> <i class="fa fa-share-alt"></i>Share attachment</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">
-                                <h4>My graduation thesis</h4>
-                                <p class="t-light">
-                                    <i class="fa fa-paperclip"></i>
-                                    <span>One or more files are attached</span>
-
-                                </p>
-
+                            <td class="rev text-bold" style="color: black !important">
+                            <div>
+                                <b>Incomplete</b>
+                                <br>
+                                <span style="text-decoration: underline; cursor: pointer;">Continue your request</span>
+                            </div>
                             </td>
-                            <td class="text-bold">Incomplete</td>
-                            <td class="t-light">25.06.2020</td>
-                            <td class="action"><img src="assets/img/iprotect/Group 182.png">Order hard copy</td>
-                            <td class="action"> <i class="fa fa-share-alt"></i>Share attachment</td>
-
-                        </tr>
-                        <tr>
-                            <td scope="row">
-                                <h4>My graduation thesis</h4>
-                                <p class="t-light">
-                                    <i class="fa fa-paperclip"></i>
-                                    <span>One or more files are attached</span>
-                                    <a class="v">view</a>
-                                </p>
-
+                            <td class="t-light">{{c.created_at | date: 'd MMMM y'}}</td>
+                            <td class="action pointer"> <img src="assets/img/iprotect/Group 182.png">Order hard copy
                             </td>
-                            <td class="rev text-bold">Under review</td>
-                            <td class="t-light">25.06.2020</td>
-                            <td class="action"><img src="assets/img/iprotect/Group 182.png">Order hard copy</td>
-                            <td class="action"> <i class="fa fa-share-alt"></i>Share attachment</td>
-
-                        </tr>
-                        <tr>
-                            <td scope="row">
-                                <h4>My graduation thesis</h4>
-                                <p class="t-light">
-                                    <i class="fa fa-paperclip"></i>
-                                    <span>One or more files are attached</span>
-
-                                </p>
-
-                            </td>
-                            <td class="suc text-bold">Successful</td>
-                            <td class="t-light">25.06.2020</td>
-                            <td class="action"><img src="assets/img/iprotect/Group 182.png">Order hard copy</td>
-                            <td class="action"> <i class="fa fa-share-alt"></i>Share attachment</td>
-
+                            <td class="action pointer"> <i class="fa fa-share-alt"></i>Share attachment</td>
                         </tr>
                     </tbody>
                 </table>
@@ -114,7 +93,7 @@
         </section>
     </div>
 
-    <section class="message text-center" *ngIf="!showDashboard">
+    <section class="message text-center" *ngIf="!certificates.length && !loading">
         <div class="container-fluid">
 
             <div class="message-img">
@@ -126,7 +105,7 @@
             </p>
 
             <button type="submit" class="btn btn-primary generate" style="margin-top: 30px" id="send_button"
-                (click)="showDashboard = true">+ Generate new certificates</button>
+                (click)="navTo('new-certificate')">+ Generate new certificates</button>
 
         </div>
     </section>
