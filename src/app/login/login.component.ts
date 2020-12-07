@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   }
 
   navTo(page) {
-
+    this.router.navigate([page]);
   }
 
   login() {

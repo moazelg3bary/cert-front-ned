@@ -8,6 +8,8 @@ import { SelectNameComponent } from './complete-profile/select-name/select-name.
 import { SelectIdNumberComponent } from './complete-profile/select-id-number/select-id-number.component';
 import { SelectProfilePictureComponent } from './complete-profile/select-profile-picture/select-profile-picture.component';
 import { StepperComponent } from './new-certificate/stepper/stepper.component';
+import { ViewCertificateComponent } from './dashboard/view-certificate/view-certificate.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 const routes: Routes = [
@@ -21,7 +23,24 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    component: DashboardComponent,
+    children: [
+      {
+        path: '',
+        component: DashboardComponent,
+      },
+      {
+        path: ':new',
+        component: DashboardComponent,
+      },
+    ]
+  },
+  {
+    path: 'view-certificate',
+    component: ViewCertificateComponent,
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
   },
   {
     path: 'complete-profile',
@@ -58,6 +77,10 @@ const routes: Routes = [
         pathMatch: 'full'
       },
       {
+        path: 'stepper/:draftId',
+        component: StepperComponent
+      },
+      {
         path: 'stepper',
         component: StepperComponent
       }
@@ -79,9 +102,9 @@ export class AppRoutingModule {
     const userData = JSON.parse(localStorage.getItem('iprotect__user') || '{}');
 
     let page = accessToken ? (userData['profile_completed'] == 0 ? 'complete-profile' : 'dashboard') : 'login';
-    // page = 'new-certificate';
+    // page = 'profile';
 
-    // this.router.navigate([page]);
+    this.router.navigate([page]);
   }
 
 }

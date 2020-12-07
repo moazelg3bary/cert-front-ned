@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, HostListener, OnDestroy } from '@angular/core';
 import { Location } from '@angular/common';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { CertificatesService } from 'src/app/services/certificates.service';
 
@@ -20,8 +20,9 @@ export class StepperComponent implements OnInit, OnDestroy {
   cities: any[] = [];
   file: any;
   fileInfo: any = {};
+  draftId: any = null;
 
-  constructor(private location: Location, private router: Router, private authService: AuthService, private certificatesService: CertificatesService) { }
+  constructor(private location: Location, private route: ActivatedRoute, private router: Router, private authService: AuthService, private certificatesService: CertificatesService) { }
 
   ngOnInit() {
     window.onbeforeunload = () => {
@@ -135,6 +136,18 @@ export class StepperComponent implements OnInit, OnDestroy {
         required: []
       },
     ]
+    this.checkDraft();
+  }
+
+  checkDraft() {
+    this.route.params.subscribe((params) => {
+      this.draftId = params['draftId'];
+      if(this.draftId) {
+        let draft = this.certificatesService.getDraftById(params['draftId']);
+        this.steps = draft.steps;
+        this.currentStep = draft.currentStep;
+      }
+    })
   }
 
   // @HostListener('window:beforeunload', ['$event'])
@@ -147,31 +160,16 @@ export class StepperComponent implements OnInit, OnDestroy {
   }
 
   saveDraft() {
-    console.log('saving');
-    let title = this.steps[0].fields['title'];
-    console.log(title);
-    if(!title) return;
-    let drafts = localStorage['iprotect__drafts'] || '[]';
-    drafts = JSON.parse(drafts);
-    let draft = {
-      id: Math.round(Math.random()*10000),
-      title: title,
-      created_at: new Date().getTime(),
-      steps: this.steps
-    }
-    drafts.push(draft);
-    localStorage['iprotect__drafts'] = JSON.stringify(drafts);
+    this.certificatesService.saveDraft(this.steps, this.currentStep, this.draftId);
   }
 
   fileSelected(event) {
     // if (this.allowedExt.includes(event[0].name.split('.').pop())) {
     this.file = event.item(0);
-    console.log(this.file);
     this.fileInfo = { size: this.formatBytes(this.file.size), type: this.file.name.split('.').pop() };
     let data = new FormData();
     data.append('file', this.file, this.file.name);
     // this.certificatesService.upload(data).subscribe((res: any) => {
-    //   console.log(res);
     // });
     // let self = this;
     // var reader = new FileReader();
@@ -202,7 +200,6 @@ export class StepperComponent implements OnInit, OnDestroy {
   }
 
   setWidth(el) {
-    console.log(el);
   }
 
   checkDisabled() {
@@ -246,7 +243,6 @@ export class StepperComponent implements OnInit, OnDestroy {
 
   nextStep(e: any) {
     e.preventDefault();
-    // console.log(this.steps[this.currentStep - 1].fields);
     // return;
     if (this.currentStep == this.steps.length) {
       this.submit();
@@ -257,13 +253,12 @@ export class StepperComponent implements OnInit, OnDestroy {
 
   submit() {
     let data = {};
-    console.log(this.steps);
     this.steps.map((step) => {
       data = { ...data, ...step.fields };
     })
-    console.log(data);
     this.certificatesService.newCertificate(data).subscribe((res: any) => {
-      this.router.navigate(['dashboard']);
+      if(this.draftId) this.certificatesService.deleteDraftById(this.draftId);
+      this.router.navigate(['dashboard/done']);
     })
   }
 

@@ -1,0 +1,121 @@
+<body>
+    <app-navbar></app-navbar>
+
+    <div class="container">
+        <div class="register-form">
+            <div class="profile">
+                <div class="col-lg-12">
+                    <div class="form-body">
+                        <div class="control-group">
+                            <div class="row">
+                                <div class="col-lg-9">
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <label for="exampleDropdownFormEmail1">First name</label>
+                                            <input type="text" class="form-control" name="full_name"
+                                                [(ngModel)]="data.first_name" placeholder="Start typing..." />
+                                            <p class="text-danger help-block">{{errors['first_name'][0]}}</p>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <label for="exampleDropdownFormEmail1">Middle name</label>
+                                            <input type="text" class="form-control" name="full_name"
+                                                [(ngModel)]="data.middle_name" placeholder="Start typing..." />
+                                            <p class="text-danger help-block">{{errors['middle_name'][0]}}</p>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <label for="exampleDropdownFormEmail1">Last name</label>
+                                            <input type="text" class="form-control" name="full_name"
+                                                [(ngModel)]="data.last_name" placeholder="Start typing..." />
+                                            <p class="text-danger help-block">{{errors['last_name'][0]}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <label class="tooltip-main" for="exampleDropdownFormEmail1">
+                                        NATIONALITY
+                                    </label>
+                                    <div class="dropdown">
+                                        <button class="btn nationality dropdown-toggle" type="button"
+                                            id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">
+                                            {{data.nationality || 'Select'}}
+                                            <i class="fa fa-caret-down"></i>
+                                            <!-- <i class="fas fa-caret-circle-down"></i> -->
+                                        </button>
+                                        <div class="dropdown-menu scrollable-menu"
+                                            style="height: auto; max-height: 200px; overflow-y: scroll; overflow-x: hidden"
+                                            aria-labelledby="dropdownMenuButton">
+                                            <a (click)="data.nationality = country.name" class="dropdown-item"
+                                                style="cursor: pointer" *ngFor="let country of countries">
+                                                {{country.name}}
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <p class="text-danger help-block">{{errors['nationality'][0]}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="row">
+                                <div class="col-lg-9">
+                                    <label for="exampleDropdownFormEmail1">ID number</label>
+                                    <input type="text" class="form-control" name="full_name"
+                                        [(ngModel)]="data.id_number" placeholder="Start typing..." />
+
+                                    <p class="text-danger help-block">{{errors['id_number'][0]}}</p>
+                                </div>
+                                <div class="col-lg-3">
+                                    <label class="tooltip-main" for="exampleDropdownFormEmail1">
+                                        COUNTRY OF RESIDENCY
+                                    </label>
+                                    <div class="dropdown">
+                                        <button class="btn nationality dropdown-toggle" type="button"
+                                            id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">
+                                            {{data.country_of_residence || 'Select'}}
+                                            <i class="fa fa-caret-down"></i>
+                                            <!-- <i class="fas fa-caret-circle-down"></i> -->
+                                        </button>
+                                        <div class="dropdown-menu scrollable-menu"
+                                            style="height: auto; max-height: 200px; overflow-y: scroll; overflow-x: hidden"
+                                            aria-labelledby="dropdownMenuButton">
+                                            <a (click)="data.country_of_residence = country.name" class="dropdown-item"
+                                                style="cursor: pointer" *ngFor="let country of countries">
+                                                {{country.name}}
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <p class="text-danger help-block">{{errors['country_of_residence'][0]}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="row">
+                                <div class="col-lg-9">
+                                    <label for="exampleDropdownFormEmail1">EMAIL ADDRESS</label>
+                                    <input type="text" class="form-control" name="full_name" [(ngModel)]="data.email"
+                                        placeholder="Start typing..." />
+
+                                    <p class="text-danger help-block">{{errors['email'][0]}}</p>
+                                </div>
+                                <div class="col-lg-3">
+                                    <label class="tooltip-main" for="exampleDropdownFormEmail1">
+                                        PHONE NUMBER
+                                    </label>
+                                    <div class="input-group">
+                                        <input placeholder="Start typing..." [(ngModel)]="data.phone_number"
+                                            name="phone_number" type="tel" class="form-control tele">
+                                    </div>
+                                    <p class="text-danger help-block">{{errors['phone_number'][0]}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="save" (click)="saveData()" [disabled]="loading">
+                    Save edits
+                </button>
+            </div>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,44 @@
+<div>
+    <app-navbar></app-navbar>
+    <div class="">
+        <div class="row">
+            <div class="col-4">
+                <div class="view">
+                    <img class="certificate" width="100%" src="assets/img/dashboard/view.png" alt="">
+                    <div class="download" (click)="download()">
+                        <img class="download-icon" src="assets/img/dashboard/download.svg" alt=""> Download certificate
+                    </div>
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="content">
+                    <h6 (click)="back()">
+                        <span class="back">
+                            <b><i class="fa fa-arrow-left"></i> Back to dashboard</b>
+                        </span>
+                    </h6>
+                    <div class="lds-ripple middle" *ngIf="loading">
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <p class="title">{{certificate.title}}</p>
+                    <p class="desc">
+                        {{certificate.description}}
+                    </p>
+
+                    <div class="attachments">
+                        <p class="head">Attachments</p>
+                        <div class="row">
+                            <div class="col-3 attachments__title">My research work.pdf</div>
+                            <div class="col-2 attachments__size">9.34 MB <img class="download-icon"
+                                    src="assets/img/dashboard/download.svg"></div>
+                            <div class="col-3 attachments__date">Uploaded on: 07.09.2020, 15:34</div>
+                            <div class="col-4 attachments__sharing"> <img class="download-icon"
+                                    src="assets/img/dashboard/share.svg" alt=""> Secure sharing</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

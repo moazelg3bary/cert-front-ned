@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { CertificatesService } from '../services/certificates.service';
 
@@ -9,7 +9,7 @@ import { CertificatesService } from '../services/certificates.service';
   styleUrls: ['./dashboard.component.scss'],
   providers: [CertificatesService, AuthService]
 })
-export class DashboardComponent implements AfterViewInit {
+export class DashboardComponent implements OnInit {
 
   showDashboard: any = false;
   certificates: any[] = [];
@@ -17,29 +17,46 @@ export class DashboardComponent implements AfterViewInit {
   search: string = '';
   user: any = {};
   drafts: any[] = [];
+  newCertificate: boolean = false;
 
-  constructor(private router: Router, private certificatesService: CertificatesService, private authService: AuthService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private certificatesService: CertificatesService, private authService: AuthService) { }
 
-  ngAfterViewInit() {
+  ngOnInit() {
     this.authService.me().subscribe((res: any) => {
       this.user = res.data;
     })
-    this.certificatesService.getCertificates().subscribe((res: any) => {
-      this.loading = false;
-      this.certificates = res.data;
-      this.drafts = this.getDrafts();
+    this.route.params.subscribe((params) => {
+      if(params['new']) {
+        this.newCertificate = true;
+        return;
+      }
+      this.loadDashboard();
     })
   }
 
-  getDrafts() {
-    let drafts = localStorage['iprotect__drafts'] || '[]';
-    console.log(drafts);
-    drafts = JSON.parse(drafts);
-    return drafts;
+  loadDashboard() {
+    this.loading = true;
+    this.newCertificate = false;
+    this.certificatesService.getCertificates().subscribe((res: any) => {
+      this.loading = false;
+      // this.certificates = [];
+      this.certificates = res.data;
+      this.drafts = this.certificatesService.getDrafts();
+    })
   }
 
-  navTo(page) {
-    this.router.navigate([page]);
+  navTo(page, params = null) {
+    let route = params ? [page, params] : [page];
+    this.router.navigate(route);
+  }
+
+  viewCertificate(certificate) {
+    console.log(certificate);
+    this.router.navigate(['view-certificate'], {
+      queryParams: {
+        id: certificate.id
+      }
+    });
   }
 
 }

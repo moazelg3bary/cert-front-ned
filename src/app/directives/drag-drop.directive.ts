@@ -8,8 +8,8 @@ export class DragDropDirective {
 	
   @Output() onFileDropped = new EventEmitter<any>();
 	
-  @HostBinding('style.background-color') private background = '#EAEAEA'
-  @HostBinding('style.opacity') private opacity = '1'
+  @HostBinding('style.background-color') public background = '#EAEAEA'
+  @HostBinding('style.opacity') public opacity = '1'
 	
   //Dragover listener
   @HostListener('dragover', ['$event']) onDragOver(evt) {

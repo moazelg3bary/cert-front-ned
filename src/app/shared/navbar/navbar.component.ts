@@ -1,5 +1,7 @@
+import { Location } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,15 +10,23 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
-  @Input('avatar') avatar: string;
+  user: any = {};
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private authService: AuthService, private location: Location) { }
 
   ngOnInit() {
+    this.authService.me().subscribe((res: any) => {
+      this.user = res.data;
+    })
   }
 
   navTo(page) {
     this.router.navigate([page]);
+  }
+
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['login']);
   }
 
 }

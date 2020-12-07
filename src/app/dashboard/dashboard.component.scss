@@ -1,4 +1,10 @@
-
+app-navbar {
+	z-index: 10000;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
 .message {
     padding: 20px;
 }
@@ -135,4 +141,39 @@
 
 .center {
 	text-align: center;
+}
+
+.background {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: block;
+	width: 100%;
+	height: 100%;
+	z-index: 0;
+	overflow: hidden;
+	.left {
+		position: absolute;
+		left: -60px;
+		height: 100%;
+		bottom: -110px;
+	}
+	.right {
+		position: absolute;
+		right: -80px;
+		bottom: -60px;
+		height: 100%;
+	}
+	.middle {
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+}
+
+.new, .dashboard {
+	position: relative;
+	z-index: 1000;
+	margin-top: 100px;
 }

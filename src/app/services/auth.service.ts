@@ -26,6 +26,10 @@ export class AuthService {
     return this.http.post('auth/complete-profile', data);
   }
 
+  updateProfile(data) {
+    return this.http.post('auth/profile', data);
+  }
+
   me() {
     return this.http.get('auth/me');
   }

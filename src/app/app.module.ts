@@ -19,6 +19,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { DragDropDirective } from './directives/drag-drop.directive';
 import { ToastNotificationsModule } from 'ngx-toast-notifications';
 import { StepperComponent } from './new-certificate/stepper/stepper.component';
+import { ViewCertificateComponent } from './dashboard/view-certificate/view-certificate.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { StepperComponent } from './new-certificate/stepper/stepper.component';
     SelectProfilePictureComponent,
     DragDropDirective,
     StepperComponent,
+    ViewCertificateComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserAnimationsModule,

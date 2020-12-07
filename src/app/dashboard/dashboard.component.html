@@ -1,112 +1,154 @@
 <body>
 
-    <app-navbar [avatar]="user.avatar_url"></app-navbar>
-
-    <section class="message text-center">
-        <div class="container-fluid">
-            <div class="message-info">
-                <p>Good day <span>{{user.first_name}}</span></p>
-                <p>Here you can find all your generated certificates.</p>
-            </div>
-        </div>
-    </section>
-    <div class="lds-ripple middle" *ngIf="loading">
-        <div></div>
-        <div></div>
+    <app-navbar></app-navbar>
+    <div class="background" *ngIf="!certificates.length || newCertificate">
+        <img class="left" src="assets/img/dashboard/left.svg" alt="">
+        <img class="right" src="assets/img/dashboard/right.svg" alt="">
+        <img class="middle" src="assets/img/dashboard/middle.svg" alt="">
     </div>
-    <div *ngIf="certificates.length">
-        <section class="search">
+    <div class="dashboard" *ngIf="!newCertificate">
+        <section class="message text-center">
             <div class="container-fluid">
-                <div class="row">
-
-                    <div class="col-md text-center text-md-left">
-                        <form class="form-inline my-2 my-lg-0">
-                            <input autocomplete="off" [(ngModel)]="search" name="search" class="form-control mr-sm-2"
-                                type="search" placeholder="Search certificates...">
-                            <span><i class="fa fa-search"></i></span>
-                        </form>
-                    </div>
-
-                    <div class="col-md text-center text-md-right">
-                        <button (click)="navTo('new-certificate')" type="submit" class="btn generate" id="send_button">+
-                            Generate new certificates</button>
-                    </div>
-
+                <div class="message-info">
+                    <p>Good day <span>{{user.first_name}}</span></p>
+                    <p>Here you can find all your generated certificates.</p>
                 </div>
             </div>
         </section>
+        <div class="lds-ripple middle" *ngIf="loading">
+            <div></div>
+            <div></div>
+        </div>
+        <div *ngIf="certificates.length || drafts.length">
+            <section class="search">
+                <div class="container-fluid">
+                    <div class="row">
 
-        <section class="data-table">
+                        <div class="col-md text-center text-md-left">
+                            <form class="form-inline my-2 my-lg-0">
+                                <input autocomplete="off" [(ngModel)]="search" name="search"
+                                    class="form-control mr-sm-2" type="search" placeholder="Search certificates...">
+                                <span><i class="fa fa-search"></i></span>
+                            </form>
+                        </div>
+
+                        <div class="col-md text-center text-md-right">
+                            <button (click)="navTo('new-certificate')" type="submit" class="btn generate"
+                                id="send_button">+
+                                Generate new certificates</button>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section class="data-table">
+                <div class="container-fluid">
+                    <table class="table table-striped table-borderless">
+                        <thead>
+                            <tr>
+                                <th class="t-light" scope="col">Certificate</th>
+                                <th class="t-light center" scope="col">Status</th>
+                                <th class="t-light center" scope="col">Date created</th>
+                                <th class="t-light" scope="col ">Actions</th>
+                                <th class="t-light" scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let c of certificates | filter:search">
+                                <td scope="row">
+                                    <h4>{{c.title}}</h4>
+                                    <p class="t-light">
+                                        <i class="fa fa-paperclip"></i>
+                                        <a (click)="viewCertificate(c)" class="v pointer">view & share attachments</a>
+                                    </p>
+
+                                </td>
+                                <td class="rev text-bold center"><b>Successful</b></td>
+                                <td class="t-light center">{{c.created_at | date: 'd MMMM y'}}</td>
+                                <td class="action pointer"> <img src="assets/img/iprotect/Group 182.png">Order hard copy
+                                </td>
+                                <td class="action pointer"> <i class="fa fa-share-alt"></i>Share attachment</td>
+                            </tr>
+                            <tr *ngFor="let c of drafts | filter:search">
+                                <td scope="row">
+                                    <h4>{{c.title}}</h4>
+                                    <!-- <p class="t-light">
+                                        <i class="fa fa-paperclip"></i>
+                                        <a (click)="viewCertificate(c)" class="v pointer">view & share attachments</a>
+                                    </p> -->
+
+                                </td>
+                                <td class="rev text-bold" style="color: black !important">
+                                    <div>
+                                        <b>Incomplete</b>
+                                        <br>
+                                        <span (click)="navTo('new-certificate/stepper', c.id)"
+                                            style="text-decoration: underline; cursor: pointer;">Continue your
+                                            request</span>
+                                    </div>
+                                </td>
+                                <td class="t-light center">{{c.created_at | date: 'd MMMM y'}}</td>
+                                <td class="action pointer"> <img src="assets/img/iprotect/Group 182.png">Order hard copy
+                                </td>
+                                <td class="action pointer"> <i class="fa fa-share-alt"></i>Share attachment</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+
+        <section class="message text-center" *ngIf="(!certificates.length && !drafts.length) && !loading">
             <div class="container-fluid">
-                <table class="table table-striped table-borderless">
-                    <thead>
-                        <tr>
-                            <th class="t-light" scope="col">Certificate</th>
-                            <th class="t-light center" scope="col">Status</th>
-                            <th class="t-light center" scope="col">Date created</th>
-                            <th class="t-light" scope="col ">Actions</th>
-                            <th class="t-light" scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let c of certificates | filter:search">
-                            <td scope="row">
-                                <h4>{{c.title}}</h4>
-                                <p class="t-light center">
-                                    <i class="fa fa-paperclip"></i>
-                                    <span>One or more files are attached </span>
-                                    <a class="v pointer">view</a>
-                                </p>
 
-                            </td>
-                            <td class="rev text-bold center"><b>Successful</b></td>
-                            <td class="t-light center">{{c.created_at | date: 'd MMMM y'}}</td>
-                            <td class="action pointer"> <img src="assets/img/iprotect/Group 182.png">Order hard copy
-                            </td>
-                            <td class="action pointer"> <i class="fa fa-share-alt"></i>Share attachment</td>
-                        </tr>
-                        <tr *ngFor="let c of drafts | filter:search">
-                            <td scope="row">
-                                <h4>{{c.title}}</h4>
-                                <p class="t-light">
-                                    <i class="fa fa-paperclip"></i>
-                                    <span>One or more files are attached </span>
-                                    <a class="v pointer">view</a>
-                                </p>
+                <div class="message-img">
+                    <img src="assets/img/dashboard/no-certificate.svg">
+                </div>
 
-                            </td>
-                            <td class="rev text-bold" style="color: black !important">
-                            <div>
-                                <b>Incomplete</b>
-                                <br>
-                                <span style="text-decoration: underline; cursor: pointer;">Continue your request</span>
-                            </div>
-                            </td>
-                            <td class="t-light">{{c.created_at | date: 'd MMMM y'}}</td>
-                            <td class="action pointer"> <img src="assets/img/iprotect/Group 182.png">Order hard copy
-                            </td>
-                            <td class="action pointer"> <i class="fa fa-share-alt"></i>Share attachment</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <p class="message-text">
+                    You don’t have any certificates at the moment.<br> Once you generate one, it’ll come directly into
+                    here.
+                </p>
+
+                <button type="submit" class="btn btn-primary generate" style="margin-top: 30px" id="send_button"
+                    (click)="navTo('new-certificate')">+ Generate new certificates</button>
+
             </div>
         </section>
     </div>
 
-    <section class="message text-center" *ngIf="!certificates.length && !loading">
-        <div class="container-fluid">
+    <div class="new" *ngIf="newCertificate">
+        <section class="message text-center">
+            <div class="container-fluid">
 
-            <div class="message-img">
-                <img src="assets/img/iprotect/Group 193.png">
+                <div class="message-img">
+                    <img src="assets/img/dashboard/complete.svg">
+                </div>
+
+                <h3 style="color: #0F55A8; margin: 20px;">
+                    congratulations!
+                </h3>
+
+                <p>
+                    Your certificate has been generated successfully.
+                    <br>
+                    Rest assured now with your IP well protected.
+                </p>
+
+                <p class="message-text">
+                    You can find all your certificates with the attached files
+                    <br>
+                    In the dashboard.
+                </p>
+
+                <button type="submit" class="btn btn-primary generate" style="margin-top: 30px" id="send_button">View
+                    Certificate</button>
+
+                <p (click)="navTo('../dashboard')"
+                    style="color: #2673E5; margin-top: 50px; text-decoration: underline; cursor: pointer;">
+                    Back to the dashboard</p>
             </div>
-
-            <p class="message-text">
-                You don’t have any certificates at the moment.<br> Once you generate one, it’ll come directly into here.
-            </p>
-
-            <button type="submit" class="btn btn-primary generate" style="margin-top: 30px" id="send_button"
-                (click)="navTo('new-certificate')">+ Generate new certificates</button>
-
-        </div>
-    </section>
+        </section>
+    </div>
 </body>

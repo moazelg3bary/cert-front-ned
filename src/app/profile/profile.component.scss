@@ -1,0 +1,184 @@
+.profile {
+    background-color: #c4c4c4;
+    width: 100%;
+    border-radius: 5px;
+    padding: 20px;
+    .save {
+        background-color: #2673E5;
+        width: 140px;
+        height: 45px;
+        color: white;
+        border: none;
+        font-size: 14px;
+        font-weight: bold;
+        margin-right: 0;
+        margin-left: auto;
+        display: block;
+        border-radius: 5px;
+        outline: none;
+    }
+    .save:disabled {
+        opacity: .5;
+    }
+}
+
+.container {
+    padding: 50px;
+}
+
+.register-form {
+    margin: 0 auto;
+}
+
+@media only screen and (max-width: 767.98px) {
+    .content,
+    .content-right {
+        margin: 30px 0;
+    }
+    .register-form {
+        width: 100%;
+        margin: 0;
+    }
+    .register-form .title {
+        font-size: 14px;
+    }
+    .register-form .form-body .col-lg-5 {
+        padding-right: 0;
+    }
+}
+
+.register-form .title {
+    margin-left: 40px;
+    position: relative;
+}
+.register-form h2 {
+    font-size: 20px;
+    // line-height: 36px;
+    padding-bottom: 20px;
+    // width: 300px;
+}
+.back {
+    margin-bottom: 15px;
+    cursor: pointer;
+    i {
+        margin-right: 5px;
+    }
+}
+.register-form h2::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100px;
+    height: 3px;
+    margin-top: 10px;
+    background-color: #2673e5;
+}
+::placeholder {
+    font-size: 14px;
+}
+.register-form .control-group {
+    margin-bottom: 30px;
+}
+.register-form .form-body label:not(.form-check-label) {
+    font-size: 14px;
+    padding-left: 15px;
+    line-height: 17px;
+}
+.register-form .form-body .forgot {
+    padding-left: 20px;
+}
+.register-form .form-body input[type="password"] {
+    position: relative;
+}
+
+.register-form .form-body input:not(.form-check-input),
+.register-form .form-body select {
+    border-radius: 2px;
+    background-color: #eaeaea;
+    color: black;
+    border: 0;
+    height: 58px;
+}
+.nationality {
+    border-radius: 2px;
+    background-color: #eaeaea;
+    color: #a2aabe;
+    border: 0;
+    height: 58px;
+    width: 100%;
+    text-align: left;
+}
+.dropdown-toggle::after {
+    display: none;
+}
+.fa-caret-down {
+    color: white;
+    background-color: black;
+    border-radius: 100%;
+    width: 1.2em;
+    height: 1.2em;
+    padding: 0.3em;
+    line-height: 0.5em;
+    // vertical-align: center;
+    text-align: center;
+    float: right;
+    margin-top: 0.2em;
+}
+.fa-question-circle {
+    color: #2773e6;
+}
+
+.intl-tel-input {
+    display: table-cell;
+}
+.intl-tel-input .selected-flag {
+    z-index: 4;
+}
+.intl-tel-input .country-list {
+    z-index: 5;
+}
+.input-group .intl-tel-input .form-control {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 0;
+}
+.owner {
+    font-size: 20px;
+    color: #a3abbd;
+}
+.bs-tooltip-auto[x-placement^="bottom"] .arrow::before,
+.bs-tooltip-bottom .arrow::before {
+    border-bottom-color: #f00;
+    /* Red */
+}
+.caretup {
+    transform: rotate(180deg);
+}
+.dropdown-menu {
+    width: 100%;
+}
+.dropdown-item {
+    color: black;
+}
+.dropdown-item:hover {
+    color: black;
+}
+.register-form .form-body textarea {
+    border-radius: 2px;
+    background-color: #eaeaea;
+    border: 0;
+}
+.register-form .form-body .col-lg-5 {
+    padding-left: 0;
+    padding-bottom: 30px;
+}
+.register-form .form-body .col-lg-7 {
+    padding-right: 0;
+    padding-left: 0;
+}
+.register-form .form-body .container {
+    padding-right: 0;
+    padding-top: 20px;
+}
