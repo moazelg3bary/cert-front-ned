@@ -21,6 +21,8 @@ import { ToastNotificationsModule } from 'ngx-toast-notifications';
 import { StepperComponent } from './new-certificate/stepper/stepper.component';
 import { ViewCertificateComponent } from './dashboard/view-certificate/view-certificate.component';
 import { ProfileComponent } from './profile/profile.component';
+import { LoaderService } from './services/loader.service';
+import { NgxUiLoaderModule } from "ngx-ui-loader";
 
 @NgModule({
   declarations: [
@@ -46,9 +48,10 @@ import { ProfileComponent } from './profile/profile.component';
     FormsModule,
     Ng2SearchPipeModule,
     ReactiveFormsModule,
-    ToastNotificationsModule
+    ToastNotificationsModule,
+    NgxUiLoaderModule
   ],
-  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }, LoaderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { AuthService } from '../services/auth.service';
 import { CertificatesService } from '../services/certificates.service';
 
@@ -13,13 +14,13 @@ export class DashboardComponent implements OnInit {
 
   showDashboard: any = false;
   certificates: any[] = [];
-  loading: boolean = true;
+  loading: boolean = false;
   search: string = '';
   user: any = {};
   drafts: any[] = [];
   newCertificate: boolean = false;
 
-  constructor(private router: Router, private route: ActivatedRoute, private certificatesService: CertificatesService, private authService: AuthService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private certificatesService: CertificatesService, private authService: AuthService, private loader: NgxUiLoaderService) { }
 
   ngOnInit() {
     this.authService.me().subscribe((res: any) => {
@@ -35,6 +36,7 @@ export class DashboardComponent implements OnInit {
   }
 
   loadDashboard() {
+    this.loader.start();
     this.loading = true;
     this.newCertificate = false;
     this.certificatesService.getCertificates().subscribe((res: any) => {
@@ -42,6 +44,9 @@ export class DashboardComponent implements OnInit {
       // this.certificates = [];
       this.certificates = res.data;
       this.drafts = this.certificatesService.getDrafts();
+      this.loader.stop();
+    }, err => {
+      this.loader.stop();
     })
   }
 

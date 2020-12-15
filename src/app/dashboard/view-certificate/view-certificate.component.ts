@@ -1,6 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { CertificatesService } from 'src/app/services/certificates.service';
 
 import { environment } from 'src/environments/environment';
@@ -15,13 +16,15 @@ export class ViewCertificateComponent implements OnInit {
   certificate: any = {};
   loading: boolean = true;
 
-  constructor(private router: Router, private location: Location, private route: ActivatedRoute, private certificateService: CertificatesService) { }
+  constructor(private router: Router, private location: Location, private route: ActivatedRoute, private certificateService: CertificatesService, private loader: NgxUiLoaderService) { }
 
   ngOnInit() {
+    this.loader.start();
     this.route.queryParams.subscribe((params) => {
       this.certificateService.getCertificateById(params['id']).subscribe((res: any) => {
         this.certificate = res.data;
         this.loading = false;
+        this.loader.stop();
       })
     })
   }

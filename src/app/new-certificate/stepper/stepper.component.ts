@@ -3,6 +3,8 @@ import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { CertificatesService } from 'src/app/services/certificates.service';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { Toaster } from 'ngx-toast-notifications';
 
 @Component({
   selector: 'app-stepper',
@@ -21,10 +23,23 @@ export class StepperComponent implements OnInit, OnDestroy {
   file: any;
   fileInfo: any = {};
   draftId: any = null;
+  dontSave: boolean = false;
 
-  constructor(private location: Location, private route: ActivatedRoute, private router: Router, private authService: AuthService, private certificatesService: CertificatesService) { }
+  constructor(
+    private location: Location,
+    private route: ActivatedRoute,
+    private router: Router,
+    private authService: AuthService,
+    private certificatesService: CertificatesService,
+    private loader: NgxUiLoaderService,
+    private toast: Toaster
+  ) { }
 
   ngOnInit() {
+    this.loader.start();
+    setTimeout(() => {
+      this.loader.stop();
+    }, 500);
     window.onbeforeunload = () => {
       alert('aa');
     };
@@ -142,7 +157,7 @@ export class StepperComponent implements OnInit, OnDestroy {
   checkDraft() {
     this.route.params.subscribe((params) => {
       this.draftId = params['draftId'];
-      if(this.draftId) {
+      if (this.draftId) {
         let draft = this.certificatesService.getDraftById(params['draftId']);
         this.steps = draft.steps;
         this.currentStep = draft.currentStep;
@@ -156,6 +171,7 @@ export class StepperComponent implements OnInit, OnDestroy {
   // }
 
   ngOnDestroy() {
+    if (this.dontSave) return;
     this.saveDraft();
   }
 
@@ -252,13 +268,19 @@ export class StepperComponent implements OnInit, OnDestroy {
   }
 
   submit() {
+    this.loader.start();
     let data = {};
     this.steps.map((step) => {
       data = { ...data, ...step.fields };
     })
     this.certificatesService.newCertificate(data).subscribe((res: any) => {
-      if(this.draftId) this.certificatesService.deleteDraftById(this.draftId);
+      if (this.draftId) this.certificatesService.deleteDraftById(this.draftId);
       this.router.navigate(['dashboard/done']);
+      this.loader.stop();
+      this.dontSave = true;
+    }, err => {
+      this.loader.stop();
+      this.toast.open({ text: 'Make sure you fill all the fields.', type: 'danger' });
     })
   }
 

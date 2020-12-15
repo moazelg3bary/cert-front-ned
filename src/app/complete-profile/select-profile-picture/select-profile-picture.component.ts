@@ -7,6 +7,7 @@ import { of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { HttpEventType, HttpErrorResponse } from '@angular/common/http';
 import { Toaster } from 'ngx-toast-notifications';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-select-profile-picture',
@@ -29,7 +30,8 @@ export class SelectProfilePictureComponent implements OnInit {
     private authService: AuthService,
     private cdr: ChangeDetectorRef,
     private sanitization: DomSanitizer,
-    private toast: Toaster) { }
+    private toast: Toaster,
+    private loader: NgxUiLoaderService) { }
 
   ngOnInit() {
     this.data = JSON.parse(JSON.stringify(this.route.snapshot.queryParams));
@@ -54,24 +56,35 @@ export class SelectProfilePictureComponent implements OnInit {
   }
 
   uploadBase64(avatar) {
+    console.log('uploading');
     this.authService.upload({ avatar }).subscribe((res: any) => {
       this.loading = false;
+      this.loader.stop();
+      this.navTo('dashboard');
     })
   }
 
   submit() {
     this.loading = true;
-    this.complete(() => this.avatar ? () => this.uploadBase64(this.avatar) : () => this.navTo('dashboard'));
+    this.complete();
+    // this.complete(() => this.avatar ? () => this.uploadBase64(this.avatar) : () => this.navTo('dashboard'));
   }
 
   skip() {
-    this.complete(() => this.navTo('dashboard'));
+    this.complete();
+    // this.complete(() => this.navTo('dashboard'));
   }
 
-  complete(callback?) {
+  complete() {
+    this.loader.start();
     this.authService.completeProfile(this.data).subscribe((res: any) => {
       localStorage.setItem('iprotect__user', JSON.stringify(res.data));
-      if(callback) callback();
+      if(this.avatar) {
+        this.uploadBase64(this.avatar);
+      } else {
+        this.loader.stop();
+        this.navTo('dashboard');
+      }
     }, (err: any) => {
       let errors = err.error.errors;
       let errorString = '';

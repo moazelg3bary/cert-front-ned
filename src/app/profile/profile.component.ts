@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Toaster } from 'ngx-toast-notifications';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class ProfileComponent implements OnInit {
   loading: boolean = false;
   errors: any = {};
 
-  constructor(private authService: AuthService, private toast: Toaster) { }
+  constructor(private authService: AuthService, private toast: Toaster, private loader: NgxUiLoaderService) { }
 
   ngOnInit() {
     this.getData();
@@ -23,8 +24,10 @@ export class ProfileComponent implements OnInit {
   }
 
   getData() {
+    this.loader.start();
     this.authService.me().subscribe((res: any) => {
       this.data = res.data;
+      this.loader.stop();
     })
   }
 
@@ -40,15 +43,18 @@ export class ProfileComponent implements OnInit {
 
   saveData() {
     this.initErrors();
+    this.loader.start();
     this.loading = true;
     this.authService.updateProfile(this.data).subscribe((res: any) => {
       this.toast.open({text: 'Done', type: 'success'});
       this.loading = false;
+      this.loader.stop();
     }, err => {
       for (let k in this.errors) {
         this.errors[k] = err.error.errors[k] || [];
       }
       this.loading = false;
+      this.loader.stop();
     })
   }
 

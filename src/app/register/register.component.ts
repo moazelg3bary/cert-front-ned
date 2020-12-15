@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { AuthService } from '../services/auth.service';
 
 declare var jQuery: any;
@@ -15,7 +16,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   user: any = {};
   password_confirm: string = '';
   errors: any = {};
-  constructor(private router: Router, private authService: AuthService) { }
+  constructor(private router: Router, private authService: AuthService, private loader: NgxUiLoaderService) { }
 
   ngOnInit() {
     this.initErrors();
@@ -31,15 +32,19 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   }
 
   getCountries() {
+    this.loader.start();
     this.authService.getCountries(true).subscribe((res: any) => {
       this.countries = res;
+      this.loader.stop();
     });
   }
 
   submit() {
     this.initErrors();
+    this.loader.start();
     if (this.user.password !== this.password_confirm) {
       this.errors.password_confirm = 'Passwords does not match';
+      this.loader.stop();
       return;
     }
     this.authService.register(this.user).subscribe((res: any) => {
@@ -47,15 +52,21 @@ export class RegisterComponent implements OnInit, AfterViewInit {
       localStorage.setItem('iprotect__token', res.data.token);
       localStorage.setItem('iprotect__user', JSON.stringify(res.data));
       this.router.navigate(['complete-profile']);
+      this.loader.stop();
     }, (err: any) => {
       for (let k in this.errors) {
         this.errors[k] = err.error.errors[k] || [];
       }
+      this.loader.stop();
     })
   }
 
   navTo(page) {
-    this.router.navigate([page]);
+    this.loader.start();
+    setTimeout(() => {
+      this.loader.stop();
+      this.router.navigate([page]);
+    }, 500);
   }
 
 }
