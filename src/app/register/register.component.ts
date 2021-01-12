@@ -13,6 +13,7 @@ declare var jQuery: any;
 })
 export class RegisterComponent implements OnInit, AfterViewInit {
   countries: any[] = [];
+  nationalityFilter: string = '';
   user: any = {};
   password_confirm: string = '';
   errors: any = {};
@@ -69,4 +70,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     }, 500);
   }
 
+  landing() {
+    window.location.href = '/';
+  }
 }

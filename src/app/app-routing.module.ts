@@ -10,6 +10,7 @@ import { SelectProfilePictureComponent } from './complete-profile/select-profile
 import { StepperComponent } from './new-certificate/stepper/stepper.component';
 import { ViewCertificateComponent } from './dashboard/view-certificate/view-certificate.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AuthService } from './services/auth.service';
 
 
 const routes: Routes = [
@@ -93,18 +94,35 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule {
-  public constructor(private router: Router) {
+  public constructor(private router: Router, private authService: AuthService) {
     this.loginOrHome();
   }
 
   protected loginOrHome() {
+    return;
     const accessToken = localStorage.getItem('iprotect__token');
     const userData = JSON.parse(localStorage.getItem('iprotect__user') || '{}');
 
-    let page = accessToken ? (userData['profile_completed'] == 0 ? 'complete-profile' : 'dashboard') : 'login';
+    let page = accessToken ? (userData['profile_completed'] == 0 ? 'complete-profile' : 'dashboard') : (this.checkCurrentRouteIsLogin() ? null : 'login');
     // page = 'profile';
+    if (page) this.router.navigate([page]);
+    this.checkToken();
+  }
 
-    this.router.navigate([page]);
+  checkCurrentRouteIsLogin() {
+    let currentRoute = window.location.hash;
+    return (currentRoute == '#/login' || currentRoute == '#/register')
+  }
+
+  checkToken() {
+    if(this.checkCurrentRouteIsLogin()) return;
+    this.authService.me().subscribe((res) => {
+      console.log(res);
+    }, error => {
+      if (error.status == 401) {
+        this.authService.logout();
+      }
+    })
   }
 
 }

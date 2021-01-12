@@ -75,14 +75,40 @@
 														</div>
 													</div>
 													<div *ngIf="steps[currentStep - 1].activeToggler == 2">
-														<div class="control-group">
-															<label for="exampleDropdownFormEmail1">TITLE OF YOUR
-																WORK</label>
-															<input [(ngModel)]="steps[currentStep - 1].fields.title"
-																type="text" class="form-control" name="title"
-																placeholder="Start typing..."
-																data-validation-required-message="Please enter your Email." />
-															<p class="text-danger help-block"></p>
+														<label for="exampleDropdownFormEmail1"
+															style="font-size: 20px; color: #A3ABBD; margin: 20px 0;">Describe
+															your intellectual property</label>
+														<div class="row">
+															<div class="col-lg-6">
+																<div class="control-group">
+																	<label for="exampleDropdownFormEmail1">TITLE OF YOUR
+																		WORK - ENGLISH</label>
+																	<input
+																		[(ngModel)]="steps[currentStep - 1].fields.title"
+																		type="text" class="form-control" name="title"
+																		placeholder="Start typing..."
+																		data-validation-required-message="Please enter your Email." />
+																	<p class="text-danger help-block"></p>
+																	<div style="color: #A3ABBD">
+																		<p>The title is the name which your property
+																			will be registered under. <br>
+																			Make sure it’s descriptive, precise and as
+																			short as possible.</p>
+																	</div>
+																</div>
+															</div>
+															<div class="col-lg-6">
+																<div class="control-group">
+																	<label for="exampleDropdownFormEmail1">TITLE OF YOUR
+																		WORK - ARABIC</label>
+																	<input
+																		[(ngModel)]="steps[currentStep - 1].fields.title_ar"
+																		type="text" class="form-control" name="title"
+																		placeholder="Start typing..."
+																		data-validation-required-message="Please enter your Email." />
+																	<p class="text-danger help-block"></p>
+																</div>
+															</div>
 														</div>
 
 														<div class="control-group">
@@ -177,7 +203,8 @@
 																				data-toggle="dropdown"
 																				aria-haspopup="true"
 																				aria-expanded="false">
-																				{{steps[currentStep - 1].fields.data.nationality || 'Select'}}
+																				{{steps[currentStep -
+																				1].fields.data.nationality || 'Select'}}
 																				<i class="fa fa-caret-down"></i>
 																				<!-- <i class="fas fa-caret-circle-down"></i> -->
 																			</button>
@@ -220,7 +247,9 @@
 																				data-toggle="dropdown"
 																				aria-haspopup="true"
 																				aria-expanded="false">
-																				{{steps[currentStep - 1].fields.data.country_of_residency || 'Select'}}
+																				{{steps[currentStep -
+																				1].fields.data.country_of_residency ||
+																				'Select'}}
 																				<i class="fa fa-caret-down"></i>
 																				<!-- <i class="fas fa-caret-circle-down"></i> -->
 																			</button>
@@ -322,7 +351,9 @@
 																				data-toggle="dropdown"
 																				aria-haspopup="true"
 																				aria-expanded="false">
-																				{{steps[currentStep - 1].fields.data.company_country || 'Select'}}
+																				{{steps[currentStep -
+																				1].fields.data.company_country ||
+																				'Select'}}
 																				<i class="fa fa-caret-down"></i>
 																				<!-- <i class="fas fa-caret-circle-down"></i> -->
 																			</button>
@@ -350,7 +381,9 @@
 																				data-toggle="dropdown"
 																				aria-haspopup="true"
 																				aria-expanded="false">
-																				{{steps[currentStep - 1].fields.data.company_city || 'Select'}}
+																				{{steps[currentStep -
+																				1].fields.data.company_city ||
+																				'Select'}}
 																				<i class="fa fa-caret-down"></i>
 																				<!-- <i class="fas fa-caret-circle-down"></i> -->
 																			</button>
@@ -379,12 +412,24 @@
 																	</div>
 																</div>
 																<div class="form-check">
-																	<input class="form-check-input" type="checkbox"
-																		value="" id="defaultCheck1">
+																	<input [(ngModel)]="companyLogo" name="companyLogo"
+																		class="form-check-input" type="checkbox"
+																		id="defaultCheck1">
 																	<label class="form-check-label" for="defaultCheck1">
 																		I want to put company logo on the certificate
-																		<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>$9.99
+																		<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>($9.99 extra)
 																	</label>
+																	<div *ngIf="companyLogo" class="company-logo">
+																		<p class="company-logo__text">Please upload your company logo <br> PNG format, 500*500 px resolution (or higher in same ratio)</p>
+																		<input accept="image/*" hidden type="file" #logoInput (change)="companyLogoSelected($event.target.files)">
+																		<div class="company-logo__upload" appDragDrop (onFileDropped)="companyLogoSelected($event)" [style.backgroundImage]="files.companyLogo_background">
+																			<div class="drag" *ngIf="!files.companyLogo_image">
+																				<p>Drag a picture here.</p>
+																				<p>or</p>
+																				<button (click)="logoInput.click()" class="btn btn-primary " id="send_button">Choose a file</button>
+																			</div>
+																		</div>										
+																	</div>
 																</div>
 															</div>
 															<div>
@@ -417,7 +462,9 @@
 																					data-toggle="dropdown"
 																					aria-haspopup="true"
 																					aria-expanded="false">
-																					{{steps[currentStep - 1].fields.data.nationality || 'Select'}}
+																					{{steps[currentStep -
+																					1].fields.data.nationality ||
+																					'Select'}}
 																					<i class="fa fa-caret-down"></i>
 																					<!-- <i class="fas fa-caret-circle-down"></i> -->
 																				</button>
@@ -462,7 +509,9 @@
 																					data-toggle="dropdown"
 																					aria-haspopup="true"
 																					aria-expanded="false">
-																					{{steps[currentStep - 1].fields.data.country_of_residency || 'Select'}}
+																					{{steps[currentStep -
+																					1].fields.data.country_of_residency
+																					|| 'Select'}}
 																					<i class="fa fa-caret-down"></i>
 																					<!-- <i class="fas fa-caret-circle-down"></i> -->
 																				</button>
@@ -581,7 +630,8 @@
 																				data-toggle="dropdown"
 																				aria-haspopup="true"
 																				aria-expanded="false">
-																				{{owner.country_of_residency || 'Select'}}
+																				{{owner.country_of_residency ||
+																				'Select'}}
 																				<i class="fa fa-caret-down"></i>
 																				<!-- <i class="fas fa-caret-circle-down"></i> -->
 																			</button>
@@ -600,10 +650,10 @@
 																	</div>
 																</div>
 															</div>
-															<p class="add-owner"
+															<div class="add-owner"
 																(click)="steps[currentStep - 1].fields.data.push({})">
 																+Add another
-																owner</p>
+																owner</div>
 														</div>
 													</div>
 												</div>

@@ -23,6 +23,10 @@ export class LoginComponent implements OnInit {
     this.router.navigate([page]);
   }
 
+  landing() {
+    window.location.href = '/';
+  }
+
   login() {
     this.loader.start();
     this.authService.login(this.user).subscribe((res: any) => {

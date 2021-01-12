@@ -1,4 +1,7 @@
 <body>
+    <div class="background">
+        <img class="left" src="assets/img/dashboard/left.svg" alt="">
+    </div>
     <div class="hole-layout">
         <div class="row">
 
@@ -43,20 +46,24 @@
                                 <div class="form-body">
                                     <form class="px-4 py-3" id="simple_form" novalidate="novalidate">
 
-                                        <div class="control-group">
-                                            <label for="exampleDropdownFormEmail1">FIRST NAME (AS PER ID)</label>
-                                            <input [(ngModel)]="data.first_name" type="text" class="form-control"
-                                                name="first_name" placeholder="Start typing..."/>
-                                            <p class="text-danger help-block"></p>
+                                        <div class="row no-padding">
+                                            <div class="col-6 no-padding">
+                                                <div class="control-group">
+                                                    <label for="exampleDropdownFormEmail1">FIRST NAME (AS PER ID)</label>
+                                                    <input [(ngModel)]="data.first_name" type="text" class="form-control"
+                                                        name="first_name" placeholder="Start typing..."/>
+                                                    <p class="text-danger help-block"></p>
+                                                </div>        
+                                            </div>
+                                            <div class="col-6 no-padding">
+                                                <div class="control-group" style="margin-left: 10px">
+                                                    <label for="exampleDropdownFormEmail1">MIDDLE NAME (AS PER ID)</label>
+                                                    <input [(ngModel)]="data.middle_name" type="text" class="form-control"
+                                                        name="middle_name" placeholder="Start typing..."/>
+                                                    <p class="text-danger help-block"></p>
+                                                </div>        
+                                            </div>
                                         </div>
-
-                                        <div class="control-group">
-                                            <label for="exampleDropdownFormEmail1">MIDDLE NAME (AS PER ID)</label>
-                                            <input [(ngModel)]="data.middle_name" type="text" class="form-control"
-                                                name="middle_name" placeholder="Start typing..."/>
-                                            <p class="text-danger help-block"></p>
-                                        </div>
-
                                         <div class="control-group">
                                             <label for="exampleDropdownFormPassword1">LAST NAME (AS PER ID)</label>
                                             <!--  <span class="eye"><i class="fa fa-eye"></i><span>-->

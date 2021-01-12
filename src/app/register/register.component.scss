@@ -215,8 +215,14 @@ a:hover {
     line-height: 0.5em;
     // vertical-align: center;
     text-align: center;
-    float: right;
-    margin-top: 0.2em;
+    // float: right;
+    // margin-top: 0.2em;
+}
+.input-caret {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
 }
 .fa-question-circle {
     color: #2773e6;

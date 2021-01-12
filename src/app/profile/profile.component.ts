@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Toaster } from 'ngx-toast-notifications';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { AuthService } from '../services/auth.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-profile',
@@ -15,7 +16,7 @@ export class ProfileComponent implements OnInit {
   loading: boolean = false;
   errors: any = {};
 
-  constructor(private authService: AuthService, private toast: Toaster, private loader: NgxUiLoaderService) { }
+  constructor(private authService: AuthService, private toast: Toaster, private loader: NgxUiLoaderService, private location: Location) { }
 
   ngOnInit() {
     this.getData();
@@ -56,6 +57,10 @@ export class ProfileComponent implements OnInit {
       this.loading = false;
       this.loader.stop();
     })
+  }
+
+  back() {
+    this.location.back();
   }
 
 }

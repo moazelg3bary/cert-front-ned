@@ -10,7 +10,7 @@ import { NgxUiLoaderService, SPINNER } from "ngx-ui-loader"; // Import NgxUiLoad
 export class AppComponent implements OnInit {
 
   title = 'iprotect';
-  private spinner = SPINNER;
+  public spinner = SPINNER;
 
   constructor(private loader: LoaderService, private ngxService: NgxUiLoaderService) {}
 

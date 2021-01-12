@@ -6,7 +6,8 @@
             <div class=" header">
                 <div class="container">
                     <div class="row">
-                        <div class=" logo-i"><img src="assets/img/iprotect/Group 42.png" alt="logo"></div>
+                        <div (click)="landing()" class="logo-i"><img class="pointer"
+                                src="assets/img/iprotect/Group 42.png" alt="logo"></div>
                         <div class="lang">EN|ع</div>
                     </div>
                 </div>
@@ -37,20 +38,15 @@
                                             <i class="fa fa-question-circle"></i>
                                         </label>
                                         <div class="dropdown">
-                                            <button class="btn nationality dropdown-toggle" type="button"
+                                            <input autocomplete="off" [(ngModel)]="nationalityFilter" name="nationalityFilter" class="btn nationality dropdown-toggle" type="text"
                                                 id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                                                aria-expanded="false">
-                                                {{user.nationality || 'Select'}}
-                                                <i class="fa fa-caret-down"></i>
-                                                <!-- <i class="fas fa-caret-circle-down"></i> -->
-                                            </button>
+                                                aria-expanded="false" placeholder="{{user.nationality || 'Select'}}">
+                                            <i class="fa fa-caret-down input-caret"></i>
                                             <div class="dropdown-menu scrollable-menu"
                                                 style="height: auto; max-height: 200px; overflow-y: scroll; overflow-x: hidden"
                                                 aria-labelledby="dropdownMenuButton">
-                                                <a (click)="user.nationality = country.name" class="dropdown-item"
-                                                    style="cursor: pointer" *ngFor="let country of countries">
-                                                    <!-- <img width="20px" style="margin-right: 10px" [src]="country.flag"
-                                                        alt=""> -->
+                                                <a (click)="user.nationality = country.name; nationalityFilter = country.name" class="dropdown-item"
+                                                    style="cursor: pointer" *ngFor="let country of countries | filter:nationalityFilter">
                                                     {{country.name}}
                                                 </a>
                                             </div>
@@ -62,16 +58,18 @@
 
                             <div class="control-group">
                                 <label for="exampleDropdownFormPassword1">PASSWORD</label>
-                                <input type="password" class="form-control" placeholder="Start typing..." [(ngModel)]="user.password" name="password"
-                                    required="required" data-validation-required-message="Please enter your Password.">
+                                <input type="password" class="form-control" placeholder="Start typing..."
+                                    [(ngModel)]="user.password" name="password" required="required"
+                                    data-validation-required-message="Please enter your Password.">
                                 <p class="text-danger help-block">{{errors['password'][0]}}</p>
                             </div>
 
                             <div class="control-group">
                                 <label for="exampleDropdownFormPassword1">REPEAT
                                     PASSWORD</label>
-                                <input type="password" class="form-control" placeholder="Start typing..." [(ngModel)]="password_confirm" name="password_confirm"
-                                    required="required" data-validation-required-message="Please enter your Password.">
+                                <input type="password" class="form-control" placeholder="Start typing..."
+                                    [(ngModel)]="password_confirm" name="password_confirm" required="required"
+                                    data-validation-required-message="Please enter your Password.">
                                 <p class="text-danger help-block">{{errors['password_confirm']}}</p>
 
                             </div>

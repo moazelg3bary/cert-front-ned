@@ -21,17 +21,16 @@ export class NavbarComponent implements OnInit {
     })
   }
 
-  navTo(page) {
+  navTo(page, home?) {
+    if (home && window.location.hash == '#/dashboard') {
+      window.location.href = '/';
+      return;
+    }
     this.router.navigate([page]);
   }
 
   logout() {
-    localStorage.clear();
-    this.router.navigate(['login']);
-    this.loader.start();
-    setTimeout(() => {
-      this.loader.stop();
-    }, 500);
+    this.authService.logout();
   }
 
 }

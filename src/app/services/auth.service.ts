@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private loader: NgxUiLoaderService, private router: Router) { }
 
   getCountries(cities = false) {
     // return this.http.get('https://restcountries.eu/rest/v2/all');
@@ -43,5 +45,14 @@ export class AuthService {
       observe: 'events',
       headers: headers
     });
+  }
+
+  public logout() {
+    localStorage.clear();
+    this.router.navigate(['login']);
+    this.loader.start();
+    setTimeout(() => {
+      this.loader.stop();
+    }, 500);
   }
 }

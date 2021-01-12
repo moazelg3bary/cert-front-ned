@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { CertificatesService } from 'src/app/services/certificates.service';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { Toaster } from 'ngx-toast-notifications';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-stepper',
@@ -16,7 +17,7 @@ export class StepperComponent implements OnInit, OnDestroy {
   @ViewChild('rightPanel', { static: true }) rightPanel: ElementRef;
 
   steps: any[] = [];
-  currentStep: number = 1;
+  currentStep: number = 3;
   owners: any[] = [{}];
   countries: any[] = [];
   cities: any[] = [];
@@ -24,6 +25,8 @@ export class StepperComponent implements OnInit, OnDestroy {
   fileInfo: any = {};
   draftId: any = null;
   dontSave: boolean = false;
+  files: any = {};
+  allowedExt: any[] = ['png', 'jpg', 'jpeg'];
 
   constructor(
     private location: Location,
@@ -32,7 +35,8 @@ export class StepperComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private certificatesService: CertificatesService,
     private loader: NgxUiLoaderService,
-    private toast: Toaster
+    private toast: Toaster,
+    private sanitization: DomSanitizer
   ) { }
 
   ngOnInit() {
@@ -79,7 +83,7 @@ export class StepperComponent implements OnInit, OnDestroy {
         },
         togglers: [{ id: 1, name: 'Property type', checked: false }, { id: 2, name: 'Property description' }],
         activeToggler: 1,
-        required: ['title', 'description', 'property_type'],
+        required: ['title', 'title_ar', 'description', 'property_type'],
         fields: {}
       },
       {
@@ -196,6 +200,29 @@ export class StepperComponent implements OnInit, OnDestroy {
     // reader.readAsDataURL(this.files);
     // }
   }
+
+  companyLogoSelected(event) {
+    if (!this.allowedExt.includes(event[0].name.split('.').pop())) return;
+    let file = event.item(0);
+
+    let data = new FormData();
+    data.append('file', file, file.name);
+
+    let self = this;
+    var reader = new FileReader();
+    reader.onload = function () {
+      self.files.companyLogo_background = self.sanitization.bypassSecurityTrustStyle(`url(${reader.result})`);
+      self.files.companyLogo_image = reader.result;
+      console.log(reader);
+    };
+    reader.readAsDataURL(file);
+    this.certificatesService.uploadLogo(data).subscribe((res: any) => {
+      console.log(res);
+    }, err => {
+      console.log(err);
+    });
+  }
+
 
   formatBytes(bytes, decimals = 2) {
     if (bytes === 0) return '0 Bytes';

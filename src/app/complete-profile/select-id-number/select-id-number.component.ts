@@ -11,11 +11,13 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 export class SelectIdNumberComponent implements OnInit {
 
   data: any = {};
+  maxLength: number = 9;
 
   constructor(private router: Router, private location: Location, private route: ActivatedRoute, private loader: NgxUiLoaderService) { }
 
   ngOnInit() {
     this.data = JSON.parse(JSON.stringify(this.route.snapshot.queryParams));
+    if(this.data['id_type'] == 'id') this.maxLength = 14;
   }
 
   navTo(page) {

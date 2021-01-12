@@ -3,19 +3,39 @@
     width: 100%;
     border-radius: 5px;
     padding: 20px;
-    .save {
-        background-color: #2673E5;
-        width: 140px;
-        height: 45px;
-        color: white;
-        border: none;
-        font-size: 14px;
-        font-weight: bold;
+    .btns {
+        display: block;
         margin-right: 0;
         margin-left: auto;
-        display: block;
-        border-radius: 5px;
-        outline: none;
+        width: 300px;
+        .save {
+            background-color: #2673E5;
+            width: 140px;
+            height: 45px;
+            color: white;
+            border: none;
+            font-size: 14px;
+            font-weight: bold;
+            margin-right: 0;
+            margin-left: auto;
+            display: inline-block;
+            border-radius: 5px;
+            outline: none;
+        }
+        .back {
+            background-color: white;
+            width: 140px;
+            height: 45px;
+            color: grey;
+            border: none;
+            font-size: 14px;
+            font-weight: bold;
+            margin-right: 10px;
+            margin-left: auto;
+            display: inline-block;
+            border-radius: 5px;
+            outline: none;
+        }
     }
     .save:disabled {
         opacity: .5;

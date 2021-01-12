@@ -28,7 +28,7 @@ export class DashboardComponent implements OnInit {
     })
     this.route.params.subscribe((params) => {
       if(params['new']) {
-        this.newCertificate = true;
+        this.newCertificate = params['new'];
         return;
       }
       this.loadDashboard();
@@ -56,12 +56,20 @@ export class DashboardComponent implements OnInit {
   }
 
   viewCertificate(certificate) {
-    console.log(certificate);
     this.router.navigate(['view-certificate'], {
       queryParams: {
         id: certificate.id
       }
     });
+  }
+
+  viewCertificateNew() {
+    this.viewCertificate({id: this.newCertificate});
+    // this.router.navigate(['../view-certificate'], {
+    //   queryParams: {
+    //     id: this.newCertificate
+    //   }
+    // });
   }
 
 }

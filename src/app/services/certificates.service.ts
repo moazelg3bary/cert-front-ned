@@ -18,7 +18,10 @@ export class CertificatesService {
   }
 
   public newCertificate(data) {
-    return this.http.post('certificate', data);
+    const headers = new HttpHeaders();
+    headers.append('Accept', 'application/json');
+    headers.append('Content-Type', 'multipart/form-data');
+    return this.http.post('certificate', data, {headers: headers});
   }
 
   public upload(data) {
@@ -26,6 +29,13 @@ export class CertificatesService {
     headers.append('Accept', 'application/json');
     headers.append('Content-Type', 'multipart/form-data');
     return this.http.post('certificate/upload', data, { headers: headers });
+  }
+
+  public uploadLogo(data) {
+    const headers = new HttpHeaders();
+    headers.append('Accept', 'application/json');
+    headers.append('Content-Type', 'multipart/form-data');
+    return this.http.post('certificate/logo', data, { headers: headers });
   }
 
   public getDrafts() {

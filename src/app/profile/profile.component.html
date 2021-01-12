@@ -112,9 +112,14 @@
                         </div>
                     </div>
                 </div>
-                <button class="save" (click)="saveData()" [disabled]="loading">
-                    Save edits
-                </button>
+                <div class="btns">
+                    <button class="back" (click)="back()" [disabled]="loading">
+                        Back
+                    </button>
+                    <button class="save" (click)="saveData()" [disabled]="loading">
+                        Save edits
+                    </button>
+                </div>
             </div>
         </div>
     </div>
