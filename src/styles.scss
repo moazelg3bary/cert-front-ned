@@ -1,14 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+*:focus {
+  outline: unset !important;
+}
 .pointer {
   cursor: pointer;
 }
-
+.ip-font {
+  font-family: Rubik-regular !important;
+}
 .lds-ripple {
   display: inline-block;
   position: relative;
   width: 80px;
   height: 80px;
-
 }
 .middle {
   display: block;
@@ -47,11 +51,40 @@
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    /* display: none; <- Crashes Chrome on hover */
-    -webkit-appearance: none;
-    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
 
-input[type=number] {
-    -moz-appearance:textfield; /* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+}
+.modal-content {
+  padding: 10px 20px;
+  .modal-header {
+    border: unset;
+    .modal-title {
+      color: #a3abbd;
+      font-size: 14px;
+    }
+  }
+  .close {
+    color: #707070 !important;
+  }
+  .modal-body {
+    p {
+      font-size: 14px;
+      color: #3b3b3b;
+    }
+  }
+  .modal-footer {
+    border: unset;
+    button {
+      font-size: 14px;
+    }
+  }
+}
+
+.modal-md {
+  max-width: 570px;
 }
