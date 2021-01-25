@@ -75,6 +75,7 @@ const routes: Routes = [
   },
   {
     path: "new-certificate",
+    component: StepperComponent,
     children: [
       {
         path: "",

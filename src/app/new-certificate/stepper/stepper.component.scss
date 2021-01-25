@@ -1,3 +1,8 @@
+@font-face {
+  font-family: Rubik-regular;
+  src: url(../../../assets/font/Rubik-Regular.ttf);
+}
+
 .stepper {
   display: table;
   width: 100%;
@@ -275,7 +280,7 @@
 }
 
 .company-logo {
-  background-color: #C4C4C4;
+  background-color: #c4c4c4;
   margin-top: 20px;
   padding: 20px;
   &__text {
@@ -679,4 +684,88 @@
 }
 .button__rectangle__button--default__icon {
   margin-right: 10px;
+}
+
+.payment-step {
+  position: relative;
+  .img-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+  form {
+    padding: 30px;
+  }
+  input {
+    z-index: 1;
+    position: relative;
+    background: transparent !important;
+    color: #fff !important;
+    border-bottom: 1px solid #fff !important;
+    &::placeholder {
+      color: #fff !important;
+    }
+  }
+  span {
+    color: #fff;
+  }
+  .btn.white {
+    color: #fff !important;
+    border-bottom: 1px solid #fff !important;
+    width: 115px;
+  }
+  .fa-caret-down {
+    color: #1a63c6;
+    background-color: white;
+  }
+}
+
+.w-65 {
+  width: 65% !important;
+}
+.w-35 {
+  width: 35% !important;
+}
+.tip {
+  position: absolute;
+  right: 0;
+  z-index: 2;
+  top: 20px;
+}
+
+.radio-container {
+  border: 1px solid rgba(0, 0, 0, 0.75);
+  padding: 5px 10px;
+  border-radius: 8px;
+  width: 240px;
+  margin: 10px;
+  color: rgba(0, 0, 0, 0.75);
+  &.active {
+    background: #2673e5;
+    border-color: #2673e5;
+    color: #fff;
+  }
+}
+.custom-control-input:checked ~ .custom-control-label::before {
+  color: #fff;
+  border-color: #fff;
+  background-color: #fff;
+}
+.custom-radio .custom-control-input:checked ~ .custom-control-label::after {
+  background: #ffce00;
+  border-radius: 15px;
+  width: 7px;
+  height: 7px;
+  top: 8px;
+  left: -20px;
+}
+.side-menu {
+  font-family: Rubik-regular;
+  h3 {
+    font-size: 16px;
+    font-weight: bold;
+  }
 }
