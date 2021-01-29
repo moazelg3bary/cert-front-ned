@@ -3,7 +3,8 @@ import { Observable } from 'rxjs';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpHeaders, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
-const SERVER = environment.production ? 'http://iprotect-mena.com/api' : 'http://localhost:8000/api';
+// const SERVER = environment.production ? 'http://iprotect-mena.com/api' : 'http://localhost:8000/api';
+const SERVER = 'http://iprotect-mena.com/api';
 
 @Injectable()
 export class HttpsRequestInterceptor implements HttpInterceptor {
