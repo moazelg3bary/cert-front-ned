@@ -23,6 +23,7 @@ import { ViewCertificateComponent } from './dashboard/view-certificate/view-cert
 import { ProfileComponent } from './profile/profile.component';
 import { LoaderService } from './services/loader.service';
 import { NgxUiLoaderModule } from "ngx-ui-loader";
+import { BoxForgtPasswordComponent } from './box-forgt-password/box-forgt-password.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { NgxUiLoaderModule } from "ngx-ui-loader";
     StepperComponent,
     ViewCertificateComponent,
     ProfileComponent,
+    BoxForgtPasswordComponent,
   ],
   imports: [
     BrowserAnimationsModule,
