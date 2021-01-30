@@ -1,4 +1,3 @@
-import { BoxForgtPasswordComponent } from './box-forgt-password/box-forgt-password.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, Router } from '@angular/router';
 import { LoginComponent } from './login/login.component';
@@ -18,10 +17,6 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-  },
-  {
-    path: 'forget-password',
-    component: BoxForgtPasswordComponent
   },
   {
     path: 'register',

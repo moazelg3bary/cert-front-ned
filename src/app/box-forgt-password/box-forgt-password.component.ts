@@ -28,10 +28,10 @@ export class BoxForgtPasswordComponent {
 
   // if this func run =>
   // Output eventIsLoading & eventSucces will back data to parent component
-  // and run func this.Auth.sendCodeToEmail => api will send rest password to email user
-  sendCodeToEmail() {
+  // and run func this.Auth.forgotPassword => api will send rest password to email user
+  forgotPassword() {
     this.eventIsLoading.emit(true)
-    this.Auth.sendCodeToEmail({email: this.email}).subscribe((res: any) => {
+    this.Auth.forgotPassword({email: this.email}).subscribe((res: any) => {
       this.eventIsLoading.emit(false)
       const {success, message} = res;
       this.eventSucces.emit(success)

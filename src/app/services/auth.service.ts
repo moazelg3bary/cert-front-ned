@@ -36,7 +36,7 @@ export class AuthService {
     return this.http.get('auth/me');
   }
   
-  sendCodeToEmail(data: {}) {
+  forgotPassword(data: {}) {
     return this.http.post('forget-password', data);
   }
 
