@@ -1,83 +1,125 @@
 <body>
-    <div class="hole-layout">
-        <div class="row">
+  <div class="hole-layout">
+    <!-- start div over_lay -->
+    <div class="over_lay" (click)="closeAll()" *ngIf="open || isSuccess"></div>
+    <!-- end div over_lay -->
+
+    <!-- start component app-box-forgt-password -->
+    <app-box-forgt-password
+        [isLoading]="isLoading"
+        (eventIsLoading)="isLoading = $event"
+        (eventSucces)="isSuccess = $event; open = !$event"
+        (eventClosePopup)="open = $event"
+        *ngIf="open"
+    ></app-box-forgt-password>
+    <!-- end component app-box-forgt-password -->
+
+    <!-- start component app-succes-forgot-password -->
+    <app-succes-forgot-password
+      (eventClosePopup)="isSuccess = $event"
+      *ngIf="!open && isSuccess"
+    >
+    </app-succes-forgot-password>
+    <!-- end component app-succes-forgot-password -->
     
-    
-            <!----------------------left side----------------------------->
-            <div class="col-md-4 col-sm-12 all">
-                <div class="overlay-left"></div>
-    
-                <div class=" header">
-                    <div class="container">
-                        <div class="row">
-                            <div (click)="landing()" class="logo-i"><img class="pointer" src="assets/img/iprotect/Group 4w2.png" alt="logo"></div>
-                            <div class="text-bold lang">EN|ع</div>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="welcome" style="height:75%;">
-    
-                    <div class="info text-center">
-                        <h1 class="text-bold">welcome <br>back!</h1>
-                        <p>Don't have <br>an account yet?</p>
-    
-                        <a class="btn btn-outline-light text-bold" (click)="navTo('register')">Create a new account</a>
-                    </div>
-                </div>
+
+    <div class="row">
+      <!----------------------left side----------------------------->
+      <div class="col-md-4 col-sm-12 all">
+        <div class="overlay-left"></div>
+
+        <div class="header">
+          <div class="container">
+            <div class="row">
+              <div (click)="landing()" class="logo-i">
+                <img
+                  class="pointer"
+                  src="assets/img/iprotect/Group 4w2.png"
+                  alt="logo"
+                />
+              </div>
+              <div class="text-bold lang">EN|ع</div>
             </div>
-    
-            <!---------------------------------------------->
-    
-    
-            <div class="col-md-8 col-sm-12 content">
-    
-    
-                <div class="register-form">
-                    <div class="container">
-    
-                        <div class="title">
-                            <h2 class="text-bold">Login to your account</h2>
-                        </div>
-    
-                        <div class="form-body" style="margin-top: 50px">
-                            <form class="px-4 py-3" id="simple_form" novalidate="novalidate">
-    
-                                <div class="control-group">
-                                    <label for="exampleDropdownFormEmail1">EMAIL ADDRESS</label>
-                                    <input [(ngModel)]="user.email" type="email" class="form-control" name="contact_email"
-                                        placeholder="Start typing..."
-                                        data-validation-required-message="Please enter your Email." />
-                                    <p class="text-danger help-block">{{error}}</p>
-                                </div>
-    
-                                <div class="control-group">
-                                    <label style="font-weight: bold !important;" for="exampleDropdownFormPassword1">PASSWORD</label>
-                                     <!-- <span class="eye"><i class="fa fa-eye"></i></span> -->
-                                    <input [(ngModel)]="user.password" type="password" class="form-control" name="mypassword"
-                                        placeholder="Start typing..." required="required"
-                                        data-validation-required-message="Please enter your Password.">
-                                    <p class="text-danger help-block"></p>
-                                    <a class="forgot">forgot password?</a>
-                                </div>
-    
-    
-    
-    
-                                <div class="buton-login text-center text-lg-right">
-                                    <button type="submit" (click)="login()" class="btn btn-primary" style="font-size: 16px"><b>Login</b></button>
-                                </div>
-    
-                            </form>
-                        </div>
-                    </div>
-    
-    
-                </div>
-            </div>
-    
-    
-            <!-------------------------------------------------------------->
+          </div>
         </div>
+
+        <div class="welcome" style="height: 75%">
+          <div class="info text-center">
+            <h1 class="text-bold">welcome <br />back!</h1>
+            <p>Don't have <br />an account yet?</p>
+
+            <a
+              class="btn btn-outline-light text-bold"
+              (click)="navTo('register')"
+              >Create a new account</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <!---------------------------------------------->
+
+      <div class="col-md-8 col-sm-12 content">
+        <div class="register-form">
+          <div class="container">
+            <div class="title">
+              <h2 class="text-bold">Login to your account</h2>
+            </div>
+
+            <div class="form-body" style="margin-top: 50px">
+              <form class="px-4 py-3" id="simple_form" novalidate="novalidate">
+                <div class="control-group">
+                  <label for="exampleDropdownFormEmail1">EMAIL ADDRESS</label>
+                  <input
+                    [(ngModel)]="user.email"
+                    type="email"
+                    class="form-control"
+                    name="contact_email"
+                    placeholder="Start typing..."
+                    data-validation-required-message="Please enter your Email."
+                  />
+                  <p class="text-danger help-block">{{ error }}</p>
+                </div>
+
+                <div class="control-group">
+                  <label
+                    style="font-weight: bold !important"
+                    for="exampleDropdownFormPassword1"
+                    >PASSWORD</label
+                  >
+                  <!-- <span class="eye"><i class="fa fa-eye"></i></span> -->
+                  <input
+                    [(ngModel)]="user.password"
+                    type="password"
+                    class="form-control"
+                    name="mypassword"
+                    placeholder="Start typing..."
+                    required="required"
+                    data-validation-required-message="Please enter your Password."
+                  />
+                  <p class="text-danger help-block"></p>
+                  <a class="forgot pointer" (click)="openPopup()"
+                    >forgot password?</a
+                  >
+                </div>
+
+                <div class="buton-login text-center text-lg-right">
+                  <button
+                    type="submit"
+                    (click)="login()"
+                    class="btn btn-primary"
+                    style="font-size: 16px"
+                  >
+                    <b>Login</b>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-------------------------------------------------------------->
     </div>
+  </div>
 </body>

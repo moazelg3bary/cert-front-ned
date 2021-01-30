@@ -35,6 +35,10 @@ export class AuthService {
   me() {
     return this.http.get('auth/me');
   }
+  
+  sendCodeToEmail(data: {}) {
+    return this.http.post('forget-password', data);
+  }
 
   public upload(formData) {
     const headers = new HttpHeaders();

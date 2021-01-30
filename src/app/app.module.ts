@@ -24,6 +24,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { LoaderService } from './services/loader.service';
 import { NgxUiLoaderModule } from "ngx-ui-loader";
 import { BoxForgtPasswordComponent } from './box-forgt-password/box-forgt-password.component';
+import { SuccesForgotPasswordComponent } from './succes-forgot-password/succes-forgot-password.component';
+import { RestPasswordComponent } from './rest-password/rest-password.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { BoxForgtPasswordComponent } from './box-forgt-password/box-forgt-passwo
     ViewCertificateComponent,
     ProfileComponent,
     BoxForgtPasswordComponent,
+    SuccesForgotPasswordComponent,
+    RestPasswordComponent,
   ],
   imports: [
     BrowserAnimationsModule,
