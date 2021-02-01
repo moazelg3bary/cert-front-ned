@@ -1,0 +1,28 @@
+@import '../sass/style.scss';
+
+// start style header
+header {
+    padding: 20px 0;
+    background-color: $c_header;
+    .logo {
+        float: left;
+    }
+    .nav {
+        float: right;
+    }
+    ul {
+        padding: 0;
+        list-style: none;
+        margin-bottom: 0;
+        li {
+            display: inline-block;
+            &:not(:last-of-type) {
+                margin-right: 50px;
+                a {
+                    color: $c_black;
+                    font-family: 'Rubik-Bold';
+                }
+            }
+        }
+    }
+}
