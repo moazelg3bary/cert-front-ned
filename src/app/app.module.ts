@@ -1,4 +1,3 @@
-import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -26,8 +25,6 @@ import { ProfileComponent } from "./profile/profile.component";
 import { LoaderService } from "./services/loader.service";
 import { NgxUiLoaderModule } from "ngx-ui-loader";
 import { BoxForgtPasswordComponent } from './box-forgt-password/box-forgt-password.component';
-import { SuccesForgotPasswordComponent } from './succes-forgot-password/succes-forgot-password.component';
-import { RestPasswordComponent } from './rest-password/rest-password.component';
 
 @NgModule({
   declarations: [
@@ -45,9 +42,6 @@ import { RestPasswordComponent } from './rest-password/rest-password.component';
     ViewCertificateComponent,
     ProfileComponent,
     BoxForgtPasswordComponent,
-    ForgetPasswordComponent,
-    SuccesForgotPasswordComponent,
-    RestPasswordComponent,
   ],
   imports: [
     BrowserAnimationsModule,
