@@ -16,7 +16,6 @@ export class HttpsRequestInterceptor implements HttpInterceptor {
                 'Authorization': `Bearer ${localStorage.getItem('iprotect__token')}`,
             }),
         });
-        console.log(dupReq)
         return next.handle(dupReq);
     }
 };

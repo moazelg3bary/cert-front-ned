@@ -1,3 +1,5 @@
+import { SuccesForgotPasswordComponent } from './succes-forgot-password/succes-forgot-password.component';
+import { RestPasswordComponent } from './rest-password/rest-password.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -40,6 +42,8 @@ import { BoxForgtPasswordComponent } from './box-forgt-password/box-forgt-passwo
     DragDropDirective,
     StepperComponent,
     ViewCertificateComponent,
+    RestPasswordComponent,
+    SuccesForgotPasswordComponent,
     ProfileComponent,
     BoxForgtPasswordComponent,
   ],

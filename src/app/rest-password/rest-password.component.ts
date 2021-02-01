@@ -1,6 +1,8 @@
 import { AuthService } from "src/app/services/auth.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Component, OnInit } from "@angular/core";
+import {FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { FormControl } from "@angular/forms";
 
 @Component({
   selector: "app-rest-password",
@@ -10,21 +12,30 @@ import { Component, OnInit } from "@angular/core";
 export class RestPasswordComponent implements OnInit {
   // names vars & types return
   TOKEN: string;
-  newPassword: string;
-  confirmNewPassword: string;
-  isValid: boolean;
-  isSuccess: boolean;
+  isSucces: boolean;
+  FormRestPassword:FormGroup;
 
   constructor(
     private ActiveRouter: ActivatedRoute,
     private Auth: AuthService,
-    private router: Router
+    private router: Router,
+    private FB: FormBuilder
   ) {
     // init vars
-    this.newPassword = "";
-    this.confirmNewPassword = "";
-    this.isValid = false;
-    this.isSuccess = false;
+    this.FormRestPassword = this.FB.group({
+      new_password: [
+        "",
+        [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.pattern(
+            "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[A-Za-zd$@$!%*?&].{8,}"
+          ),
+        ],
+      ],
+      confirmNewPassword: ["", Validators.required],
+    });
+    this.isSucces = false
   }
 
   ngOnInit() {
@@ -38,15 +49,13 @@ export class RestPasswordComponent implements OnInit {
   }
 
   // if this func run => password user is change
-  RestPassword(Form) {
-    
-    this.isValid = true;
-    this.Auth.resrtPassword(this.TOKEN, {
-      email: "zzmezomoazzz@gmail.com",
-      password: Form.value.new_password,
-    }).subscribe((res: any) => {
-      this.isValid = false;
-      this.isSuccess = true;
-    });
+  RestPassword() {
+      this.Auth.resrtPassword(this.TOKEN, {
+        email: "zzmezomoazzz@gmail.com", // this is email just testimg
+        password: this.FormRestPassword.controls.new_password.value,
+      }).subscribe((res: any) =>  {
+        this.isSucces = res.success;
+      });
   }
+
 }
