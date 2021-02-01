@@ -13,6 +13,7 @@ export class RestPasswordComponent implements OnInit {
   // names vars & types return
   TOKEN: string;
   isSucces: boolean;
+  isLoading: boolean
   FormRestPassword:FormGroup;
 
   constructor(
@@ -36,6 +37,7 @@ export class RestPasswordComponent implements OnInit {
       confirmNewPassword: ["", Validators.required],
     });
     this.isSucces = false
+    this.isLoading = false
   }
 
   ngOnInit() {
@@ -50,11 +52,13 @@ export class RestPasswordComponent implements OnInit {
 
   // if this func run => password user is change
   RestPassword() {
+      this.isLoading = true;
       this.Auth.resrtPassword(this.TOKEN, {
         email: "zzmezomoazzz@gmail.com", // this is email just testimg
         password: this.FormRestPassword.controls.new_password.value,
       }).subscribe((res: any) =>  {
         this.isSucces = res.success;
+        this.isLoading = false;
       });
   }
 
