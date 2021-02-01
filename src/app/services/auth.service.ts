@@ -35,6 +35,14 @@ export class AuthService {
   me() {
     return this.http.get('auth/me');
   }
+  
+  forgotPassword(data: {}) {
+    return this.http.post('forget-password', data);
+  }
+
+  resrtPassword(token, data) {
+    return this.http.post(`password/reset/${token}`, data);
+  }
 
   public upload(formData) {
     const headers = new HttpHeaders();

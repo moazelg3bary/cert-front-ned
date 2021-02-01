@@ -10,18 +10,24 @@ import { AuthService } from "../services/auth.service";
   styleUrls: ["./login.component.scss"],
   providers: [AuthService],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
+
+  // names vars & types return
   user: any = {};
   error: any;
+  open: boolean;
+  isSuccess: boolean;
+  isLoading: boolean;
 
-  constructor(
-    private router: Router,
-    private modalService: NgbModal,
-    private authService: AuthService,
-    private loader: NgxUiLoaderService
-  ) {}
+  constructor(private router: Router, private authService: AuthService, private loader: NgxUiLoaderService) {
 
-  ngOnInit() {}
+    // init vars
+    this.open = false;
+    this.isSuccess = false;
+    this.isLoading = false
+
+   }
+
 
   navTo(page) {
     this.router.navigate([page]);
@@ -51,11 +57,18 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  open(content) {
-    this.modalService.open(content, {
-      ariaLabelledBy: "modal-basic-title",
-      centered: true,
-      size: "md",
-    });
+  // if this func run => the app-box-forgt-password is show
+  openPopup() {
+    this.open = true
   }
+
+  // if this func run  the app-box-forgt-password and app-succes-forgot-password is hide
+  closeAll() {
+    // run this code if email user true & code reste password is send to email user
+    if (!this.isLoading) {
+      this.open = false
+      this.isSuccess = false
+    }
+  }
+
 }

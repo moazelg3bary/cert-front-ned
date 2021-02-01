@@ -1,5 +1,28 @@
 <body>
   <div class="hole-layout">
+    <!-- start div over_lay -->
+    <div class="over_lay" (click)="closeAll()" *ngIf="open || isSuccess"></div>
+    <!-- end div over_lay -->
+
+    <!-- start component app-box-forgt-password -->
+    <app-box-forgt-password
+        [isLoading]="isLoading"
+        (eventIsLoading)="isLoading = $event"
+        (eventSucces)="isSuccess = $event; open = !$event"
+        (eventClosePopup)="open = $event"
+        *ngIf="open"
+    ></app-box-forgt-password>
+    <!-- end component app-box-forgt-password -->
+
+    <!-- start component app-succes-forgot-password -->
+    <app-succes-forgot-password
+      (eventClosePopup)="isSuccess = $event"
+      *ngIf="!open && isSuccess"
+    >
+    </app-succes-forgot-password>
+    <!-- end component app-succes-forgot-password -->
+    
+
     <div class="row">
       <!----------------------left side----------------------------->
       <div class="col-md-4 col-sm-12 all">
@@ -75,7 +98,7 @@
                     data-validation-required-message="Please enter your Password."
                   />
                   <p class="text-danger help-block"></p>
-                  <a class="forgot btn pt-0" (click)="open(content)"
+                  <a class="forgot pointer" (click)="openPopup()"
                     >forgot password?</a
                   >
                 </div>
@@ -99,57 +122,4 @@
       <!-------------------------------------------------------------->
     </div>
   </div>
-
-  <ng-template #content let-modal>
-    <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Forgot password</h4>
-      <button
-        type="button"
-        class="close"
-        aria-label="Close"
-        (click)="modal.dismiss('Cross click')"
-      >
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <!-- <p>
-        Please enter your email address so we send you the link to reset your
-        password.
-      </p>
-      <div class="hole-layout">
-        <div class="register-form w-100">
-          <div class="form-body">
-            <form class="px-0 py-3">
-              <div class="control-group">
-                <label for="exampleDropdownFormEmail1">EMAIL ADDRESS</label>
-                <input
-                  type="email"
-                  class="form-control"
-                  name="contact_email"
-                  placeholder="Start typing..."
-                  data-validation-required-message="Please enter your Email."
-                />
-                <p class="text-danger help-block">{{ error }}</p>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div> -->
-
-      <div class="text-center">
-        <img src="assets/img/profile/success.svg" />
-        <p>
-          We have sent you an email with a link to reset your password.
-          <br />
-          If you can’t find the email check the spam folder.
-        </p>
-      </div>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-primary py-2 px-5">
-        <b class="ip-font"> Send </b>
-      </button>
-    </div>
-  </ng-template>
 </body>

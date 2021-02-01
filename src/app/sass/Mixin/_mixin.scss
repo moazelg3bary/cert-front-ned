@@ -1,0 +1,6 @@
+@mixin prevfix($prop, $value, $all: ()) {
+  @each $loop in $all {
+    #{'-' + $loop + '-' + $prop}: $value;
+  }
+  #{$prop}: $value;
+}

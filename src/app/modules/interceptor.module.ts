@@ -4,6 +4,7 @@ import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpHeaders, HTTP
 import { environment } from 'src/environments/environment';
 
 const SERVER = environment.production ? 'http://iprotect-mena.com/api' : 'http://localhost:8000/api';
+// const SERVER = 'http://iprotect-mena.com/api';
 
 @Injectable()
 export class HttpsRequestInterceptor implements HttpInterceptor {
@@ -15,6 +16,7 @@ export class HttpsRequestInterceptor implements HttpInterceptor {
                 'Authorization': `Bearer ${localStorage.getItem('iprotect__token')}`,
             }),
         });
+        console.log(dupReq)
         return next.handle(dupReq);
     }
 };
