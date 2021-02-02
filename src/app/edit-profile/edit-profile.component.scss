@@ -1,0 +1,35 @@
+@import '../sass/style.scss';
+
+// start style class nav_edit
+.nav_edit {
+    padding: 0;
+    list-style: none;
+    margin-bottom: 0;
+    margin-top: 40px;
+    li {
+        display: inline-block;
+        &:not(:last-of-type) {
+            margin-right: 50px;
+        }
+        &.active a {
+            font-weight: bold;
+        }
+        a {
+            padding: 10px;
+            color: $c_black;
+            font-size: $font_16;
+            font-family: $font_regular;
+        }
+    }
+}
+// end style class nav_edit
+
+// start style class body_profile
+.body_profile {
+    margin-top: 30px;
+    .row {
+        padding: 35px 50px;
+        background-color: $c_bg_body;
+    }
+}
+// end style class body_profile

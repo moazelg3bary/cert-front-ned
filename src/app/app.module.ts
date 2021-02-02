@@ -2,13 +2,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from "@angular/core";
+import { EditProfileModule } from './edit-profile/edit-profile.module';
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { LoginComponent } from "./login/login.component";
 import { RegisterComponent } from "./register/register.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
-import { NavbarComponent } from "./shared/navbar/navbar.component";
 import { SelectIdTypeComponent } from "./complete-profile/select-id-type/select-id-type.component";
 import { SelectNameComponent } from "./complete-profile/select-name/select-name.component";
 import { SelectIdNumberComponent } from "./complete-profile/select-id-number/select-id-number.component";
@@ -28,6 +28,7 @@ import { BoxForgtPasswordComponent } from './box-forgt-password/box-forgt-passwo
 import { SuccesForgotPasswordComponent } from './succes-forgot-password/succes-forgot-password.component';
 import { RestPasswordComponent } from './rest-password/rest-password.component';
 import { HeaderComponent } from './header/header.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,6 @@ import { HeaderComponent } from './header/header.component';
     LoginComponent,
     RegisterComponent,
     DashboardComponent,
-    NavbarComponent,
     SelectIdTypeComponent,
     SelectNameComponent,
     SelectIdNumberComponent,
@@ -62,6 +62,7 @@ import { HeaderComponent } from './header/header.component';
     NgbModule,
     ToastNotificationsModule,
     NgxUiLoaderModule,
+    SharedModule
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },

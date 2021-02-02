@@ -5,25 +5,34 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  selector: "app-navbar",
+  templateUrl: "./navbar.component.html",
+  styleUrls: ["./navbar.component.scss"],
 })
 export class NavbarComponent implements OnInit {
 
+  // init props & input
+  @Input("dropDown") dropDown: boolean;
+  @Input("bg_color") bg_color: string;
+
   user: any = {};
 
-  constructor(private router: Router, private authService: AuthService, private location: Location, private loader: NgxUiLoaderService) { }
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private location: Location,
+    private loader: NgxUiLoaderService
+  ) {}
 
   ngOnInit() {
     this.authService.me().subscribe((res: any) => {
       this.user = res.data;
-    })
+    });
   }
 
   navTo(page, home?) {
-    if (home && window.location.hash == '#/dashboard') {
-      window.location.href = '/';
+    if (home && window.location.hash == "#/dashboard") {
+      window.location.href = "/";
       return;
     }
     this.router.navigate([page]);
@@ -32,5 +41,4 @@ export class NavbarComponent implements OnInit {
   logout() {
     this.authService.logout();
   }
-
 }

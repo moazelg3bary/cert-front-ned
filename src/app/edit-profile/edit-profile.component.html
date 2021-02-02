@@ -1,0 +1,18 @@
+<app-navbar bg_color="#EBECED"></app-navbar>
+<div class="container">
+    <ul class="nav_edit">
+        <li class="active"><a routerLink="personal-details">Personal detalis</a></li>
+        <li><a routerLink="profile-settings">Profile settings</a></li>
+        <li><a routerLink="address-book">Address book</a></li>
+        <li><a routerLink="payment">Payment</a></li>
+    </ul>
+</div>
+<div class="container">
+    <div class="body_profile">
+        <div class="row">
+            <div class="col-sm-12">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>
