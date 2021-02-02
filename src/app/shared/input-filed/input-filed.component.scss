@@ -1,0 +1,43 @@
+@import '../../sass/style.scss';
+
+// start style box_form
+.box_form {
+    label {
+        margin-bottom: 0;
+        line-height: 17px;
+        padding-left: 15px;
+        // use vars sass
+        font-size: $font_14;
+        text-transform: uppercase;
+        font-family: $font_regular;
+    }
+    input {
+        border: 0;
+        width: 100%;
+        height: 58px;
+        margin-top: 12px;
+        // use vars sass
+        background-color: $c_3th;
+        font-family: $font_regular;
+        // use mixin sass
+        @include prevfix(border-radius, 2px, webkit moz o ms);
+        &::placeholder {
+            // use vars sass
+            color: $c_1th;
+            font-size: $font_14;
+        }
+    }
+    textarea {
+        width: 100%;
+        height: 86px;
+        resize: none;
+        display: block;
+        margin-top: 12px;
+        padding-top: 19px;
+        // use vars sass
+        background-color: $c_3th;
+        // use mixin sass
+        @include prevfix(border-radius, 2px, webkit moz o ms);
+    }
+}
+// end style box_form
