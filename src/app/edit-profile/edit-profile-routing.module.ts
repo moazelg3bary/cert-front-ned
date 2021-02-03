@@ -1,3 +1,4 @@
+import { AddPaymentComponent } from './components/payment/add-payment/add-payment.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { AddressBookComponent } from './components/address-book/address-book.component';
 import { ProfileSettingsComponent } from './components/profile-settings/profile-settings.component';
@@ -18,7 +19,9 @@ const routes: Routes = [
       { path: "address-book", component: AddressBookComponent, children: [
         {path: 'add', component: AddAddressComponent}
       ] },
-      { path: "payment", component: PaymentComponent },
+      { path: "payment", component: PaymentComponent, children: [
+        {path: 'add', component: AddPaymentComponent}
+      ] },
     ],
   },
 ];

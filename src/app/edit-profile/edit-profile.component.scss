@@ -46,6 +46,7 @@
     margin-top: 30px;
     .row {
         background-color: $c_bg_body;
+        @include prevfix(border-radius, 4px, webkit moz ms o)
     }
 }
 // end style class body_profile

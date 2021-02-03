@@ -11,6 +11,7 @@ import { AddressBookComponent } from './components/address-book/address-book.com
 import { PaymentComponent } from './components/payment/payment.component';
 import { SharedModule } from '../shared/shared.module';
 import { AddAddressComponent } from './components/address-book/add-address/add-address.component';
+import { AddPaymentComponent } from './components/payment/add-payment/add-payment.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { AddAddressComponent } from './components/address-book/add-address/add-a
     AddressBookComponent,
     PaymentComponent,
     AddAddressComponent,
+    AddPaymentComponent,
   ],
   imports: [CommonModule, FormsModule, ReactiveFormsModule ,EditProfileRoutingModule, SharedModule],
   exports: [EditProfileComponent],
