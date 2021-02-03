@@ -1,1 +1,78 @@
-<p>profile-settings works!</p>
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4">
+        <div class="profile_picture">
+            <p class="text-uppercase">Profile picture</p>
+            <div class="wrap">
+                <img src="../../../../assets/img/img_user.png" alt="img user">
+            </div>
+            <a href="">Upload new picture</a>
+            <p>For good looking profile picture,<br> make sure the picture has:</p>
+            <ul>
+                <li>square format</li>
+                <li>At least 400 * 400 px</li>
+                <li>you in the center of it</li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-8 rest_pass">
+        <div class="wrap_box_form">
+            <span>Change your password</span>
+            <p>To protect your account, make sure your password is:</p>
+            <ul>
+                <li [ngClass]="{
+                            'valid': !FormRestPassword.controls.new_password.errors?.minlength 
+                            && 
+                            FormRestPassword.controls.new_password.value != ''}">
+                    At least 8 characters—the more characters, the better.
+                    <i class="fa fa-check" *ngIf="!FormRestPassword.controls.new_password.errors?.minlength && 
+                            FormRestPassword.controls.new_password.value != ''"></i>
+                </li>
+                <li [ngClass]="{
+                            'valid': !FormRestPassword.controls.new_password.errors?.pattern 
+                            &&
+                            FormRestPassword.controls.new_password.value != ''}">
+                    A mixture of both uppercase and lowercase letters.
+                    <i class="fa fa-check" *ngIf="!FormRestPassword.controls.new_password.errors?.pattern && 
+                            FormRestPassword.controls.new_password.value != ''"></i>
+                </li>
+                <li [ngClass]="{
+                            'valid': !FormRestPassword.controls.new_password.errors?.pattern 
+                            &&
+                            FormRestPassword.controls.new_password.value != ''}">
+                    A mixture of letters and numbers.
+                    <i class="fa fa-check" *ngIf="!FormRestPassword.controls.new_password.errors?.pattern && 
+                            FormRestPassword.controls.new_password.value != ''"></i>
+                </li>
+            </ul>
+            <form class="box_form" [formGroup]="FormRestPassword" (ngSubmit)="RestPassword()">
+                <div class="row">
+                    <div class="col-sm-12 input">
+                        <app-input-filed lable="Your existing password" typeInput="password" nameInput="existing_password"
+                            placeholder="Start typing..."></app-input-filed>
+                    </div>
+                    <div class="col-sm-12 input">
+                        <app-input-filed lable="NEW password" typeInput="password" nameInput="confirmNewPassword"
+                            placeholder="Start typing..."></app-input-filed>
+                    </div>
+                    <div class="col-sm-12 input">
+                        <app-input-filed lable="Repeat new password" typeInput="password" nameInput="Repeat_new_password"
+                            placeholder="Start typing..."></app-input-filed>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 text-right">
+                        <app-btn btn_title="Save changes"></app-btn>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- <div class="col-sm-12 success text-center" *ngIf="isSucces">
+        <div class="wrap">
+            <img src="../../assets/img/success.png" alt="success">
+            <p>You’ve successfully updated your password. <br> You can now login to your account using your new password.
+            </p>
+            <button type="submit" class="btn btn-primary" (click)="navTo('login')"><b>Login to your account</b></button>
+        </div>
+    </div> -->
+</div>

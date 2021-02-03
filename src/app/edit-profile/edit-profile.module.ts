@@ -1,3 +1,5 @@
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -18,7 +20,7 @@ import { SharedModule } from '../shared/shared.module';
     AddressBookComponent,
     PaymentComponent,
   ],
-  imports: [CommonModule, EditProfileRoutingModule, SharedModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule ,EditProfileRoutingModule, SharedModule],
   exports: [EditProfileComponent],
 })
 export class EditProfileModule {}
