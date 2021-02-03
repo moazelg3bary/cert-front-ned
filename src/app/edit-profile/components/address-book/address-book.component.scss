@@ -1,0 +1,55 @@
+@import '../../../sass/style.scss';
+
+// start style class addres_book
+.addres_book {
+    padding: 35px 50px;
+    font-family: 'Rubik-regular';
+    h3 {
+        // use var sass
+        font-size: $font_20;
+        color: $c_bg_body_2;
+        margin-bottom: 35px;
+    }
+    ul {
+        padding-left: 30px;
+         // use var sass
+        font-size: $font_14;
+        margin-bottom: 30px;
+        li {
+            list-style: none;
+            position: relative;
+            &:first-of-type::after {
+                top: 5px;
+                left: -20px;                
+                width: 8px;
+                height: 8px;
+                content: "";
+                position: absolute;
+                // use var sass
+                background-color: $c_bg_body_2;
+                @include prevfix(border-radius, 50px, webkit moz o ms);
+            }
+            &:last-of-type {
+                a {
+                    color: $c_click;
+                    &:not(:last-of-type) {
+                        margin-right: 30px;
+
+                    }
+                    i {
+                        margin-right: 8px;
+                    }                    
+                }
+            }
+        }
+    }
+    h4 {
+         // use var sass
+        font-size: $font_16;
+        font-family: $font_bold;
+        a {
+            color: $c_click;
+        }
+    }
+}
+// end style class addres_book
