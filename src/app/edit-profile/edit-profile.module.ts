@@ -10,6 +10,7 @@ import { ProfileSettingsComponent } from './components/profile-settings/profile-
 import { AddressBookComponent } from './components/address-book/address-book.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { SharedModule } from '../shared/shared.module';
+import { AddAddressComponent } from './components/address-book/add-address/add-address.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { SharedModule } from '../shared/shared.module';
     ProfileSettingsComponent,
     AddressBookComponent,
     PaymentComponent,
+    AddAddressComponent,
   ],
   imports: [CommonModule, FormsModule, ReactiveFormsModule ,EditProfileRoutingModule, SharedModule],
   exports: [EditProfileComponent],
