@@ -1,3 +1,7 @@
-<button [type]="btn_type" class="btn btn-primary"[ngStyle]="{'background-color': color, 'border-color': color}">
-    <b>{{btn_title}}</b>
+<button 
+    [disabled]="disabled || isloading"
+    [type]="btn_type" 
+    class="btn btn-primary"
+    [ngStyle]="{'background-color': color, 'border-color': color}">
+    <b>{{isloading ? 'Wait...' : btn_title}}</b>
 </button>

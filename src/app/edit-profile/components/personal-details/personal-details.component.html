@@ -54,7 +54,11 @@
     </div>
     <div class="row">
         <div class="col-sm-12 text-right">
-            <app-btn btn_title="Save changes"></app-btn>
+            <app-btn 
+                [isloading]="true"
+                [disabled]="FormeditPersonalDetalis.invalid" 
+                btn_title="Save changes">
+            </app-btn>
         </div>
     </div>
 </form>

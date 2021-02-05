@@ -8,7 +8,7 @@
                 [formControlName]="nameInput"
                 [name]="nameInput"
                 *ngSwitchCase="'select'">
-                <!-- <option value="select">select</option> -->
+                <option value="select">select</option>
                 <option *ngFor="let data of items" [value]="data">{{data}}</option>
             </select>
             <textarea
