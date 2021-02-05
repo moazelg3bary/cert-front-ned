@@ -20,48 +20,67 @@
             <p>To protect your account, make sure your password is:</p>
             <ul>
                 <li [ngClass]="{
-                            'valid': !FormRestPassword.controls.new_password.errors?.minlength 
+                            'valid': !FormChangePassword.controls['new-password'].errors?.minlength 
                             && 
-                            FormRestPassword.controls.new_password.value != ''}">
+                            FormChangePassword.controls['new-password'].value != ''}">
                     At least 8 characters—the more characters, the better.
-                    <i class="fa fa-check" *ngIf="!FormRestPassword.controls.new_password.errors?.minlength && 
-                            FormRestPassword.controls.new_password.value != ''"></i>
+                    <i class="fa fa-check" *ngIf="!FormChangePassword.controls['new-password'].errors?.minlength && 
+                            FormChangePassword.controls['new-password'].value != ''"></i>
                 </li>
                 <li [ngClass]="{
-                            'valid': !FormRestPassword.controls.new_password.errors?.pattern 
+                            'valid': !FormChangePassword.controls['new-password'].errors?.pattern 
                             &&
-                            FormRestPassword.controls.new_password.value != ''}">
+                            FormChangePassword.controls['new-password'].value != ''}">
                     A mixture of both uppercase and lowercase letters.
-                    <i class="fa fa-check" *ngIf="!FormRestPassword.controls.new_password.errors?.pattern && 
-                            FormRestPassword.controls.new_password.value != ''"></i>
+                    <i class="fa fa-check" *ngIf="!FormChangePassword.controls['new-password'].errors?.pattern && 
+                            FormChangePassword.controls['new-password'].value != ''"></i>
                 </li>
                 <li [ngClass]="{
-                            'valid': !FormRestPassword.controls.new_password.errors?.pattern 
+                            'valid': !FormChangePassword.controls['new-password'].errors?.pattern 
                             &&
-                            FormRestPassword.controls.new_password.value != ''}">
+                            FormChangePassword.controls['new-password'].value != ''}">
                     A mixture of letters and numbers.
-                    <i class="fa fa-check" *ngIf="!FormRestPassword.controls.new_password.errors?.pattern && 
-                            FormRestPassword.controls.new_password.value != ''"></i>
+                    <i class="fa fa-check" *ngIf="!FormChangePassword.controls['new-password'].errors?.pattern && 
+                            FormChangePassword.controls['new-password'].value != ''"></i>
                 </li>
             </ul>
-            <form class="box_form" [formGroup]="FormRestPassword" (ngSubmit)="RestPassword()">
+            <form class="box_form" [formGroup]="FormChangePassword" (ngSubmit)="changePassword()">
                 <div class="row">
                     <div class="col-sm-12 input">
-                        <app-input-filed lable="Your existing password" typeInput="password" nameInput="existing_password"
-                            placeholder="Start typing..."></app-input-filed>
+                        <app-input-filed 
+                            [formGroupParent]="FormChangePassword"
+                            lable="Your existing password" 
+                            typeInput="password" 
+                            nameInput="password"
+                            placeholder="Start typing...">
+                        </app-input-filed>
                     </div>
                     <div class="col-sm-12 input">
-                        <app-input-filed lable="NEW password" typeInput="password" nameInput="confirmNewPassword"
-                            placeholder="Start typing..."></app-input-filed>
+                        <app-input-filed 
+                            [formGroupParent]="FormChangePassword"
+                            lable="NEW password" 
+                            typeInput="password" 
+                            nameInput="new-password"
+                            placeholder="Start typing...">
+                        </app-input-filed>
                     </div>
                     <div class="col-sm-12 input">
-                        <app-input-filed lable="Repeat new password" typeInput="password" nameInput="Repeat_new_password"
-                            placeholder="Start typing..."></app-input-filed>
+                        <app-input-filed 
+                            [formGroupParent]="FormChangePassword"
+                            lable="Repeat new password" 
+                            typeInput="password" 
+                            nameInput="confirmNewPassword"
+                            placeholder="Start typing...">
+                        </app-input-filed>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-12 text-right">
-                        <app-btn btn_title="Save changes"></app-btn>
+                        <app-btn 
+                        [isloading]="isLoading"
+                        [disabled]="FormChangePassword.invalid || FormChangePassword.value['new-password'] != FormChangePassword.value.confirmNewPassword"                        
+                        btn_title="Save changes">
+                    </app-btn>
                     </div>
                 </div>
             </form>

@@ -9,7 +9,10 @@ export class EditProfileService {
   constructor(private http: HttpClient) { }
 
   editPersonalDetails(data: {}) {
-    console.log(data);
     return this.http.post("auth/edit-profile", data);
+  }
+
+  editPofileSetting(data: {}) {
+    return this.http.post("auth/setting", data);
   }
 }

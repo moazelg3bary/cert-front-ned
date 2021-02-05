@@ -21,8 +21,8 @@ export class PersonalDetailsComponent implements OnInit {
       nationality: ["", Validators.required],
       id_number: ["", Validators.required],
       counter: ["select", Validators.required],
-      email: ["", Validators.required],
-      phone_number: ["", Validators.required],
+      email: ["", [Validators.email, Validators.required]],
+      phone_number: ["", [Validators.required, Validators.minLength(8)]],
     });
     this.isloading = false
   }
