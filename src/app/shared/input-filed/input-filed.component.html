@@ -4,15 +4,16 @@
     <ng-container [ngSwitch]="defInput">
         <div class="wrap" [formGroup]="formGroupParent">
             <select 
+                *ngSwitchCase="'select'"
                 class="form-control" 
                 [formControlName]="nameInput"
                 [name]="nameInput"
-                *ngSwitchCase="'select'">
-                <option value="select">select</option>
+                >
+                <option value="select" disabled>select</option>
                 <option *ngFor="let data of items" [value]="data">{{data}}</option>
             </select>
             <textarea
-            *ngSwitchCase="'area'"
+                *ngSwitchCase="'area'"
                 [formControlName]="nameInput"
                 class="form-control"
                 [name]="nameInput ? nameInput : 'textarea'"
