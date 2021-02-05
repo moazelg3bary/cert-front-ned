@@ -2,34 +2,10 @@
 <div class="input_filed">
     <label>{{lable ? lable : 'input filed'}}</label>
     <ng-container [ngSwitch]="defInput">
-        <!-- <div class="dropdown"> -->
-            <!-- <button
-                class="btn nationality dropdown-toggle"
-                type="button"
-                id="dropdownMenuButton"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-                >{{ steps[currentStep - 1].fields.data.nationality || "Select"}}
-                <i class="fa fa-caret-down"></i>
-                </button> -->
-            <!-- <div
-                class="dropdown-menu scrollable-menu"
-                style="
-                    height: auto;
-                    max-height: 200px;
-                    overflow-y: scroll;
-                    overflow-x: hidden;
-                "
-                aria-labelledby="dropdownMenuButton">
-                <a (click)="steps[currentStep - 1].fields.data.nationality = country.name"
-                    class="dropdown-item"
-                    style="cursor: pointer"
-                    *ngFor="let country of countries">
-                    {{ country.name }}
-                </a>
-            </div> -->
-        <!-- </div> -->
+        <select class="form-control" [name]="nameInput" *ngSwitchCase="'select'">
+            <option value="select" disabled>select</option>
+            <option *ngFor="let data of items" [value]="data">{{data}}</option>
+        </select>
         <textarea
             *ngSwitchCase="'area'"
             class="form-control"

@@ -11,7 +11,7 @@
         text-transform: uppercase;
         font-family: $font_regular;
     }
-    input {
+    input, select {
         border: 0;
         width: 100%;
         height: 58px;
@@ -26,6 +26,12 @@
             color: $c_1th;
             font-size: $font_14;
         }
+    }
+    select {
+        appearance: none;
+        background-repeat: no-repeat;
+        background-image: url(../../../assets/img/drop_down.svg);
+        background-position: top 20px right 20px;
     }
     textarea {
         width: 100%;
