@@ -1,3 +1,4 @@
+import { FormGroup } from '@angular/forms';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -14,7 +15,7 @@ export class InputFiledComponent implements OnInit {
   @Input("typeInput") typeInput: string;
   @Input("nameInput") nameInput: string;
   @Input("placeholder") placeholder: string;
-  
+  @Input("formGroupParent") formGroupParent: FormGroup;
 
   constructor() {}
 

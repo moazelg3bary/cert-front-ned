@@ -1,36 +1,60 @@
 <!-- start form edit personal-detalis -->
-<form action="">
+<form action="" [formGroup]="FormeditPersonalDetalis" (ngSubmit)="editPersonalDetalis()">
     <div class="row">
         <div class="col-sm-12 col-md-8 input">
             <app-input-filed 
+                [formGroupParent]="FormeditPersonalDetalis"
                 lable="Full name (AS per id)"
+                nameInput="fullName"
                 placeholder="ABDULLAH MOHAMMED QADRY MOHAMMED BASUONY YOUSSEF"
             >
             </app-input-filed>
         </div>
         <div class="col-sm-12 col-md-4 input">
             <app-input-filed 
+                [formGroupParent]="FormeditPersonalDetalis"
+                nameInput="nationality"
                 lable="Nationality"
                 placeholder="Egypt"
             >
             </app-input-filed>
         </div>
         <div class="col-sm-12 col-md-8 input">
-            <app-input-filed lable="ID number" placeholder="297111923123005"></app-input-filed>
+            <app-input-filed 
+                [formGroupParent]="FormeditPersonalDetalis"
+                nameInput="id_number"
+                lable="ID number" 
+                placeholder="297111923123005">
+            </app-input-filed>
         </div>
         <div class="col-sm-12 col-md-4 input">
-            <app-input-filed lable="Country of residency"></app-input-filed>
+            <app-input-filed 
+                [formGroupParent]="FormeditPersonalDetalis"
+                defInput="select" 
+                lable="Country of residency" 
+                nameInput="counter" 
+                [items]="['Egypt', 'Oman', 'London']">
+            </app-input-filed>
         </div>
         <div class="col-sm-12 col-md-8 input">
-            <app-input-filed lable="email address" placeholder="abdulla.kadry@gmail.com"></app-input-filed>
+            <app-input-filed 
+                [formGroupParent]="FormeditPersonalDetalis"
+                nameInput="email"
+                lable="email address" 
+                placeholder="abdulla.kadry@gmail.com"></app-input-filed>
         </div>
         <div class="col-sm-12 col-md-4 input">
-            <app-input-filed lable="Phone number"></app-input-filed>
+            <app-input-filed 
+                [formGroupParent]="FormeditPersonalDetalis"
+                nameInput="phone_number"
+                lable="Phone number" 
+                typeInput="number">
+            </app-input-filed>
         </div>
     </div>
     <div class="row">
         <div class="col-sm-12 text-right">
-            <app-btn btn_title="Save changes" btn_type="button"></app-btn>
+            <app-btn btn_title="Save changes"></app-btn>
         </div>
     </div>
 </form>

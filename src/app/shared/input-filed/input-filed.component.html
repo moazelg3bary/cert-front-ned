@@ -2,23 +2,31 @@
 <div class="input_filed">
     <label>{{lable ? lable : 'input filed'}}</label>
     <ng-container [ngSwitch]="defInput">
-        <select class="form-control" [name]="nameInput" *ngSwitchCase="'select'">
-            <option value="select" disabled>select</option>
-            <option *ngFor="let data of items" [value]="data">{{data}}</option>
-        </select>
-        <textarea
+        <div class="wrap" [formGroup]="formGroupParent">
+            <select 
+                class="form-control" 
+                [formControlName]="nameInput"
+                [name]="nameInput"
+                *ngSwitchCase="'select'">
+                <!-- <option value="select">select</option> -->
+                <option *ngFor="let data of items" [value]="data">{{data}}</option>
+            </select>
+            <textarea
             *ngSwitchCase="'area'"
-            class="form-control"
-            [name]="nameInput ? nameInput : 'textarea'"
-            [placeholder]="placeholder ?  placeholder : 'Start typing...'"
-        ></textarea>
-        <input 
-            *ngSwitchDefault
-            class="form-control" 
-            [type]="typeInput ? typeInput : 'text'" 
-            [name]="nameInput ? nameInput : 'name'" 
-            [placeholder]="placeholder ?  placeholder : 'Start typing...'" 
-        />
+                [formControlName]="nameInput"
+                class="form-control"
+                [name]="nameInput ? nameInput : 'textarea'"
+                [placeholder]="placeholder ?  placeholder : 'Start typing...'"
+            ></textarea>
+            <input 
+                *ngSwitchDefault
+                [formControlName]="nameInput"
+                class="form-control" 
+                [type]="typeInput ? typeInput : 'text'" 
+                [name]="nameInput ? nameInput : 'name'" 
+                [placeholder]="placeholder ?  placeholder : 'Start typing...'" 
+            />
+        </div>
     </ng-container>
 </div>
 <!-- end class box_form -->
