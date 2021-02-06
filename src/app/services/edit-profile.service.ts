@@ -19,6 +19,14 @@ export class EditProfileService {
     return this.http.post("auth/address-book/add", data);
   }
 
+  editAddress(addressID: {}) {
+    return this.http.post("auth/address-book/edit", addressID);
+  }
+
+  updateAddress(data: {}) {
+    return this.http.post("auth/address-book/update", data);
+  }
+
   deleteAddress(addressID: {}) {
     return this.http.post("auth/address-book/delete", addressID);
   }

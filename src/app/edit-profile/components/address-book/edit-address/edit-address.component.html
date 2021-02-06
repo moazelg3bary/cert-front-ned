@@ -1,0 +1,49 @@
+<!-- start class over_lay -->
+<div class="over_lay"></div>
+<!-- end  class over_lay -->
+
+<!-- start class edit_address -->
+<div class="edit_address">
+    <form action="" [formGroup]="FormEditAdress" (ngSubmit)="EditAddress()">
+        <div class="row">
+            <div class="col-sm-12 title">
+                <p class="float-left"><b>Edit Address</b></p>
+                <i routerLink="../../" class="fa fa-times pointer user float-right"></i>
+            </div>
+            <div class="col-sm-12 title">
+                <p>Kindly enter your new address below.</p>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4 input">
+                <app-input-filed nameInput="country" lable="Country" placeholder="Egypt"
+                    [formGroupParent]="FormEditAdress">
+                </app-input-filed>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4 input">
+                <app-input-filed defInput="select" nameInput="city" lable="City" [items]="['Tanta', 'Cairo', 'Alex']"
+                    [formGroupParent]="FormEditAdress">
+                </app-input-filed>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-4 input">
+                <app-input-filed nameInput="code" typeInput="number" lable="Zip code" [formGroupParent]="FormEditAdress">
+                </app-input-filed>
+            </div>
+            <div class="col-sm-12 col-md-12 input">
+                <app-input-filed nameInput="address" [formGroupParent]="FormEditAdress"
+                    lable="Address line (Street Name and House No.)">
+                </app-input-filed>
+            </div>
+            <div class="col-sm-12 col-md-12 input">
+                <app-input-filed defInput="area" nameInput="note" lable="Note for delivery (optional)"
+                    [formGroupParent]="FormEditAdress">
+                </app-input-filed>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 text-right">
+                <app-btn btn_title="Edit address" [isloading]="isLoading" [disabled]="FormEditAdress.invalid">
+                </app-btn>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- end class edit_address -->
