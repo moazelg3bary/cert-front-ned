@@ -34,7 +34,18 @@
                     margin-right: 25px;
                 }
                 select {
+                    border: 0;
+                    color: #fff;
+                    appearance: none;
+                    font-weight: 600;
                     margin-right: 20px;
+                    padding: 0 40px 11px 0;
+                    border-bottom: 1px solid #fff;
+                    background: url(../../../../../assets/img/drop_down_w.svg) no-repeat top 7px right;
+                    option {
+                        color: #000;
+                        background-color: #eee;
+                    }
                 }
                 .wrap_1 {
                     float: right;
