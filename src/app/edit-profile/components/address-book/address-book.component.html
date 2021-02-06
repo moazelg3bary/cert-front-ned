@@ -11,7 +11,7 @@
                         <i class="fa fa-edit "></i>
                         <b>edit</b>
                     </a>
-                    <a [routerLink]="['edit', address.id]">
+                    <a routerLink="./" (click)="deleteAddress(address.id)">
                         <i class="fa fa-trash"></i>
                         <b>remove</b>
                     </a>

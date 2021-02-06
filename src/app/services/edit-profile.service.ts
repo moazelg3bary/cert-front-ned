@@ -18,4 +18,8 @@ export class EditProfileService {
   addAddress(data: {}) {
     return this.http.post("auth/address-book/add", data);
   }
+
+  deleteAddress(addressID: {}) {
+    return this.http.post("auth/address-book/delete", addressID);
+  }
 }
