@@ -2,11 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class EditProfileService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   editPersonalDetails(data: {}) {
     return this.http.post("auth/edit-profile", data);
@@ -14,5 +13,9 @@ export class EditProfileService {
 
   editPofileSetting(data: {}) {
     return this.http.post("auth/setting", data);
+  }
+
+  addAddress(data: {}) {
+    return this.http.post("auth/address-book/add", data);
   }
 }
