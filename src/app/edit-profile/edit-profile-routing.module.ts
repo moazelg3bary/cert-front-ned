@@ -1,3 +1,4 @@
+import { ResolveAddressBookGuard } from './components/address-book/resolve-address-book.guard';
 import { AddPaymentComponent } from './components/payment/add-payment/add-payment.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { AddressBookComponent } from './components/address-book/address-book.component';
@@ -16,12 +17,17 @@ const routes: Routes = [
     children: [
       { path: "personal-details", component: PersonalDetailsComponent },
       { path: "profile-settings", component: ProfileSettingsComponent },
-      { path: "address-book", component: AddressBookComponent, children: [
-        {path: 'add', component: AddAddressComponent}
-      ] },
-      { path: "payment", component: PaymentComponent, children: [
-        {path: 'add', component: AddPaymentComponent}
-      ] },
+      {
+        path: "address-book",
+        component: AddressBookComponent,
+        resolve: { address: ResolveAddressBookGuard },
+        children: [{ path: "add", component: AddAddressComponent }],
+      },
+      {
+        path: "payment",
+        component: PaymentComponent,
+        children: [{ path: "add", component: AddPaymentComponent }],
+      },
     ],
   },
 ];

@@ -3,43 +3,15 @@
     <div class="col-sm-12">
         <div class="addres_book">
             <h3>Manage your address book</h3>
-            <ul>
-                <li>30-03-10</li>
-                <li>Franz Mehring Platz 3, 10243, Berlin</li>
+            <ul *ngFor="let address of addressUser">
+                <li>{{address.created_at | date: 'd-M-y'}}</li>
+                <li>{{address.address}}</li>
                 <li>
-                    <a href="http://">
+                    <a [routerLink]="['edit', address.id]">
                         <i class="fa fa-edit "></i>
                         <b>edit</b>
                     </a>
-                    <a href="http://">
-                        <i class="fa fa-trash"></i>
-                        <b>remove</b>
-                    </a>
-                </li>
-            </ul>
-            <ul>
-                <li>30-03-10</li>
-                <li>Franz Mehring Platz 3, 10243, Berlin</li>
-                <li>
-                    <a href="http://">
-                        <i class="fa fa-edit "></i>
-                        <b>edit</b>
-                    </a>
-                    <a href="http://">
-                        <i class="fa fa-trash"></i>
-                        <b>remove</b>
-                    </a>
-                </li>
-            </ul>
-            <ul>
-                <li>30-03-10</li>
-                <li>Franz Mehring Platz 3, 10243, Berlin</li>
-                <li>
-                    <a href="http://">
-                        <i class="fa fa-edit "></i>
-                        <b>edit</b>
-                    </a>
-                    <a href="http://">
+                    <a [routerLink]="['edit', address.id]">
                         <i class="fa fa-trash"></i>
                         <b>remove</b>
                     </a>
