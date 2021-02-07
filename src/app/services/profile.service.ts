@@ -13,4 +13,8 @@ export class ProfileService {
     return this.http.get("auth/address-book");
   }
 
+  getCardsUser() {
+    return this.http.get("auth/cards");
+  }
+
 }

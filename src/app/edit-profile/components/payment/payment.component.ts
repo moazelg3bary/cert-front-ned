@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaymentComponent implements OnInit {
 
-  constructor() { }
+  // init name & type vars
+  cards: {}[] | any
 
-  ngOnInit() {
+  constructor(private route: ActivatedRoute) {
+
+    // init vars
+    this.route.data.subscribe((res) => this.cards = res.cards.data);
+
+   }
+
+  ngOnInit() {}
+
+  deleteCard(card_id: string | number) {
+
   }
 
 }

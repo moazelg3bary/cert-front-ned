@@ -1,3 +1,4 @@
+import { ResolvePaymentGuard } from './components/payment/resolve-payment.guard';
 import { EditPaymentComponent } from './components/payment/edit-payment/edit-payment.component';
 import { ResolveEditAddressBookGuard } from './components/address-book/edit-address/resolve-edit-address.guard';
 import { EditAddressComponent } from './components/address-book/edit-address/edit-address.component';
@@ -36,6 +37,7 @@ const routes: Routes = [
       {
         path: "payment",
         component: PaymentComponent,
+        resolve: {cards: ResolvePaymentGuard},
         children: [
           { path: "add", component: AddPaymentComponent },
           { path: "edit/:card_id", component: EditPaymentComponent },
