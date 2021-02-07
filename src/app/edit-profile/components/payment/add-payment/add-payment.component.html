@@ -4,7 +4,7 @@
 
 <!-- start class add_addres -->
 <div class="add_payment">
-    <form action="">
+    <form action="" [formGroup]="FormAddCard" (ngSubmit)="AddCard()">
         <div class="row">
             <div class="col-sm-12 title">
                 <p class="float-left"><b>Add payment method</b></p>
@@ -17,31 +17,58 @@
                 <div class="card-payment">
                     <div class="row">
                         <div class="col-sm-12 input">
-                            <input type="text" placeholder="Card number…" />
+                            <input 
+                                type="text" 
+                                name="number"
+                                maxlength="16"
+                                placeholder="Card number…" 
+                                formControlName="number"
+                            />
                         </div>
                         <div class="col-sm-12 input">
                             <label for="">Exp.</label>
-                            <select>
+                            <select name="Exp-Month" formControlName="Exp-Month">
                                 <option disabled>Month</option>
                                 <option>1</option>
                                 <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                                <option>11</option>
+                                <option>12</option>
                             </select>
-                            <select>
+                            <select name="Exp-Year" formControlName="Exp-Year">
                                 <option disabled>Year</option>
-                                <option>21/2</option>
-                                <option>21/1</option>
+                                <option>2011</option>
+                                <option>2021</option>
                             </select>
                             <div class="wrap_1">
                                 <i class="fa fa-credit-card"></i>
                             </div>
                         </div>
                         <div class="col-sm-12 col-md-6 col-lg-8">
-                            <input type="text" placeholder="Card holder name…" />
+                            <input 
+                                name="name" 
+                                type="text" 
+                                formControlName="name"
+                                placeholder="Card holder name…" 
+                            />
                         </div>
                         <div class="col-sm-12 col-md-6 col-lg-4">
                             <div class="wrap">
-                                <input type="text" placeholder="CCV number…" />
-                                <i class="fa fa-question-circle"></i>
+                                <input 
+                                    name="ccv" 
+                                    type="text" 
+                                    maxlength="3"
+                                    formControlName="ccv"
+                                    placeholder="CCV number…" 
+                                />
+                                <i class="fa fa-question-circle" title="in the back card has 3 number"></i>
                             </div>
                         </div>
                     </div>
@@ -50,7 +77,11 @@
         </div>
         <div class="row">
             <div class="col-sm-12 text-right btn_">
-                <app-btn btn_title="Add card" btn_type="button"></app-btn>
+                <app-btn 
+                    btn_title="Add card"
+                    [isloading]="isloading"
+                    [disabled]="FormAddCard.invalid || FormAddCard.value['Exp-Month'] == 'Month' || FormAddCard.value['Exp-Year'] == 'Year'" >
+                </app-btn>
             </div>
         </div>
     </form>

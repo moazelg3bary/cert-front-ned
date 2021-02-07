@@ -36,6 +36,10 @@ export class EditProfileService {
   // end post api Address
 
   //start post api cards
+  addCard(data: {}) {
+    return this.http.post("auth/cards/add", data);
+  }
+
   deleteCard(cardID: {}) {
     return this.http.post("auth/cards/delete", cardID);
   }
