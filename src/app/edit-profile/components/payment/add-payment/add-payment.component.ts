@@ -42,7 +42,6 @@ export class AddPaymentComponent implements OnInit {
 
     this.EditProfile.addCard({...this.FormAddCard.value}).subscribe((res: any) => {
       this,this.isloading = false
-      console.log(res);
       this.router.navigate(['../'], {relativeTo: this.route})
     })
   }

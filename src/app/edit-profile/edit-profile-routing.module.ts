@@ -12,6 +12,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { PersonalDetailsComponent } from './components/personal-details/personal-details.component';
 import { EditProfileComponent } from './edit-profile.component';
 import { AddAddressComponent } from './components/address-book/add-address/add-address.component';
+import { ResolveEditPaymentGuard } from './components/payment/edit-payment/resolve-edit-payment.guard';
 
 
 const routes: Routes = [
@@ -40,7 +41,11 @@ const routes: Routes = [
         resolve: {cards: ResolvePaymentGuard},
         children: [
           { path: "add", component: AddPaymentComponent },
-          { path: "edit/:card_id", component: EditPaymentComponent },
+          { 
+            path: "edit/:card_id",
+            component: EditPaymentComponent,
+            resolve: {singelCard: ResolveEditPaymentGuard}
+          },
         ],
       },
     ],

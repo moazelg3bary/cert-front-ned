@@ -40,6 +40,14 @@ export class EditProfileService {
     return this.http.post("auth/cards/add", data);
   }
 
+  editCard(CardID: {}) {
+    return this.http.post("auth/cards/edit", CardID);
+  }
+
+  updateCard(data: {}) {
+    return this.http.post("auth/cards/update", data);
+  }
+
   deleteCard(cardID: {}) {
     return this.http.post("auth/cards/delete", cardID);
   }
