@@ -44,10 +44,11 @@ export class EditAddressComponent implements OnInit {
   ngOnInit() {
   }
 
-  //
+  // 
   EditAddress() {
 
     this.isLoading = true;
+
     this.EditProfile.updateAddress({...this.FormEditAdress.value, id: this.address_id}).subscribe(res => {
       this.isLoading = false;
       this.router.navigate(["../../"], { relativeTo: this.route });

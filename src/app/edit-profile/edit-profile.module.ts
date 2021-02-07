@@ -1,3 +1,4 @@
+import { EditPaymentComponent } from './components/payment/edit-payment/edit-payment.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
@@ -25,6 +26,7 @@ import { EditAddressComponent } from './components/address-book/edit-address/edi
     AddAddressComponent,
     AddPaymentComponent,
     EditAddressComponent,
+    EditPaymentComponent
   ],
   imports: [CommonModule, FormsModule, ReactiveFormsModule ,EditProfileRoutingModule, SharedModule],
   exports: [EditProfileComponent],

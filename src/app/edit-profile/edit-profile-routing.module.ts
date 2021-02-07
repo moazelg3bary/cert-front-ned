@@ -1,3 +1,4 @@
+import { EditPaymentComponent } from './components/payment/edit-payment/edit-payment.component';
 import { ResolveEditAddressBookGuard } from './components/address-book/edit-address/resolve-edit-address.guard';
 import { EditAddressComponent } from './components/address-book/edit-address/edit-address.component';
 import { ResolveAddressBookGuard } from './components/address-book/resolve-address-book.guard';
@@ -24,15 +25,21 @@ const routes: Routes = [
         component: AddressBookComponent,
         resolve: { address: ResolveAddressBookGuard },
         children: [
-          { path: "add", component: AddAddressComponent }, 
-          {path: "edit/:address_id", component: EditAddressComponent, 
-          resolve: {singleAddress: ResolveEditAddressBookGuard}}
+          { path: "add", component: AddAddressComponent },
+          {
+            path: "edit/:address_id",
+            component: EditAddressComponent,
+            resolve: { singleAddress: ResolveEditAddressBookGuard },
+          },
         ],
       },
       {
         path: "payment",
         component: PaymentComponent,
-        children: [{ path: "add", component: AddPaymentComponent }],
+        children: [
+          { path: "add", component: AddPaymentComponent },
+          { path: "edit/:card_id", component: EditPaymentComponent },
+        ],
       },
     ],
   },
