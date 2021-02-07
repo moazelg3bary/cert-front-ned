@@ -92,7 +92,7 @@ const routes: Routes = [
     ],
   },
   {
-    path: 'edit-profile/:userID',
+    path: 'edit-profile',
     loadChildren: ()=> import('./edit-profile/edit-profile.module').then(m => m.EditProfileModule)
   }
 ];

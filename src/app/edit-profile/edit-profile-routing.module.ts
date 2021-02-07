@@ -38,13 +38,13 @@ const routes: Routes = [
       {
         path: "payment",
         component: PaymentComponent,
-        resolve: {cards: ResolvePaymentGuard},
+        resolve: { cards: ResolvePaymentGuard },
         children: [
           { path: "add", component: AddPaymentComponent },
-          { 
+          {
             path: "edit/:card_id",
             component: EditPaymentComponent,
-            resolve: {singelCard: ResolveEditPaymentGuard}
+            resolve: { singelCard: ResolveEditPaymentGuard },
           },
         ],
       },
