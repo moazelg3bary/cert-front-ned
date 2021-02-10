@@ -44,7 +44,13 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-12 text-right wrap_btn">
-                            <app-btn btn_title="next" [isloading]="isLoading" [disabled]="FormAddAdress.invalid">
+                            <app-btn 
+                                icon="arrow-right"
+                                color="#2673E5"
+                                bg_color="transparent"
+                                btn_title="next" 
+                                [isloading]="isLoading" 
+                                [disabled]="FormAddAdress.invalid">
                             </app-btn>
                         </div>
                     </div>
@@ -88,7 +94,7 @@
                         <i class="fa fa-plus"></i> Add new address
                     </a>
                 </h4>
-                <button class="btn btn-primary">next <i class="fa fa-arrow-right"></i></button>
+                <button class="btn btn-primary"><b>next <i class="fa fa-arrow-right"></i></b></button>
             </div>
         </ng-container>
     </div>
