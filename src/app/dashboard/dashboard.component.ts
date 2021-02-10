@@ -18,9 +18,16 @@ export class DashboardComponent implements OnInit {
   search: string = '';
   user: any = {};
   drafts: any[] = [];
+  isOpenPopUp: boolean
   newCertificate: boolean = false;
 
-  constructor(private router: Router, private route: ActivatedRoute, private certificatesService: CertificatesService, private authService: AuthService, private loader: NgxUiLoaderService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private certificatesService: CertificatesService, private authService: AuthService, private loader: NgxUiLoaderService) { 
+    
+    // init vars
+    this.isOpenPopUp = false
+
+
+  }
 
   ngOnInit() {
     this.authService.me().subscribe((res: any) => {

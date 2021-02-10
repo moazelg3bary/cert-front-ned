@@ -1,0 +1,96 @@
+<!-- start class order_hight -->
+<div class="order_hight">
+    <div class="wrappar">
+        <ul class="toggle">
+            <li class="active"><b>Delivery details</b></li>
+            <li><b>Payment</b></li>
+            <li (click)="closePopUp()" class="user">
+                <i class="fa fa-times"></i>
+            </li>
+        </ul>
+        <div class="clear_fix"></div>
+        <p>You’re ordering a hard copy of the certificate <b>“Certificate name”</b></p>
+        <p>Kindly enter your delivery address below and proceed to payment tab.</p>
+        <ng-container [ngSwitch]="typeAddress">
+            <!-- start class add_addres -->
+            <div class="add_addres" *ngSwitchCase="'add'">
+                <form action="" [formGroup]="FormAddAdress" (ngSubmit)="addAddress()">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6 col-lg-4 input">
+                            <app-input-filed nameInput="country" lable="Country" placeholder="Egypt"
+                                [formGroupParent]="FormAddAdress">
+                            </app-input-filed>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-4 input">
+                            <app-input-filed defInput="select" nameInput="city" lable="City"
+                                [items]="['Tanta', 'Cairo', 'Alex']" [formGroupParent]="FormAddAdress">
+                            </app-input-filed>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-4 input">
+                            <app-input-filed nameInput="code" typeInput="number" lable="Zip code"
+                                [formGroupParent]="FormAddAdress">
+                            </app-input-filed>
+                        </div>
+                        <div class="col-sm-12 col-md-12 input">
+                            <app-input-filed nameInput="address" [formGroupParent]="FormAddAdress"
+                                lable="Address line (Street Name and House No.)">
+                            </app-input-filed>
+                        </div>
+                        <div class="col-sm-12 col-md-12 input">
+                            <app-input-filed defInput="area" nameInput="note" lable="Note for delivery (optional)"
+                                [formGroupParent]="FormAddAdress">
+                            </app-input-filed>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 text-right wrap_btn">
+                            <app-btn btn_title="next" [isloading]="isLoading" [disabled]="FormAddAdress.invalid">
+                            </app-btn>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- end class add_addres -->
+
+            <div *ngSwitchDefault>
+                <form action="">
+                    <label class="title" for=""><b>Choose from your address book:</b></label>
+                    <div class="form-row">
+                        <div class="form-group col-12">
+                            <div class="wrap">
+                                <input type="radio" name="address" id="address">
+                                <label for="address">
+                                    <span></span>
+                                </label>
+                                <ul>
+                                    <li>30-03-10</li>
+                                    <li>Franz Mehring Platz 3, 10243, Berlin</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="form-group col-12">
+                            <div class="wrap">
+                                <input type="radio" name="address" id="address1">
+                                <label for="address1">
+                                    <span></span>
+                                </label>
+                                <ul>
+                                    <li>30-03-10</li>
+                                    <li>Franz Mehring Platz 3, 10243, Berlin</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <span>or</span>
+                <h4>
+                    <a (click)="typeAddress = 'add'">
+                        <i class="fa fa-plus"></i> Add new address
+                    </a>
+                </h4>
+                <button class="btn btn-primary">next <i class="fa fa-arrow-right"></i></button>
+            </div>
+        </ng-container>
+    </div>
+</div>
+<!-- end class order_hight -->

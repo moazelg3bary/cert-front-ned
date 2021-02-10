@@ -29,6 +29,7 @@ import { SuccesForgotPasswordComponent } from './succes-forgot-password/succes-f
 import { RestPasswordComponent } from './rest-password/rest-password.component';
 import { HeaderComponent } from './header/header.component';
 import { SharedModule } from './shared/shared.module';
+import { OrderHighCopyComponent } from './order-high-copy/order-high-copy.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { SharedModule } from './shared/shared.module';
     SuccesForgotPasswordComponent,
     RestPasswordComponent,
     HeaderComponent,
+    OrderHighCopyComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -62,7 +64,7 @@ import { SharedModule } from './shared/shared.module';
     NgbModule,
     ToastNotificationsModule,
     NgxUiLoaderModule,
-    SharedModule
+    SharedModule,
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },

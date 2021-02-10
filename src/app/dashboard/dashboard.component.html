@@ -1,4 +1,11 @@
 <body>
+    <!-- start class over_lay -->
+    <div *ngIf="isOpenPopUp" class="over_lay"></div>
+    <!-- end class over_lay -->
+
+    <!-- start component order-high-copy -->
+    <app-order-high-copy (close)="isOpenPopUp = $event" *ngIf="isOpenPopUp"></app-order-high-copy>
+    <!-- end component order-high-copy -->
 
     <app-navbar></app-navbar>
     <div class="background" *ngIf="!certificates.length || newCertificate">
@@ -66,7 +73,7 @@
                                 </td>
                                 <td class="rev text-bold center"><b>Successful</b></td>
                                 <td class="t-light center">{{c.created_at | date: 'd MMMM y'}}</td>
-                                <td class="action pointer"> <img src="assets/img/iprotect/Group 182.png">Order hard copy
+                                <td (click)="isOpenPopUp = !isOpenPopUp"  class="action pointer"> <img src="assets/img/iprotect/Group 182.png">Order hard copy
                                 </td>
                                 <td class="action pointer"> <i class="fa fa-share-alt"></i>Share attachment</td>
                             </tr>
