@@ -41,9 +41,11 @@ export class OrderHighCopyComponent implements OnInit {
 
   ngOnInit() {}
 
+  // if run func this component will distroy
   closePopUp() {
     this.close.emit(false)
   }
+  
   //
   addAddress() {
     this.isLoading = true;

@@ -4,6 +4,7 @@
         <ul class="toggle">
             <li class="active"><b>Delivery details</b></li>
             <li><b>Payment</b></li>
+            <!-- run event click to close this component -->
             <li (click)="closePopUp()" class="user">
                 <i class="fa fa-times"></i>
             </li>
@@ -11,32 +12,38 @@
         <div class="clear_fix"></div>
         <p>You’re ordering a hard copy of the certificate <b>“Certificate name”</b></p>
         <p>Kindly enter your delivery address below and proceed to payment tab.</p>
+        <!-- switch with select address or addAdress -->
         <ng-container [ngSwitch]="typeAddress">
             <!-- start class add_addres -->
             <div class="add_addres" *ngSwitchCase="'add'">
                 <form action="" [formGroup]="FormAddAdress" (ngSubmit)="addAddress()">
                     <div class="row">
                         <div class="col-sm-12 col-md-6 col-lg-4 input">
+                            <!-- use appInputFiled component -->
                             <app-input-filed nameInput="country" lable="Country" placeholder="Egypt"
                                 [formGroupParent]="FormAddAdress">
                             </app-input-filed>
                         </div>
                         <div class="col-sm-12 col-md-6 col-lg-4 input">
+                            <!-- use appInputFiled component -->
                             <app-input-filed defInput="select" nameInput="city" lable="City"
                                 [items]="['Tanta', 'Cairo', 'Alex']" [formGroupParent]="FormAddAdress">
                             </app-input-filed>
                         </div>
                         <div class="col-sm-12 col-md-12 col-lg-4 input">
+                            <!-- use appInputFiled component -->
                             <app-input-filed nameInput="code" typeInput="number" lable="Zip code"
                                 [formGroupParent]="FormAddAdress">
                             </app-input-filed>
                         </div>
                         <div class="col-sm-12 col-md-12 input">
+                            <!-- use appInputFiled component -->
                             <app-input-filed nameInput="address" [formGroupParent]="FormAddAdress"
                                 lable="Address line (Street Name and House No.)">
                             </app-input-filed>
                         </div>
                         <div class="col-sm-12 col-md-12 input">
+                            <!-- use appInputFiled component -->
                             <app-input-filed defInput="area" nameInput="note" lable="Note for delivery (optional)"
                                 [formGroupParent]="FormAddAdress">
                             </app-input-filed>
@@ -44,6 +51,7 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-12 text-right wrap_btn">
+                            <!-- use appBtn component -->
                             <app-btn 
                                 icon="arrow-right"
                                 color="#2673E5"
@@ -58,6 +66,7 @@
             </div>
             <!-- end class add_addres -->
 
+            <!-- start section select address -->
             <div *ngSwitchDefault>
                 <form action="">
                     <label class="title" for=""><b>Choose from your address book:</b></label>
@@ -96,6 +105,7 @@
                 </h4>
                 <button class="btn btn-primary"><b>next <i class="fa fa-arrow-right"></i></b></button>
             </div>
+            <!-- end section select address -->
         </ng-container>
     </div>
 </div>
