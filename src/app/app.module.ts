@@ -25,7 +25,7 @@ import { ProfileComponent } from "./profile/profile.component";
 import { LoaderService } from "./services/loader.service";
 import { NgxUiLoaderModule } from "ngx-ui-loader";
 import { BoxForgtPasswordComponent } from './box-forgt-password/box-forgt-password.component';
-import { SuccesForgotPasswordComponent } from './succes-forgot-password/succes-forgot-password.component';
+import { SuccessComponent } from './shared/success/success.component';
 import { RestPasswordComponent } from './rest-password/rest-password.component';
 import { HeaderComponent } from './header/header.component';
 import { SharedModule } from './shared/shared.module';
@@ -45,10 +45,8 @@ import { OrderHighCopyComponent } from './order-high-copy/order-high-copy.compon
     StepperComponent,
     ViewCertificateComponent,
     RestPasswordComponent,
-    SuccesForgotPasswordComponent,
     ProfileComponent,
     BoxForgtPasswordComponent,
-    SuccesForgotPasswordComponent,
     RestPasswordComponent,
     HeaderComponent,
     OrderHighCopyComponent,

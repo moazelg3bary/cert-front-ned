@@ -1,15 +1,21 @@
 
-@import '../sass/style.scss';
+@import '../../sass/style.scss';
 
 // def style
 :host {
-    display: inline-block;
+    top: 50%;
+    left: 50%;
+    z-index: 1600;
+    position: fixed;
+    display: block;
+    transform: translate(-50%, -50%);
 }
 
-// start style class box_forget_password
-.success_forget_password {
+// start style class success
+.success {
     overflow: hidden;
     padding: 25px 50px;
+    border-radius: 6px;
     // use var scss
     font-family: $font_regular;
     background-color: $c_white;

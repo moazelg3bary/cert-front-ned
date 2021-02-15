@@ -15,11 +15,13 @@
     <!-- end component app-box-forgt-password -->
 
     <!-- start component app-succes-forgot-password -->
-    <app-succes-forgot-password
+    <app-success
       (eventClosePopup)="isSuccess = $event"
       *ngIf="!open && isSuccess"
+      title="Forgot password" 
+      body="We have sent you an email with a link to reset your password. <br> If you can’t find the email check the spam folder."      
     >
-    </app-succes-forgot-password>
+    </app-success>
     <!-- end component app-succes-forgot-password -->
     
 

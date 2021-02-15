@@ -1,0 +1,50 @@
+<!-- start class box_payment -->
+<div class="box_payment" [formGroup]="formGroupParent">
+    <div class="row">
+        <div class="col-sm-12 input">
+            <input 
+                type="text" 
+                name="number" 
+                maxlength="16" 
+                placeholder="Card number…"
+                formControlName="number" />
+        </div>
+        <div class="col-sm-12 input">
+            <label for="">Exp.</label>
+            <select name="Exp-Month" formControlName="Exp-Month">
+                <option disabled>Month</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+                <option>11</option>
+                <option>12</option>
+            </select>
+            <select name="Exp-Year" formControlName="Exp-Year">
+                <option disabled>Year</option>
+                <option>2011</option>
+                <option>2021</option>
+            </select>
+            <div class="wrap_1">
+                <i class="fa fa-credit-card"></i>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-8 input">
+            <input name="name" type="text" formControlName="name" placeholder="Card holder name…" />
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-4 input">
+            <div class="wrap">
+                <input name="ccv" type="text" maxlength="3" formControlName="ccv"
+                    placeholder="CCV number…" />
+                <i class="fa fa-question-circle" title="in the back card has 3 number"></i>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end class box_payment -->

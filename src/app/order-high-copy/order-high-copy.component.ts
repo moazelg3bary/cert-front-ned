@@ -9,16 +9,16 @@ import { EditProfileService } from '../services/edit-profile.service';
   styleUrls: ["./order-high-copy.component.scss"],
 })
 export class OrderHighCopyComponent implements OnInit {
-
   // init outPut value
   @Output() close: EventEmitter<boolean> = new EventEmitter();
-
 
   // init names var
   isLoading: boolean;
   isClose: boolean;
   typeAddress: string;
+  typePayment: string;
   FormAddAdress: FormGroup;
+  toggle_DeliveryWithPayment: boolean;
 
   constructor(
     private FB: FormBuilder,
@@ -37,15 +37,17 @@ export class OrderHighCopyComponent implements OnInit {
     this.isLoading = false;
     this.isClose = false;
     this.typeAddress = "def";
+    this.typePayment = "def";
+    this.toggle_DeliveryWithPayment = true;
   }
 
   ngOnInit() {}
 
   // if run func this component will distroy
   closePopUp() {
-    this.close.emit(false)
+    this.close.emit(false);
   }
-  
+
   //
   addAddress() {
     this.isLoading = true;

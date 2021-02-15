@@ -1,0 +1,59 @@
+@import '../../sass/style.scss';
+
+// start style class box_payment
+.box_payment {
+    padding: 30px 25px;
+    border-radius: 23px;
+    background: url('../../../assets/img/bg_payment.png') no-repeat;
+    background-color: $c_click;
+    .input {
+        margin-bottom: 40px;
+        label {
+            color: $c_white;
+            margin-right: 25px;
+        }
+        select {
+            border: 0;
+            color: #fff;
+            appearance: none;
+            font-weight: 600;
+            margin-right: 20px;
+            padding: 0 40px 11px 0;
+            border-bottom: 1px solid $c_white;
+            background: url(../../../assets/img/drop_down_w.svg) no-repeat top 7px right;
+            option {
+                color: #000;
+                background-color: #eee;
+            }
+        }
+        .wrap_1 {
+            float: right;
+            i {
+                color: $c_white;
+                font-size: 55px;
+            }
+        }
+    }
+    input {
+        color: $c_white;
+        width: 100%;
+        border: none;
+        padding: 11px 0;
+        background-color: transparent;
+        border-bottom: 1px solid #fff;
+        &::placeholder {
+            color: $c_white;
+        }
+    }
+    .wrap {
+        position: relative;
+        i {
+            right: 0;
+            top: 14px;
+            color: $c_white;
+            font-size: 20px;
+            position: absolute;
+        }
+    }
+}
+// end style class box_payment

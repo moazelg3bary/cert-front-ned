@@ -4,12 +4,26 @@ import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './navbar/navbar.component';
 import { InputFiledComponent } from './input-filed/input-filed.component';
 import { BtnComponent } from './btn/btn.component';
+import { SuccessComponent } from './success/success.component';
+import { BoxPaymentComponent } from './box-payment/box-payment.component';
 
 
 
 @NgModule({
-  declarations: [NavbarComponent, InputFiledComponent, BtnComponent],
+  declarations: [
+    NavbarComponent,
+    InputFiledComponent,
+    BtnComponent,
+    SuccessComponent,
+    BoxPaymentComponent,
+  ],
   imports: [CommonModule, ReactiveFormsModule],
-  exports: [NavbarComponent, InputFiledComponent, BtnComponent],
+  exports: [
+    NavbarComponent,
+    InputFiledComponent,
+    BtnComponent,
+    SuccessComponent,
+    BoxPaymentComponent
+  ],
 })
 export class SharedModule {}
