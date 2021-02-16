@@ -1,0 +1,87 @@
+<!-- start sharing component -->
+<div class="sharing">
+    <div class="row">
+        <div class="col-sm-12">
+            <span class="span">Share attachments</span>
+            <i class="fa fa-times pointer user float-right"></i>
+            <div class="clear-fix"></div>
+        </div>
+        <div class="col-sm-12">
+            <p>Share <b>“My research work.pdf”</b></p>
+        </div>
+        <div class="col-sm-12">
+            <p>When you invite someone to see your files, they will get an invitation link to view all files <br>
+            attached to this certificate. They cannot edit or remove files.</p>
+        </div>
+        <ng-container [ngSwitch]="typeShare">
+            <div class="last_screen" *ngSwitchCase="'invite'">
+                <div class="col-sm-12 copy">
+                    <div class="wrap">
+                        <img src="../../assets/img/copy.svg" alt="copy text" srcset="">
+                        <b>Copy invitation link</b>
+                    </div>
+                </div>
+                <div class="col-sm-12 des">
+                    <p>
+                        Anyone who got the link can <b>request access</b> to view the files for the selected certificate. <br>
+                        if you feel the link is being misused, you can <b>Generate new link.</b>
+                    </p>
+                </div>
+                <div class="col-sm-12 chosse_invite">
+                    <span class="span"><b>Or invite people by email</b></span>
+                </div>
+                <div class="col-sm-12 email_access">
+                    <label for="">Enter email address</label>
+                    <input type="text" value="Abdulla.kadry@gmail.com" />
+                </div>
+                <div class="col-sm-12 who_access">
+                    <ul>
+                        <li><span>Amr.Mohammed@gmail.com</span><i class="fa fa-times"></i></li>
+                        <li><span>Amr.Mohammed@gmail.com</span><i class="fa fa-times"></i></li>
+                    </ul>
+                </div>
+                <app-btn btn_title="Send invitation"></app-btn>
+            </div>
+
+            <div class="first_screen" *ngSwitchDefault>
+                <div class="col-sm-12 who_access">
+                    <span class="span">People who have access</span>
+                    <div class="wrap">
+                        <input type="search" placeholder="email" />
+                    </div>
+                </div>
+                <div class="col-sm-12 requests">
+                    <span class="span">Pending access requests (3)</span>
+                </div>
+                <div class="col-sm-12 list_user_access">
+                    <ul>
+                        <li>
+                            <span>Lorem Ipsum@gmail.com</span>
+                            <button>approve</button>
+                            <button>deny</button>
+                        </li>
+                        <li>
+                            <span>Lorem Ipsum@gmail.com</span>
+                            <button>approve</button>
+                            <button>deny</button>
+                        </li>
+                        <li>
+                            <span>Lorem Ipsum@gmail.com</span>
+                            <button>approve</button>
+                            <button>deny</button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-12">
+                    <h4 (click)="typeShare = 'invite'">
+                        <a>
+                            <!-- use font-awsome -->
+                            <i class="fa fa-plus"></i> Invite people to view
+                        </a>
+                    </h4>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div>
+<!-- end sharing component -->

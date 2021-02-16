@@ -30,6 +30,7 @@ import { RestPasswordComponent } from './rest-password/rest-password.component';
 import { HeaderComponent } from './header/header.component';
 import { SharedModule } from './shared/shared.module';
 import { OrderHighCopyComponent } from './order-high-copy/order-high-copy.component';
+import { SharingComponent } from './sharing/sharing.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { OrderHighCopyComponent } from './order-high-copy/order-high-copy.compon
     RestPasswordComponent,
     HeaderComponent,
     OrderHighCopyComponent,
+    SharingComponent,
   ],
   imports: [
     BrowserAnimationsModule,
