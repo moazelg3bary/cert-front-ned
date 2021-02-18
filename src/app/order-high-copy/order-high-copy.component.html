@@ -1,194 +1,20 @@
+<!-- start class over_lay -->
+<div class="over_lay"></div>
+<!-- end class over_lay -->
+
 <!-- start class order_hight -->
 <div class="order_hight">
     <div class="wrappar">
         <ul class="toggle">
-            <li (click)="toggle_DeliveryWithPayment = true" [class]="toggle_DeliveryWithPayment && 'active'"><b>Delivery details</b></li>
-            <li (click)="toggle_DeliveryWithPayment = false" [class]="!toggle_DeliveryWithPayment && 'active'"><b>Payment</b></li>
+            <li routerLink="./" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><b>Delivery details</b></li>
+            <li routerLink="payment" routerLinkActive="active"><b>Payment</b></li>
             <!-- run event click to close this component -->
-            <li (click)="closePopUp()" class="user">
+            <li routerLink="../../" class="user">
                 <i class="fa fa-times"></i>
             </li>
         </ul>
         <div class="clear_fix"></div>
-        <div *ngIf="toggle_DeliveryWithPayment">
-            <p>You’re ordering a hard copy of the certificate <b>“Certificate name”</b></p>
-            <p>Kindly enter your delivery address below and proceed to payment tab.</p>
-            <!-- switch with select address or addAdress -->
-            <ng-container [ngSwitch]="typeAddress">
-                <!-- start class add_addres -->
-                <div class="add_addres" *ngSwitchCase="'add'">
-                    <form action="" [formGroup]="FormAddAdress" (ngSubmit)="addAddress()">
-                        <div class="row">
-                            <div class="col-sm-12 col-md-6 col-lg-4 input">
-                                <!-- use appInputFiled component -->
-                                <app-input-filed nameInput="country" lable="Country" placeholder="Egypt"
-                                    [formGroupParent]="FormAddAdress">
-                                </app-input-filed>
-                            </div>
-                            <div class="col-sm-12 col-md-6 col-lg-4 input">
-                                <!-- use appInputFiled component -->
-                                <app-input-filed defInput="select" nameInput="city" lable="City"
-                                    [items]="['Tanta', 'Cairo', 'Alex']" [formGroupParent]="FormAddAdress">
-                                </app-input-filed>
-                            </div>
-                            <div class="col-sm-12 col-md-12 col-lg-4 input">
-                                <!-- use appInputFiled component -->
-                                <app-input-filed nameInput="code" typeInput="number" lable="Zip code"
-                                    [formGroupParent]="FormAddAdress">
-                                </app-input-filed>
-                            </div>
-                            <div class="col-sm-12 col-md-12 input">
-                                <!-- use appInputFiled component -->
-                                <app-input-filed nameInput="address" [formGroupParent]="FormAddAdress"
-                                    lable="Address line (Street Name and House No.)">
-                                </app-input-filed>
-                            </div>
-                            <div class="col-sm-12 col-md-12 input">
-                                <!-- use appInputFiled component -->
-                                <app-input-filed defInput="area" nameInput="note" lable="Note for delivery (optional)"
-                                    [formGroupParent]="FormAddAdress">
-                                </app-input-filed>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12 text-right wrap_btn">
-                                <!-- use appBtn component -->
-                                <app-btn icon="arrow-right" color="#2673E5" bg_color="transparent" btn_title="next"
-                                    [isloading]="isLoading" [disabled]="FormAddAdress.invalid">
-                                </app-btn>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <!-- end class add_addres -->
-            
-                <!-- start section select address -->
-                <div class="overflow-hidden" *ngSwitchDefault>
-                    <form action="">
-                        <label class="title" for=""><b>Choose from your address book:</b></label>
-                        <div class="form-row">
-                            <div class="form-group col-12">
-                                <div class="wrap">
-                                    <input class="custom_input" type="radio" name="address" id="address">
-                                    <label for="address" class="custom_label">
-                                        <span></span>
-                                    </label>
-                                    <ul>
-                                        <li>30-03-10</li>
-                                        <li>Franz Mehring Platz 3, 10243, Berlin</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="form-group col-12">
-                                <div class="wrap">
-                                    <input class="custom_input" type="radio" name="address" id="address_2">
-                                    <label for="address_2" class="custom_label">
-                                        <span></span>
-                                    </label>
-                                    <ul>
-                                        <li>30-03-10</li>
-                                        <li>Franz Mehring Platz 3, 10243, Berlin</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                    <span>or</span>
-                    <h4>
-                        <a (click)="typeAddress = 'add'">
-                            <i class="fa fa-plus"></i> Add new address
-                        </a>
-                    </h4>
-                    <button class="btn btn-primary"><b>next <i class="fa fa-arrow-right"></i></b></button>
-                </div>
-                <!-- end section select address -->
-            </ng-container>
-        </div>
-
-        <div class="payment" *ngIf="!toggle_DeliveryWithPayment">
-            <div class="row">
-                <div class="col-sm-12 col-md-8">
-                    <form action="">
-                        <div class="row">
-                            <div class="col-12 col-md-6">
-                                <div class="method">
-                                    <input checked class="custom_input" type="radio" name="card" id="card">
-                                    <label class="custom_label" for="card">
-                                        <span></span>
-                                    </label>
-                                    Pay with your credit card
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <div class="method">
-                                    <input class="custom_input" type="radio" name="card" id="PayPal">
-                                    <label class="custom_label" for="PayPal">
-                                        <span></span>
-                                    </label>
-                                    Pay with PayPal
-                                </div>
-                            </div>
-                        </div>
-                    <ng-container [ngSwitch]="typePayment">
-                        <div *ngSwitchDefault>
-                            <label class="title" for=""><b>Choose from your saved cards</b></label>
-                            <div class="form-row">
-                                <div class="form-group col-12">
-                                    <div class="wrap">
-                                        <input class="custom_input" type="radio" name="address" id="payment">
-                                        <label class="custom_label" for="payment">
-                                            <span></span>
-                                        </label>
-                                        <ul>
-                                            <li>MasterCard ****5482</li>
-                                            <li>Amr Mohammed</li>
-                                            <li>Expires 12/2025</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="form-group col-12">
-                                    <div class="wrap">
-                                        <input class="custom_input" type="radio" name="address" id="payment_1">
-                                        <label class="custom_label" for="payment_1">
-                                            <span></span>
-                                        </label>
-                                        <ul>
-                                            <li>MasterCard ****5482</li>
-                                            <li>Amr Mohammed</li>
-                                            <li>Expires 12/2025</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <span>or</span>
-                            <h4>
-                                <a (click)="typePayment = 'add'">
-                                    <i class="fa fa-plus"></i> Add new credit card
-                                </a>
-                            </h4>
-                        </div>
-
-                        <div *ngSwitchCase="'add'">
-                            <app-box-payment></app-box-payment>
-                        </div>
-                    </ng-container>
-                    </form>
-                </div>
-                <div class="col-sm-12 col-md-4 ditalis">
-                    <p><b> Have a voucher?</b></p>
-                    <input type="text" placeholder="Enter your voucher code…" />
-                    <p><b> Payment summary</b></p>
-                    <ul>
-                        <li>Base fee <span>$15</span></li>
-                        <li>Voucher code <span>$5</span></li>
-                        <li>Delivery fees <span>$0</span></li>
-                        <li class="hr"></li>
-                        <li><b>Total <span>$15</span></b></li>
-                    </ul>
-                    <button disabled class="btn btn-primary"><b>Place order</b></button>
-                </div>
-            </div>
-        </div>
+        <router-outlet></router-outlet>
     </div>
 </div>
 <!-- end class order_hight -->

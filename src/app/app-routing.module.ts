@@ -1,3 +1,7 @@
+import { DeliveryPaymentComponent } from './order-high-copy/components/delivery-payment/delivery-payment.component';
+import { DeliveryDetailsComponent } from './order-high-copy/components/delivery-details/delivery-details.component';
+import { SharingComponent } from './sharing/sharing.component';
+import { OrderHighCopyComponent } from './order-high-copy/order-high-copy.component';
 import { RestPasswordComponent } from "./rest-password/rest-password.component";
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule, Router } from "@angular/router";
@@ -12,6 +16,8 @@ import { StepperComponent } from "./new-certificate/stepper/stepper.component";
 import { ViewCertificateComponent } from "./dashboard/view-certificate/view-certificate.component";
 import { ProfileComponent } from "./profile/profile.component";
 import { AuthService } from "./services/auth.service";
+import { DeliveryAddAddressComponent } from './order-high-copy/components/delivery-add-address/delivery-add-address.component';
+import { DeliveryAddPaymentComponent } from './order-high-copy/components/delivery-add-payment/delivery-add-payment.component';
 
 const routes: Routes = [
   {
@@ -40,8 +46,21 @@ const routes: Routes = [
     ],
   },
   {
-    path: "view-certificate",
+    path: "view-certificate/:id",
     component: ViewCertificateComponent,
+    children: [
+      {
+        path: "order/:id",
+        component: OrderHighCopyComponent,
+        children: [
+          { path: "", component: DeliveryDetailsComponent },
+          { path: "add-address", component: DeliveryAddAddressComponent },
+          { path: "payment", component: DeliveryPaymentComponent },
+          { path: "add-payment", component: DeliveryAddPaymentComponent },
+        ],
+      },
+      { path: "sharing/:id", component: SharingComponent },
+    ],
   },
   {
     path: "profile",
@@ -92,9 +111,12 @@ const routes: Routes = [
     ],
   },
   {
-    path: 'edit-profile',
-    loadChildren: ()=> import('./edit-profile/edit-profile.module').then(m => m.EditProfileModule)
-  }
+    path: "edit-profile",
+    loadChildren: () =>
+      import("./edit-profile/edit-profile.module").then(
+        (m) => m.EditProfileModule
+      ),
+  },
 ];
 
 @NgModule({

@@ -5,7 +5,7 @@
     top: 50%;
     left: 50%;
     width: 815px;
-    height: 585px;
+    height: 600px;
     z-index: 1600;
     position: fixed;
     min-width: 500px;
@@ -45,12 +45,13 @@
             &:checked + label span {
                 display: block !important;
             }
-        }        
+        }
         ul {
             margin: 0;
             padding: 0;
             list-style: none;
             &.toggle {
+                margin-bottom: 25px;
                 li {
                     cursor: pointer;
                     // use var sass
@@ -85,7 +86,7 @@
         p {
             margin-bottom: 0;
             &:first-of-type {
-                margin-top: 25px;
+                // margin-top: 25px;
             }
         }
         form {

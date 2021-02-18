@@ -2,7 +2,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from "@angular/core";
-import { EditProfileModule } from './edit-profile/edit-profile.module';
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -25,12 +24,16 @@ import { ProfileComponent } from "./profile/profile.component";
 import { LoaderService } from "./services/loader.service";
 import { NgxUiLoaderModule } from "ngx-ui-loader";
 import { BoxForgtPasswordComponent } from './box-forgt-password/box-forgt-password.component';
-import { SuccessComponent } from './shared/success/success.component';
 import { RestPasswordComponent } from './rest-password/rest-password.component';
 import { HeaderComponent } from './header/header.component';
 import { SharedModule } from './shared/shared.module';
 import { OrderHighCopyComponent } from './order-high-copy/order-high-copy.component';
 import { SharingComponent } from './sharing/sharing.component';
+import { ReviewMyIdeaComponent } from './review-my-idea/review-my-idea.component';
+import { DeliveryDetailsComponent } from './order-high-copy/components/delivery-details/delivery-details.component';
+import { DeliveryPaymentComponent } from './order-high-copy/components/delivery-payment/delivery-payment.component';
+import { DeliveryAddAddressComponent } from './order-high-copy/components/delivery-add-address/delivery-add-address.component';
+import { DeliveryAddPaymentComponent } from './order-high-copy/components/delivery-add-payment/delivery-add-payment.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +55,11 @@ import { SharingComponent } from './sharing/sharing.component';
     HeaderComponent,
     OrderHighCopyComponent,
     SharingComponent,
+    ReviewMyIdeaComponent,
+    DeliveryDetailsComponent,
+    DeliveryPaymentComponent,
+    DeliveryAddAddressComponent,
+    DeliveryAddPaymentComponent,
   ],
   imports: [
     BrowserAnimationsModule,

@@ -1,7 +1,4 @@
 <body>
-    <!-- start class over_lay -->
-    <div *ngIf="isOpenPopUp" class="over_lay"></div>
-    <!-- end class over_lay -->
 
     <!-- start component order-high-copy -->
     <app-order-high-copy (close)="isOpenPopUp = $event" *ngIf="isOpenPopUp"></app-order-high-copy>
@@ -67,13 +64,16 @@
                                     <h4>{{c.title}}</h4>
                                     <p class="t-light">
                                         <i class="fa fa-paperclip"></i>
-                                        <a (click)="viewCertificate(c)" class="v pointer">view & share attachments</a>
+                                        <a [routerLink]="['/view-certificate', c.id]"  class="v pointer">view & share attachments</a>
                                     </p>
 
                                 </td>
                                 <td class="rev text-bold center"><b>Successful</b></td>
+                                <!-- (click)="isOpenPopUp = !isOpenPopUp" -->
+                                <!-- (click)="viewCertificate(c)" -->
+                                <!-- [routerLink]="['/view-certificate']" [queryParams]="{order_hard: c.id}" -->
                                 <td class="t-light center">{{c.created_at | date: 'd MMMM y'}}</td>
-                                <td (click)="isOpenPopUp = !isOpenPopUp"  class="action pointer"> <img src="assets/img/iprotect/Group 182.png">Order hard copy
+                                <td [routerLink]="['/view-certificate', c.id, 'order', c.id]" class="action pointer"> <img src="assets/img/iprotect/Group 182.png">Order hard copy
                                 </td>
                                 <td class="action pointer"> <i class="fa fa-share-alt"></i>Share attachment</td>
                             </tr>

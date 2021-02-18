@@ -1,0 +1,45 @@
+<!-- start class over_lay -->
+<div class="over_lay"></div>
+<!-- end  class over_lay -->
+
+<!-- start component review-my-idea -->
+<div class="review_my_idea">
+    <form [formGroup]='FormReviewMyIdea'>
+        <div class="row">
+            <div class="col-sm-12 title overflow-hidden">
+                <p class="float-left"><b>Review my idea</b></p>
+                <i routerLink="../" class="fa fa-times pointer user float-right"></i>
+            </div>
+            <div class="col-sm-12 title">
+                <p>Are you looking for <b>fund, talents</b>, or simply <b>advice</b> to expand your idea and turn it
+                Into reality? We are here for you, just send us your current status and a short desription
+                of your business needs and we will come back to you as soon as we can!</p>
+            </div>
+            <div class="col-sm-12 col-md-12 input">
+                <app-input-filed
+                    defInput="select"
+                    nameInput="test"
+                    lable="My current status is:"
+                    [formGroupParent]="FormReviewMyIdea"
+                    [items]="['Tanta', 'Cairo', 'Alex']"
+                    >
+                </app-input-filed>
+            </div>
+            <div class="col-sm-12 col-md-12 input">
+                <app-input-filed 
+                    defInput="area" 
+                    nameInput="note" 
+                    lable="My business needs are:"
+                    [formGroupParent]="FormReviewMyIdea">
+                </app-input-filed>
+            </div>
+            <div class="col-sm-12 overflow-hidden">
+                <app-btn
+                    btn_type="button"
+                    btn_title="Submit request">
+                </app-btn>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- end component review-my-idea -->

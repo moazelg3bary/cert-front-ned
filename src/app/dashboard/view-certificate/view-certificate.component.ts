@@ -20,21 +20,21 @@ export class ViewCertificateComponent implements OnInit {
 
   ngOnInit() {
     this.loader.start();
-    this.route.queryParams.subscribe((params) => {
+    this.route.params.subscribe((params) => {
       this.certificateService.getCertificateById(params['id']).subscribe((res: any) => {
         this.certificate = res.data;
         this.loading = false;
         this.loader.stop();
-      })
-    })
+      })      
+    }); 
   }
 
   download() {
     window.open(SERVER + '/view/certificate/' + this.certificate.id + '?access_token=' + localStorage.getItem('iprotect__token'), "_blank");
   }
 
-  back() {
-    this.location.back();
+  back(path: string) {
+    this.router.navigate([path])
   }
 
 }

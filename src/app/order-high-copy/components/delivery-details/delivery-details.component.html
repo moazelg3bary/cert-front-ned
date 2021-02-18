@@ -1,0 +1,44 @@
+<div class="choose_delivery">
+    <p>You’re ordering a hard copy of the certificate <b>“Certificate name”</b></p>
+    <p>Kindly enter your delivery address below and proceed to payment tab.</p>
+    <!-- start section select address -->
+    <div class="overflow-hidden">
+        <form action="">
+            <label class="title" for=""><b>Choose from your address book:</b></label>
+            <div class="form-row">
+                <div class="form-group col-12">
+                    <div class="wrap">
+                        <input class="custom_input" type="radio" name="address" id="address">
+                        <label for="address" class="custom_label">
+                            <span></span>
+                        </label>
+                        <ul>
+                            <li>30-03-10</li>
+                            <li>Franz Mehring Platz 3, 10243, Berlin</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="form-group col-12">
+                    <div class="wrap">
+                        <input class="custom_input" type="radio" name="address" id="address_2">
+                        <label for="address_2" class="custom_label">
+                            <span></span>
+                        </label>
+                        <ul>
+                            <li>30-03-10</li>
+                            <li>Franz Mehring Platz 3, 10243, Berlin</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <span>or</span>
+        <h4>
+            <a routerLink="add-address">
+                <i class="fa fa-plus"></i> Add new address
+            </a>
+        </h4>
+        <button class="btn btn-primary"><b>next <i class="fa fa-arrow-right"></i></b></button>
+    </div>
+    <!-- end section select address -->
+</div>

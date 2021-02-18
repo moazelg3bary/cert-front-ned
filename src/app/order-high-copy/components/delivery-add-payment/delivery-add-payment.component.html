@@ -1,0 +1,44 @@
+<div class="payment">
+    <div class="row">
+        <div class="col-sm-12 col-md-8">
+            <form action="">
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <div class="method">
+                            <input checked class="custom_input" type="radio" name="card" id="card">
+                            <label class="custom_label" for="card">
+                                <span></span>
+                            </label>
+                            Pay with your credit card
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="method">
+                            <input class="custom_input" type="radio" name="card" id="PayPal">
+                            <label class="custom_label" for="PayPal">
+                                <span></span>
+                            </label>
+                            Pay with PayPal
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <app-box-payment [formGroupParent]="FormAddCard"></app-box-payment>
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-12 col-md-4 ditalis">
+            <p><b> Have a voucher?</b></p>
+            <input type="text" placeholder="Enter your voucher code…" />
+            <p><b> Payment summary</b></p>
+            <ul>
+                <li>Base fee <span>$15</span></li>
+                <li>Voucher code <span>$5</span></li>
+                <li>Delivery fees <span>$0</span></li>
+                <li class="hr"></li>
+                <li><b>Total <span>$15</span></b></li>
+            </ul>
+            <button disabled class="btn btn-primary"><b>Place order</b></button>
+        </div>
+    </div>
+</div>

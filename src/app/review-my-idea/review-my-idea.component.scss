@@ -1,7 +1,7 @@
-@import '../../../../sass/style.scss';
+@import '../sass/style.scss';
 
-// start style class add_addres
-.add_addres {
+// start style class review_my_idea
+.review_my_idea {
     top: 50%;
     left: 50%;
     z-index: 1600;
@@ -14,16 +14,26 @@
     @include prevfix(border-radius, 6px, webkit moz ms o);
     @include prevfix(transform, translate(-50%, -50%), webkit moz ms o);
     form {
-        padding: 35px 50px;
+        padding: 40px 50px;
         .title p {
+            margin-bottom: 40px;
             // use var sass
+            color: $c_bg_body_2;
             font-size: $font_14;
             font-family: $font_regular;
-            margin-bottom: 40px;
+            b {
+                color: $c_black;
+            }
         }
         .input {
             margin-bottom: 40px;
+            app-input-filed > textarea {
+                height: 160px;
+            }
+        }
+        app-btn {
+            float: right;
         }
     }
 }
-// end style class add_addres
+// end style class review_my_idea

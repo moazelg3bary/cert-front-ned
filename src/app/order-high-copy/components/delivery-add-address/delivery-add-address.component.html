@@ -1,0 +1,45 @@
+<!-- start class add_addres -->
+<div class="add_addres">
+    <form action="" [formGroup]="FormAddAdress" (ngSubmit)="addAddress()">
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-4 input">
+                <!-- use appInputFiled component -->
+                <app-input-filed nameInput="country" lable="Country" placeholder="Egypt"
+                    [formGroupParent]="FormAddAdress">
+                </app-input-filed>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4 input">
+                <!-- use appInputFiled component -->
+                <app-input-filed defInput="select" nameInput="city" lable="City" [items]="['Tanta', 'Cairo', 'Alex']"
+                    [formGroupParent]="FormAddAdress">
+                </app-input-filed>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-4 input">
+                <!-- use appInputFiled component -->
+                <app-input-filed nameInput="code" typeInput="number" lable="Zip code" [formGroupParent]="FormAddAdress">
+                </app-input-filed>
+            </div>
+            <div class="col-sm-12 col-md-12 input">
+                <!-- use appInputFiled component -->
+                <app-input-filed nameInput="address" [formGroupParent]="FormAddAdress"
+                    lable="Address line (Street Name and House No.)">
+                </app-input-filed>
+            </div>
+            <div class="col-sm-12 col-md-12 input">
+                <!-- use appInputFiled component -->
+                <app-input-filed defInput="area" nameInput="note" lable="Note for delivery (optional)"
+                    [formGroupParent]="FormAddAdress">
+                </app-input-filed>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 text-right wrap_btn">
+                <!-- use appBtn component -->
+                <app-btn icon="arrow-right" color="#2673E5" bg_color="transparent" btn_title="next"
+                    [isloading]="isLoading" [disabled]="FormAddAdress.invalid">
+                </app-btn>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- end class add_addres -->

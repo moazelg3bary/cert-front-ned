@@ -1,7 +1,7 @@
 <div>
     <app-navbar></app-navbar>
     <div class="">
-        <div class="row">
+        <div class="row mx-0">
             <div class="col-4">
                 <div class="view">
                     <img class="certificate" width="100%" src="assets/img/dashboard/view.png" alt="">
@@ -12,7 +12,7 @@
             </div>
             <div class="col-8">
                 <div class="content">
-                    <h6 (click)="back()">
+                    <h6 (click)="back('dashboard')">
                         <span class="back">
                             <b><i class="fa fa-arrow-left"></i> Back to dashboard</b>
                         </span>
@@ -33,8 +33,9 @@
                             <div class="col-2 attachments__size">9.34 MB <img class="download-icon"
                                     src="assets/img/dashboard/download.svg"></div>
                             <div class="col-3 attachments__date">Uploaded on: 07.09.2020, 15:34</div>
-                            <div class="col-4 attachments__sharing"> <img class="download-icon"
-                                    src="assets/img/dashboard/share.svg" alt=""> Secure sharing</div>
+                            <div [routerLink]="['sharing', certificate.id]" class="col-4 attachments__sharing"> 
+                                <img class="download-icon"src="assets/img/dashboard/share.svg" alt=""> Secure sharing
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -42,3 +43,4 @@
         </div>
     </div>
 </div>
+<router-outlet></router-outlet>
