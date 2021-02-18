@@ -60,10 +60,11 @@
                             <div class="properties">
                               <div class="row">
                                 <div (click)="
-                                    setter('property_type', type.value, 2)
+                                    setter('property_type', type.value, 2);
+                                    propertyType(i)
                                   " class="col-4" *ngFor="
                                     let type of steps[currentStep - 1].data
-                                      .types
+                                      .types; let i = index
                                   ">
                                   <div class="type" [class.active]="
                                       steps[currentStep - 1].fields
@@ -169,7 +170,7 @@
                               <div class="row">
                                 <div class="col-4" *ngFor="
                                     let type of steps[currentStep - 1].data
-                                      .types
+                                      .types; let i = index
                                   " (click)="
                                     setter(
                                       'owner_type',
@@ -177,7 +178,7 @@
                                       2,
                                       ['data'],
                                       type.value == 'group' ? [{}] : {}
-                                    )
+                                    ); ownerDetails(i, type.value)
                                   ">
                                   <div class="type" [class.active]="
                                       steps[currentStep - 1].fields
@@ -701,7 +702,7 @@
                           </div>
                         </div>
                         <div *ngIf="currentStep == 4">
-                          <div class="row w-100">
+                          <div  class="row w-100" *ngIf="steps[currentStep - 1].activeToggler == 2">
                             <div class="col-lg-8">
                               <div class="justify-content-center d-flex">
                                 <div class="radio-container" [class.active]="typePayment == 'credit'">
@@ -843,6 +844,589 @@
                               </div>
                             </div>
                             <!-- /col -->
+                          </div>
+
+                          <div class="row review" *ngIf="steps[currentStep - 1].activeToggler == 1">
+                            <div class="col-sm-12">
+                              <p>Here is a summary of your request, kindly make sure and confirm that all the data are accurate.</p>
+                            </div>
+                            <div class="col-sm-12">
+                              <div class="accordion" id="accordionExample">
+                                <div class="card">
+                                  <div class="card-header" id="headingOne">
+                                    <h3 class="mb-0">
+                                      <span (click)="isOpen('first')" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="wrap">
+                                        <i [class]="isOpenCollapse == 'first' ? 'fa fa-chevron-circle-down' : 'fa fa-chevron-circle-right'"></i>
+                                        <span>Definition of intellectual property</span>
+                                      </span>
+                                      <span class="hr"></span>
+                                      <span (click)="currentStep = 1; setter('property_type', steps[currentStep - 1].data.types[property_type].value, 2)" class="wrap"><i class="fa fa-edit"></i>edit</span>
+                                    </h3>
+                                  </div>
+                                  <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                      <div class="row">
+                                        <div class="col-lg-6">
+                                          <div class="control-group">
+                                            <label for="exampleDropdownFormEmail1">TITLE OF YOUR WORK - ENGLISH</label>
+                                            <input [(ngModel)]="
+                                                steps[0].fields.title
+                                              " type="text" class="form-control" name="title" placeholder="Start typing..."
+                                              data-validation-required-message="Please enter your Email." />
+                                            <p class="text-danger help-block"></p>
+                                            <div style="color: #a3abbd">
+                                              <p style="color: #a3abbd; font-family: sans-serif;">
+                                                The title is the name which your property
+                                                will be registered under. <br />
+                                                Make sure it’s descriptive, precise and as
+                                                short as possible.
+                                              </p>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="col-lg-6 mt-0">
+                                          <div class="control-group">
+                                            <label for="exampleDropdownFormEmail1">TITLE OF YOUR WORK - ARABIC</label>
+                                            <input [(ngModel)]="
+                                                steps[0].fields.title_ar
+                                              " type="text" class="form-control" name="title" placeholder="Start typing..."
+                                              data-validation-required-message="Please enter your Email." />
+                                            <p class="text-danger help-block"></p>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="control-group">
+                                        <label for="exampleDropdownFormPassword1">WORK DESCRIPTION</label>
+                                        <!--  <span class="eye"><i class="fa fa-eye"></i><span>-->
+                                        <textarea rows="5" type="text" class="form-control" name="desc" [(ngModel)]="
+                                            steps[0].fields.description
+                                          " placeholder="Start typing..." required="required"
+                                          data-validation-required-message="Please enter your Password."></textarea>
+                                        <p class="text-danger help-block"></p>
+                                      </div>                                      
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="card">
+                                  <div class="card-header" id="headingTwo">
+                                    <h3 class="mb-0">
+                                      <span (click)="isOpen('two')" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" class="wrap">
+                                        <i [class]="isOpenCollapse == 'two' ? 'fa fa-chevron-circle-down' : 'fa fa-chevron-circle-right'"></i>
+                                        <span>File(s) attachment</span>
+                                      </span>
+                                      <span class="hr"></span>
+                                      <span (click)="currentStep = 2" class="wrap"><i class="fa fa-edit"></i>edit</span>
+                                    </h3>
+                                  </div>
+                                  <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                      <img src="../../../assets/img/iprotect-logo.svg" alt="">
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="card">
+                                  <div class="card-header" id="headingThree">
+                                    <h3 class="mb-0">
+                                      <span (click)="isOpen('there')" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree" class="wrap">
+                                        <i [class]="isOpenCollapse == 'there' ? 'fa fa-chevron-circle-down' : 'fa fa-chevron-circle-right'"></i>
+                                        <span>Owner(s) details</span>
+                                      </span>
+                                      <span class="hr"></span>
+                                      <span (click)="currentStep = 3; setter('owner_type', steps[currentStep - 1].data.types[owner_details].value, 2)" class="wrap"><i class="fa fa-edit"></i>edit</span>
+                                    </h3>
+                                  </div>
+                                  <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                      <div class="row">
+                                        <div class="col-sm-12" *ngIf="owner_detailsValue == 'individual'">
+                                          <div>
+                                            <div class="control-group">
+                                              <div class="row">
+                                                <div class="col-lg-9">
+                                                  <label for="exampleDropdownFormEmail1">FULL NAME (AS PER ID)</label>
+                                                  <input type="text" class="form-control" name="full_name" [(ngModel)]="
+                                                      steps[2].fields.data
+                                                        .full_name
+                                                    " placeholder="Start typing..." />
+
+                                                  <p class="text-danger help-block"></p>
+                                                </div>
+                                                <div class="col-lg-3 mt-0">
+                                                  <label class="tooltip-main" for="exampleDropdownFormEmail1">
+                                                    NATIONALITY
+                                                  </label>
+                                                  <div class="dropdown">
+                                                    <button class="btn nationality dropdown-toggle" type="button"
+                                                      id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                                      aria-expanded="false">
+                                                      {{
+                                                      steps[2].fields.data
+                                                      .nationality || "Select"
+                                                      }}
+                                                      <i class="fa fa-caret-down"></i>
+                                                      <!-- <i class="fas fa-caret-circle-down"></i> -->
+                                                    </button>
+                                                    <div class="dropdown-menu scrollable-menu" style="
+                                                        height: auto;
+                                                        max-height: 200px;
+                                                        overflow-y: scroll;
+                                                        overflow-x: hidden;
+                                                      " aria-labelledby="dropdownMenuButton">
+                                                      <a (click)="
+                                                          steps[2].fields.data.nationality =
+                                                            country.name
+                                                        " class="dropdown-item" style="cursor: pointer"
+                                                        *ngFor="let country of countries">
+                                                        {{ country.name }}
+                                                      </a>
+                                                    </div>
+                                                  </div>
+                                                  <p class="text-danger help-block"></p>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="control-group">
+                                              <div class="row">
+                                                <div class="col-lg-9">
+                                                  <label for="exampleDropdownFormEmail1">ID NUMBER</label>
+                                                  <input type="number" class="form-control" name="id_number" [(ngModel)]="
+                                                      steps[2].fields.data
+                                                        .id_number
+                                                    " placeholder="Start typing..." />
+
+                                                  <p class="text-danger help-block"></p>
+                                                </div>
+                                                <div class="col-lg-3 mt-0">
+                                                  <label class="tooltip-main" for="exampleDropdownFormEmail1">
+                                                    COUNTRY OF RESIDENCY
+                                                  </label>
+                                                  <div class="dropdown">
+                                                    <button class="btn nationality dropdown-toggle" type="button"
+                                                      id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                                      aria-expanded="false">
+                                                      {{
+                                                      steps[2].fields.data
+                                                      .country_of_residency || "Select"
+                                                      }}
+                                                      <i class="fa fa-caret-down"></i>
+                                                      <!-- <i class="fas fa-caret-circle-down"></i> -->
+                                                    </button>
+                                                    <div class="dropdown-menu scrollable-menu" style="
+                                                        height: auto;
+                                                        max-height: 200px;
+                                                        overflow-y: scroll;
+                                                        overflow-x: hidden;
+                                                      " aria-labelledby="dropdownMenuButton">
+                                                      <a (click)="
+                                                          steps[2].fields.data.country_of_residency =
+                                                            country.name
+                                                        " class="dropdown-item" style="cursor: pointer"
+                                                        *ngFor="let country of countries">
+                                                        {{ country.name }}
+                                                      </a>
+                                                    </div>
+                                                  </div>
+                                                  <p class="text-danger help-block"></p>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="control-group">
+                                              <div class="row">
+                                                <div class="col-lg-9">
+                                                  <label for="exampleDropdownFormEmail1">EMAIL ADDRESS</label>
+                                                  <input type="email" class="form-control" name="email" [(ngModel)]="
+                                                      steps[2].fields.data.email
+                                                    " placeholder="Start typing..." />
+
+                                                  <p class="text-danger help-block"></p>
+                                                </div>
+                                                <div class="col-lg-3 mt-0">
+                                                  <label class="tooltip-main" for="exampleDropdownFormEmail1">
+                                                    PHONE NUMBER
+                                                  </label>
+                                                  <div class="input-group">
+                                                    <input [(ngModel)]="
+                                                        steps[2].fields.data
+                                                          .phone_number
+                                                      " name="phone_number" type="tel" class="form-control tele" />
+                                                  </div>
+                                                  <p class="text-danger help-block"></p>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="form-check">
+                                              <input [(ngModel)]="
+                                                  steps[2].fields.data
+                                                    .is_student
+                                                " name="is_student" class="form-check-input" type="checkbox" value="" [checked]="
+                                                  steps[2].fields.data
+                                                    .is_student
+                                                " id="defaultCheck1" />
+                                              <label class="form-check-label" for="defaultCheck1">
+                                                I’m a student (only select if you’re under the
+                                                age of 20)
+                                              </label>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="col-sm-12 section" *ngIf="owner_detailsValue == 'company'">
+                                          <div class="control-group">
+                                            <div class="row">
+                                              <div class="col-lg-9">
+                                                <label for="exampleDropdownFormEmail1">COMPANY NAME</label>
+                                                <input type="email" class="form-control" name="company_name" [(ngModel)]="
+                                                    steps[2].fields.data
+                                                      .company_name
+                                                  " placeholder="Start typing..."
+                                                  data-validation-required-message="Please enter your Email." />
+  
+                                                <p class="text-danger help-block"></p>
+                                              </div>
+                                              <div class="col-lg-3 mt-0">
+                                                <label class="tooltip-main" for="exampleDropdownFormEmail1">
+                                                  VAT NUMBER
+                                                </label>
+                                                <input type="email" class="form-control" name="company_name" [(ngModel)]="
+                                                    steps[2].fields.data.vat
+                                                  " placeholder="Enter number…"
+                                                  data-validation-required-message="Please enter your Email." />
+                                                <p class="text-danger help-block"></p>
+                                              </div>                                              
+                                            </div>
+                                            <div class="row">
+                                              <div class="col-lg-5" style="padding-left: 15px">
+                                                <label class="tooltip-main" for="exampleDropdownFormEmail1">
+                                                  COUNTRY
+                                                </label>
+                                                <div class="dropdown">
+                                                  <button class="btn nationality dropdown-toggle" type="button"
+                                                    id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                                    aria-expanded="false">
+                                                    {{
+                                                    steps[2].fields.data
+                                                    .company_country || "Select"
+                                                    }}
+                                                    <i class="fa fa-caret-down"></i>
+                                                    <!-- <i class="fas fa-caret-circle-down"></i> -->
+                                                  </button>
+                                                  <div class="dropdown-menu scrollable-menu" style="
+                                                      height: auto;
+                                                      max-height: 200px;
+                                                      overflow-y: scroll;
+                                                      overflow-x: hidden;
+                                                    " aria-labelledby="dropdownMenuButton">
+                                                    <a (click)="
+                                                        steps[2].fields.data.company_country =
+                                                          country.name;
+                                                        cities = country.cities;
+                                                        steps[2].fields.data.company_city = null
+                                                      " class="dropdown-item" style="cursor: pointer"
+                                                      *ngFor="let country of countries">
+                                                      {{ country.name }}
+                                                    </a>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="col-lg-4">
+                                                <label class="tooltip-main" for="exampleDropdownFormEmail1">
+                                                  CITY
+                                                </label>
+                                                <div class="dropdown">
+                                                  <button class="btn nationality dropdown-toggle" type="button"
+                                                    id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                                    aria-expanded="false">
+                                                    {{
+                                                    steps[2].fields.data
+                                                    .company_city || "Select"
+                                                    }}
+                                                    <i class="fa fa-caret-down"></i>
+                                                    <!-- <i class="fas fa-caret-circle-down"></i> -->
+                                                  </button>
+                                                  <div class="dropdown-menu scrollable-menu" style="
+                                                      height: auto;
+                                                      max-height: 200px;
+                                                      overflow-y: scroll;
+                                                      overflow-x: hidden;
+                                                    " aria-labelledby="dropdownMenuButton">
+                                                    <a (click)="
+                                                        steps[2].fields.data.company_city =
+                                                          city.name
+                                                      " class="dropdown-item" style="cursor: pointer" *ngFor="let city of cities">
+                                                      {{ city.name }}
+                                                    </a>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="col-lg-3 mt-0">
+                                                <label class="tooltip-main" for="exampleDropdownFormEmail1">
+                                                  ZIP CODE
+                                                </label>
+                                                <input type="email" class="form-control" name="zip_code" [(ngModel)]="
+                                                    steps[2].fields.data
+                                                      .zip_code
+                                                  " placeholder="Start typing..."
+                                                  data-validation-required-message="Please enter your Email." />
+                                              </div>                                              
+                                            </div>
+                                            <div class="form-check">
+                                              <input [(ngModel)]="companyLogo" name="companyLogo" class="form-check-input"
+                                                type="checkbox" id="defaultCheck1" />
+                                              <label class="form-check-label" for="defaultCheck1">
+                                                I want to put company logo on the
+                                                certificate
+                                                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>($9.99
+                                                extra)
+                                              </label>
+                                              <div *ngIf="companyLogo" class="company-logo">
+                                                <p class="company-logo__text">
+                                                  Please upload your company logo <br />
+                                                  PNG format, 500*500 px resolution (or
+                                                  higher in same ratio)
+                                                </p>
+                                                <input accept="image/*" hidden type="file" #logoInput (change)="
+                                                    companyLogoSelected($event.target.files)
+                                                  " />
+                                                <div class="company-logo__upload" appDragDrop (onFileDropped)="
+                                                    companyLogoSelected($event)
+                                                  " [style.backgroundImage]="
+                                                    files.companyLogo_background
+                                                  ">
+                                                  <div class="drag" *ngIf="!files.companyLogo_image">
+                                                    <p>Drag a picture here.</p>
+                                                    <p>or</p>
+                                                    <button (click)="logoInput.click()" class="btn btn-primary" id="send_button">
+                                                      Choose a file
+                                                    </button>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>                                            
+                                          </div>
+                                          <div>
+                                            <p class="owner">Contact details</p>
+                                            <div class="control-group">
+                                              <div class="row">
+                                                <div class="col-lg-9">
+                                                  <label for="exampleDropdownFormEmail1">FULL NAME (AS PER ID)</label>
+                                                  <input type="email" class="form-control" name="name" [(ngModel)]="
+                                                      steps[2].fields.data
+                                                        .name
+                                                    " placeholder="Start typing..."
+                                                    data-validation-required-message="Please enter your Email." />
+
+                                                  <p class="text-danger help-block"></p>
+                                                </div>
+                                                <div class="col-lg-3 mt-0">
+                                                  <label class="tooltip-main" for="exampleDropdownFormEmail1">
+                                                    NATIONALITY
+                                                  </label>
+                                                  <div class="dropdown">
+                                                    <button class="btn nationality dropdown-toggle" type="button"
+                                                      id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                                      aria-expanded="false">
+                                                      {{
+                                                      steps[2].fields.data
+                                                      .nationality || "Select"
+                                                      }}
+                                                      <i class="fa fa-caret-down"></i>
+                                                      <!-- <i class="fas fa-caret-circle-down"></i> -->
+                                                    </button>
+                                                    <div class="dropdown-menu scrollable-menu" style="
+                                                        height: auto;
+                                                        max-height: 200px;
+                                                        overflow-y: scroll;
+                                                        overflow-x: hidden;
+                                                      " aria-labelledby="dropdownMenuButton">
+                                                      <a (click)="
+                                                          steps[2].fields.data.nationality =
+                                                            country.name
+                                                        " class="dropdown-item" style="cursor: pointer"
+                                                        *ngFor="let country of countries">
+                                                        {{ country.name }}
+                                                      </a>
+                                                    </div>
+                                                  </div>
+                                                  <p class="text-danger help-block"></p>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="control-group">
+                                              <div class="row">
+                                                <div class="col-lg-9">
+                                                  <label for="exampleDropdownFormEmail1">ID NUMBER</label>
+                                                  <input type="email" class="form-control" name="id_number" [(ngModel)]="
+                                                      steps[2].fields.data
+                                                        .id_number
+                                                    " placeholder="Start typing..."
+                                                    data-validation-required-message="Please enter your Email." />
+
+                                                  <p class="text-danger help-block"></p>
+                                                </div>
+                                                <div class="col-lg-3 mt-0">
+                                                  <label class="tooltip-main" for="exampleDropdownFormEmail1">
+                                                    COUNTRY OF RESIDENCY
+                                                  </label>
+                                                  <div class="dropdown">
+                                                    <button class="btn nationality dropdown-toggle" type="button"
+                                                      id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                                      aria-expanded="false">
+                                                      {{
+                                                      steps[2].fields.data
+                                                      .country_of_residency || "Select"
+                                                      }}
+                                                      <i class="fa fa-caret-down"></i>
+                                                      <!-- <i class="fas fa-caret-circle-down"></i> -->
+                                                    </button>
+                                                    <div class="dropdown-menu scrollable-menu" style="
+                                                        height: auto;
+                                                        max-height: 200px;
+                                                        overflow-y: scroll;
+                                                        overflow-x: hidden;
+                                                      " aria-labelledby="dropdownMenuButton">
+                                                      <a (click)="
+                                                          steps[2].fields.data.country_of_residency =
+                                                            country.name
+                                                        " class="dropdown-item" style="cursor: pointer"
+                                                        *ngFor="let country of countries">
+                                                        {{ country.name }}
+                                                      </a>
+                                                    </div>
+                                                  </div>
+                                                  <p class="text-danger help-block"></p>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="control-group">
+                                              <div class="row">
+                                                <div class="col-lg-9">
+                                                  <label for="exampleDropdownFormEmail1">EMAIL ADDRESS</label>
+                                                  <input type="email" class="form-control" name="email" [(ngModel)]="
+                                                      steps[2].fields.data
+                                                        .email
+                                                    " placeholder="Start typing..."
+                                                    data-validation-required-message="Please enter your Email." />
+
+                                                  <p class="text-danger help-block"></p>
+                                                </div>
+                                                <div class="col-lg-3 mt-0">
+                                                  <label class="tooltip-main" for="exampleDropdownFormEmail1">
+                                                    PHONE NUMBER
+                                                  </label>
+                                                  <div class="input-group">
+                                                    <input type="tel" name="phone_number" [(ngModel)]="
+                                                        steps[2].fields.data
+                                                          .phone_number
+                                                      " class="form-control tele" />
+                                                  </div>
+                                                  <p class="text-danger help-block"></p>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>                                          
+                                        </div>
+                                        <div class="col-sm-12" *ngIf="owner_detailsValue == 'group'">
+                                          <div class="section">
+                                            <div class="control-group" *ngFor="
+                                                let owner of steps[2].fields
+                                                  .data;
+                                                let i = index
+                                              ">
+                                              <p class="owner">Owner #{{ i + 1 }}</p>
+                                              <div class="row">
+                                                <div class="col-lg-9">
+                                                  <label for="exampleDropdownFormEmail1">FULL NAME (AS PER ID)</label>
+                                                  <input type="email" class="form-control" [name]="'name' + i"
+                                                    [(ngModel)]="owner.name" placeholder="Start typing..."
+                                                    data-validation-required-message="Please enter your Email." />
+
+                                                  <p class="text-danger help-block"></p>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                  <label class="tooltip-main" for="exampleDropdownFormEmail1">
+                                                    NATIONALITY
+                                                  </label>
+                                                  <div class="dropdown">
+                                                    <button class="btn nationality dropdown-toggle" type="button"
+                                                      id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                                      aria-expanded="false">
+                                                      {{ owner.nationality || "Select" }}
+                                                      <i class="fa fa-caret-down"></i>
+                                                      <!-- <i class="fas fa-caret-circle-down"></i> -->
+                                                    </button>
+                                                    <div class="dropdown-menu scrollable-menu" style="
+                                                        height: auto;
+                                                        max-height: 200px;
+                                                        overflow-y: scroll;
+                                                        overflow-x: hidden;
+                                                      " aria-labelledby="dropdownMenuButton">
+                                                      <a (click)="
+                                                          owner.nationality = country.name
+                                                        " class="dropdown-item" style="cursor: pointer"
+                                                        *ngFor="let country of countries">
+                                                        {{ country.name }}
+                                                      </a>
+                                                    </div>
+                                                  </div>
+                                                  <p class="text-danger help-block"></p>
+                                                </div>
+                                              </div>
+                                              <div class="row">
+                                                <div class="col-lg-9">
+                                                  <label for="exampleDropdownFormEmail1">ID NUMBER</label>
+                                                  <input type="email" class="form-control" [name]="'id_number' + i"
+                                                    [(ngModel)]="owner.id_number" placeholder="Start typing..."
+                                                    data-validation-required-message="Please enter your Email." />
+
+                                                  <p class="text-danger help-block"></p>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                  <label class="tooltip-main" for="exampleDropdownFormEmail1">
+                                                    COUNTRY OF RESIDENCY
+                                                  </label>
+                                                  <div class="dropdown">
+                                                    <button class="btn nationality dropdown-toggle" type="button"
+                                                      id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                                      aria-expanded="false">
+                                                      {{
+                                                      owner.country_of_residency || "Select"
+                                                      }}
+                                                      <i class="fa fa-caret-down"></i>
+                                                      <!-- <i class="fas fa-caret-circle-down"></i> -->
+                                                    </button>
+                                                    <div class="dropdown-menu scrollable-menu" style="
+                                                        height: auto;
+                                                        max-height: 200px;
+                                                        overflow-y: scroll;
+                                                        overflow-x: hidden;
+                                                      " aria-labelledby="dropdownMenuButton">
+                                                      <a (click)="
+                                                          owner.country_of_residency =
+                                                            country.name
+                                                        " class="dropdown-item" style="cursor: pointer"
+                                                        *ngFor="let country of countries">
+                                                        {{ country.name }}
+                                                      </a>
+                                                    </div>
+                                                  </div>
+                                                  <p class="text-danger help-block"></p>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="add-owner" (click)="
+                                                steps[2].fields.data.push({})
+                                              ">
+                                              +Add another owner
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                           </div>
                           <br />
                         </div>

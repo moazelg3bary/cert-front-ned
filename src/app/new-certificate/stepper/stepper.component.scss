@@ -57,7 +57,7 @@
 }
 
 .register-form .title {
-  margin-left: 40px;
+  padding: 0 20px;
   position: relative;
 }
 .register-form h2 {
@@ -491,6 +491,97 @@
     border-radius: 10px;
     top: 30px;
     background-color: #2673e5;
+  }
+}
+
+.review {
+  p {
+    font-size: 16px;
+    color: #797979;
+    font-family: Rubik-regular;
+  }
+  .accordion {
+    .card {
+      border: none;
+      &:not(:first-of-type) {
+        margin-top: 35px;
+        &:nth-of-type(2) .card-body {
+          text-align: center;
+          img {
+            height: 200px;
+            padding: 15px;
+            max-width: 100%;
+            border-radius: 5px;
+            border: 2px dashed #000;
+          }
+        }
+      }
+      .card-header {
+        border: none;
+        background: none;
+        padding: 0.75rem 0;
+      }
+      .card-body {
+        padding: 30px;
+        .row > div:last-of-type {
+          margin-top: 20px;
+        }
+        .input_filed {
+          label {
+            font-size: 14px;
+            margin-bottom: 0;
+            line-height: 17px;
+            padding-left: 15px;
+            text-transform: uppercase;
+            font-family: Rubik-regular;
+          }
+          input, select {
+            border: 0;
+            width: 100%;
+            height: 58px;
+            margin-top: 12px;
+            // use vars sass
+            font-family: Rubik-regular;
+            background-color: #eaeaea;
+            // use mixin sass
+            border-radius: 2px;
+            &::placeholder {
+              // use vars sass
+              font-size: 14px;
+              color: #A3ABBD;
+            }
+          } 
+        }       
+      }
+      h3 {
+        color: #000;
+        display: flex;
+        font-size: 16px;
+        align-items: flex-end;
+        .wrap {
+          cursor: pointer;
+          &:first-of-type {
+            i {
+              font-size: 20px;
+              margin-right: 16px;
+            }
+          }
+          &:last-of-type {
+            color: #2673E5;
+            i {
+              margin-right: 5px;
+              font-weight: 900;
+            }
+          }
+        }
+        .hr {
+          height: 1px;
+          flex-grow: 1;
+          margin: 0 10px;
+          background: #000;
+        }
+      }
+    }
   }
 }
 

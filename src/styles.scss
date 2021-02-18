@@ -1,4 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+*::-webkit-scrollbar {
+  width: 6px;
+}
+*::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: #797979;
+}
+*::-webkit-scrollbar-track {
+  border-radius: 5px;
+  box-shadow: inset 0 0 6px #eaeaea;
+}
 *:focus {
   outline: unset !important;
 }

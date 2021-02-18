@@ -34,6 +34,10 @@ export class StepperComponent implements OnInit, OnDestroy {
   files: any = {};
   allowedExt: any[] = ["png", "jpg", "jpeg"];
   typePayment = "credit";
+  isOpenCollapse: string = "first";
+  property_type: string | number = 0;
+  owner_details: string | number = 0;
+  owner_detailsValue: string = "individual";
   constructor(
     private location: Location,
     private route: ActivatedRoute,
@@ -213,6 +217,10 @@ export class StepperComponent implements OnInit, OnDestroy {
     this.checkDraft();
   }
 
+  isOpen(e) {
+    this.isOpenCollapse = e;
+  }
+
   checkDraft() {
     this.route.params.subscribe((params) => {
       this.draftId = params["draftId"];
@@ -251,8 +259,12 @@ export class StepperComponent implements OnInit, OnDestroy {
     };
     let data = new FormData();
     data.append("file", this.file, this.file.name);
-    // this.certificatesService.upload(data).subscribe((res: any) => {
-    // });
+    console.log(event[0].name);
+    this.certificatesService
+      .uploadLogo({ avatar: event[0].name })
+      .subscribe((res: any) => {
+        console.log(res);
+      });
     // let self = this;
     // var reader = new FileReader();
     // reader.onload = function () {
@@ -338,6 +350,15 @@ export class StepperComponent implements OnInit, OnDestroy {
       if (!data[f]) disabled = true;
     });
     return disabled;
+  }
+
+  propertyType(index: string | number) {
+    this.property_type = index;
+  }
+
+  ownerDetails(index: string | number, value: string) {
+    this.owner_details = index;
+    this.owner_detailsValue = value;
   }
 
   setter(
