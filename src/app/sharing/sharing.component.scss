@@ -171,3 +171,19 @@
     }
 }
 // end style sharing component
+
+
+// start media query
+@media (max-width: 576px) {
+    .sharing {
+        min-width: 320px;
+        padding: 25px 20px;
+    }
+}
+
+@media (max-width: 850px) {
+    .sharing {
+        width: 95%;
+    }
+}
+// end media query

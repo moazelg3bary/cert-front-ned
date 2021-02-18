@@ -37,3 +37,14 @@
     }
 }
 // end style class review_my_idea
+
+// start media query
+@media (max-width: 576px) {
+    .review_my_idea {
+        min-width: 320px;
+        form {
+            padding: 40px 20px;
+        }
+    }
+}
+// end media query

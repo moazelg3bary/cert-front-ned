@@ -8,8 +8,9 @@
     height: 600px;
     z-index: 1600;
     position: fixed;
+    overflow-y: auto;
     min-width: 500px;
-    overflow: hidden;
+    overflow-x: hidden;
     padding: 25px 50px;
     // use var sass
     font-size: $font_14;
@@ -118,7 +119,7 @@
             float: right;
             // use var sass
             color: $c_click;
-            margin-top: 140px;
+            margin-top: 85px;
             padding: 14px 35px;
             // use var sass
             font-size: $font_14;
@@ -177,6 +178,7 @@
                     }
                 }
                 input {
+                    width: 100%;
                     border: none;
                     margin-top: 6px;
                     padding: 8px 10px;
@@ -205,3 +207,19 @@
     }
 }
 // end style class order_hight
+
+
+// start media query
+@media (max-width: 576px) {
+    .order_hight {
+        min-width: 320px;
+        padding: 25px 20px;
+    }
+}
+
+@media (max-width: 850px) {
+    .order_hight {
+        width: 95%;
+    }
+}
+// end media query
