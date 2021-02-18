@@ -27,3 +27,11 @@
     }
 }
 // end style class add_addres
+
+// start media query
+@media (max-width: 576px) {
+    .add_addres {
+        min-width: 320px;
+    }
+}
+// end media query

@@ -12,6 +12,7 @@ import { FormControl } from "@angular/forms";
 export class RestPasswordComponent implements OnInit {
   // names vars & types return
   TOKEN: string;
+  Email: string;
   isSucces: boolean;
   isLoading: boolean
   FormRestPassword:FormGroup;
@@ -43,7 +44,8 @@ export class RestPasswordComponent implements OnInit {
   ngOnInit() {
     // get Token user
     this.TOKEN = this.ActiveRouter.snapshot.paramMap.get("token");
-  }
+    this.Email = this.ActiveRouter.snapshot.queryParamMap.get("email");
+ }
 
   // navigate to LoginComponent
   navTo(page) {
@@ -54,9 +56,9 @@ export class RestPasswordComponent implements OnInit {
   RestPassword() {
       this.isLoading = true;
       this.Auth.resrtPassword(this.TOKEN, {
-        email: "zzmezomoazzz@gmail.com", // this is email just testimg
+        email: this.Email,
         password: this.FormRestPassword.controls.new_password.value,
-      }).subscribe((res: any) =>  {
+      }).subscribe((res: any) => {
         this.isSucces = res.success;
         this.isLoading = false;
       });

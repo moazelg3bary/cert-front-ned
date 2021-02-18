@@ -83,3 +83,26 @@
     }
 }
 // end style class add_addres
+
+
+// start media query
+@media (max-width: 576px) {
+    .edit_payment {
+        min-width: 320px;
+        form {
+            padding: 35px 15px;
+            .card-payment {
+                .input {
+                    // margin-bottom: 15px !important;
+                    select:last-of-type {
+                        margin-right: 0 !important;
+                    }
+                    .wrap_1 i {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+// end media query

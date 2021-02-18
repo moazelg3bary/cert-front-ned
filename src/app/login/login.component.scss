@@ -67,6 +67,7 @@ a:hover {
         left: 50%;
         z-index: 1600;
         position: fixed;
+        min-width: 320px;
         transform: translate(-50%, -50%);
     }
 }

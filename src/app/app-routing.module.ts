@@ -1,3 +1,4 @@
+import { ReviewMyIdeaComponent } from './review-my-idea/review-my-idea.component';
 import { DeliveryPaymentComponent } from './order-high-copy/components/delivery-payment/delivery-payment.component';
 import { DeliveryDetailsComponent } from './order-high-copy/components/delivery-details/delivery-details.component';
 import { SharingComponent } from './sharing/sharing.component';
@@ -60,6 +61,7 @@ const routes: Routes = [
         ],
       },
       { path: "sharing/:id", component: SharingComponent },
+      { path: "review", component: ReviewMyIdeaComponent },
     ],
   },
   {

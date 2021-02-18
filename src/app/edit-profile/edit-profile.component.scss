@@ -50,3 +50,29 @@
     }
 }
 // end style class body_profile
+
+
+// start media query
+@media (max-width: 515px) {
+    .nav_edit {
+        li {
+            display: block;
+            margin-right: 0 !important;
+            &::before {
+                top: 0;
+                left: 140px;
+                border-color: transparent #C4C4C4 transparent transparent;                
+            }
+            &:not(:last-of-type) {
+                margin-bottom: 20px;
+            }
+        }
+    }
+}
+
+@media (min-width: 515px) and (max-width: 768px) {
+    .nav_edit li {
+        margin-right: 0 !important;
+    }
+}
+// end media query
