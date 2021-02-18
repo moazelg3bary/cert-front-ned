@@ -12,19 +12,41 @@
             </div>
             <div class="col-8">
                 <div class="content">
-                    <h6 (click)="back('dashboard')">
-                        <span class="back">
-                            <b><i class="fa fa-arrow-left"></i> Back to dashboard</b>
-                        </span>
-                    </h6>
-                    <div class="lds-ripple middle" *ngIf="loading">
-                        <div></div>
-                        <div></div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h6 (click)="back('dashboard')">
+                                <span class="back">
+                                    <b><i class="fa fa-arrow-left"></i> Back to dashboard</b>
+                                </span>
+                            </h6>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="lds-ripple middle" *ngIf="loading">
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <p class="title">{{certificate.title}}</p>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <p class="desc">
+                                {{certificate.description}}
+                            </p>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <p [routerLink]="['order', certificate.id]" class="desc" style="color: #000; cursor: pointer;" >
+                                <img style="margin-right: 8px;" src="../../../assets/img/iprotect/Group 182.png" alt="" srcset="">
+                                <b tyle="vertical-align: middle">Order hard copy</b>
+                            </p>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <p class="desc" style="color: #000; cursor: pointer;">
+                                <img style="margin-right: 8px;" src="../../../assets/img/review.svg" alt="" srcset="">
+                                <b tyle="vertical-align: middle">Review my idea</b>
+                            </p>
+                        </div>
                     </div>
-                    <p class="title">{{certificate.title}}</p>
-                    <p class="desc">
-                        {{certificate.description}}
-                    </p>
 
                     <div class="attachments">
                         <p class="head">Attachments</p>
