@@ -30,15 +30,19 @@
             "styles": [
               "./node_modules/bootstrap/dist/css/bootstrap.css",
               "./node_modules/intl-tel-input/build/css/intlTelInput.css",
-              "./node_modules/font-awesome/css/font-awesome.css",
+              "src/styles.scss",
               "src/assets/fonts.scss",
-              "src/styles.scss"
+              "src/assets/css/all.css", 
+              "src/assets/css/A.plugin.css.pagespeed.cf.qRdBcN3BWb.css"
             ],
             "scripts": [
               "./node_modules/jquery/dist/jquery.js",
-              "./node_modules/intl-tel-input/build/js/intlTelInput.js",
               "./node_modules/popper.js/dist/umd/popper.js",
-              "./node_modules/bootstrap/dist/js/bootstrap.js"
+              "./src/assets/js/plugin.js",
+              "./src/assets/js/owl.carousel.min.js",
+              "./src/assets/js/main.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.js",
+              "./node_modules/intl-tel-input/build/js/intlTelInput.js"
             ]
           },
           "configurations": {

@@ -34,6 +34,7 @@ import { DeliveryDetailsComponent } from './order-high-copy/components/delivery-
 import { DeliveryPaymentComponent } from './order-high-copy/components/delivery-payment/delivery-payment.component';
 import { DeliveryAddAddressComponent } from './order-high-copy/components/delivery-add-address/delivery-add-address.component';
 import { DeliveryAddPaymentComponent } from './order-high-copy/components/delivery-add-payment/delivery-add-payment.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { DeliveryAddPaymentComponent } from './order-high-copy/components/delive
     DeliveryPaymentComponent,
     DeliveryAddAddressComponent,
     DeliveryAddPaymentComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserAnimationsModule,

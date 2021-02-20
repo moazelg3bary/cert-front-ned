@@ -1,3 +1,4 @@
+import { HomeComponent } from './home/home.component';
 import { ReviewMyIdeaComponent } from './review-my-idea/review-my-idea.component';
 import { DeliveryPaymentComponent } from './order-high-copy/components/delivery-payment/delivery-payment.component';
 import { DeliveryDetailsComponent } from './order-high-copy/components/delivery-details/delivery-details.component';
@@ -21,6 +22,7 @@ import { DeliveryAddAddressComponent } from './order-high-copy/components/delive
 import { DeliveryAddPaymentComponent } from './order-high-copy/components/delivery-add-payment/delivery-add-payment.component';
 
 const routes: Routes = [
+  {path: '', component: HomeComponent},
   {
     path: "login",
     component: LoginComponent,
