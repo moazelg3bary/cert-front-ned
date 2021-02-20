@@ -26,16 +26,20 @@
                                 <div></div>
                             </div>
                         </div>
+
                         <div class="col-sm-12">
-                            <p class="title">{{certificate.title}}</p>
+                            <p class="title">{{certificate[0]?.title}}</p>
                         </div>
                         <div class="col-6 col-sm-4 col-md-12 col-lg-4">
                             <p class="desc">
-                                {{certificate.description}}
+                                {{certificate[0]?.description}}
                             </p>
                         </div>
+                        <ng-container>
+
+                        </ng-container>
                         <div class="col-6 col-sm-4 col-md-6 col-lg-4">
-                            <p [routerLink]="['order', certificate.id]" class="desc" style="color: #000; cursor: pointer;" >
+                            <p [routerLink]="['order', certificate[0]?.id]" class="desc" style="color: #000; cursor: pointer;" >
                                 <img style="margin-right: 8px;" src="../../../assets/img/iprotect/Group 182.png" alt="" srcset="">
                                 <b style="vertical-align: middle">Order hard copy</b>
                             </p>
@@ -47,7 +51,6 @@
                             </p>
                         </div>
                     </div>
-
                     <div class="attachments text-center text-md-left">
                         <p class="head">Attachments</p>
                         <div class="row">
@@ -55,11 +58,12 @@
                             <div class="col-12 mb-4 col-md-6 col-lg-3 attachments__size">9.34 MB <img class="download-icon"
                                     src="assets/img/dashboard/download.svg"></div>
                             <div class="col-12 mb-4 col-md-6 col-lg-3 attachments__date">Uploaded on: 07.09.2020, 15:34</div>
-                            <div [routerLink]="['sharing', certificate.id]" class="col-12 mb-4 col-md-6 col-lg-3 attachments__sharing"> 
+                            <div [routerLink]="['sharing', certificate[0]?.id]" class="col-12 mb-4 col-md-6 col-lg-3 attachments__sharing"> 
                                 <img class="download-icon"src="assets/img/dashboard/share.svg" alt=""> Secure sharing
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>

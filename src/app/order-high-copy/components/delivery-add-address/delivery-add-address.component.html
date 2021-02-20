@@ -35,7 +35,11 @@
         <div class="row">
             <div class="col-sm-12 text-right wrap_btn">
                 <!-- use appBtn component -->
-                <app-btn icon="arrow-right" color="#2673E5" bg_color="transparent" btn_title="next"
+                <app-btn
+                    routerLink="/payment"
+                    slideNext="slideNext"
+                    icon="arrow-right" 
+                    btn_title="next"
                     [isloading]="isLoading" [disabled]="FormAddAdress.invalid">
                 </app-btn>
             </div>

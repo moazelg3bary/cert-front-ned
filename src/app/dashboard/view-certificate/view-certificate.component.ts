@@ -23,10 +23,13 @@ export class ViewCertificateComponent implements OnInit {
     this.route.params.subscribe((params) => {
       this.certificateService.getCertificateById(params['id']).subscribe((res: any) => {
         this.certificate = res.data;
+        console.log(res);
         this.loading = false;
         this.loader.stop();
       })      
     }); 
+
+    console.log(this.certificate);
   }
 
   download() {

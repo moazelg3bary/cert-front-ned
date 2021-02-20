@@ -2,8 +2,15 @@
 <div class="over_lay"></div>
 <!-- end class over_lay -->
 
+<app-success
+    navigate="../../"
+    *ngIf="isSuccess"
+    title="Share attachments" 
+    body="Hello every body share is true <br> you are the best in the world good game">
+</app-success>
+
 <!-- start sharing component -->
-<div class="sharing">
+<div *ngIf="!isSuccess" class="sharing">
     <div class="row">
         <div class="col-sm-12">
             <span class="span">Share attachments</span>
@@ -19,32 +26,41 @@
         </div>
         <ng-container [ngSwitch]="typeShare">
             <div class="last_screen" *ngSwitchCase="'invite'">
-                <div class="col-sm-12 copy">
-                    <div class="wrap">
-                        <img src="../../assets/img/copy.svg" alt="copy text" srcset="">
-                        <b>Copy invitation link</b>
+                <form [formGroup]="FormInvitation" (ngSubmit)="invitation()">
+                    <div class="col-sm-12 copy">
+                        <div class="wrap">
+                            <img src="../../assets/img/copy.svg" alt="copy text" srcset="">
+                            <b>Copy invitation link</b>
+                        </div>
                     </div>
-                </div>
-                <div class="col-sm-12 des">
-                    <p>
-                        Anyone who got the link can <b>request access</b> to view the files for the selected certificate. <br>
-                        if you feel the link is being misused, you can <b>Generate new link.</b>
-                    </p>
-                </div>
-                <div class="col-sm-12 chosse_invite">
-                    <span class="span"><b>Or invite people by email</b></span>
-                </div>
-                <div class="col-sm-12 email_access">
-                    <label for="">Enter email address</label>
-                    <input type="text" value="Abdulla.kadry@gmail.com" />
-                </div>
-                <div class="col-sm-12 who_access">
-                    <ul>
-                        <li><span>Amr.Mohammed@gmail.com</span><i class="fa fa-times"></i></li>
-                        <li><span>Amr.Mohammed@gmail.com</span><i class="fa fa-times"></i></li>
-                    </ul>
-                </div>
-                <app-btn btn_title="Send invitation"></app-btn>
+                    <div class="col-sm-12 des">
+                        <p>
+                            Anyone who got the link can <b>request access</b> to view the files for the selected certificate. <br>
+                            if you feel the link is being misused, you can <b>Generate new link.</b>
+                        </p>
+                    </div>
+                    <div class="col-sm-12 chosse_invite">
+                        <span class="span"><b>Or invite people by email</b></span>
+                    </div>
+                    <div class="col-sm-12 email_access">
+                        <label for="">Enter email address</label>
+                        <input 
+                            type="email" 
+                            formControlName="email"
+                            placeholder="Abdulla.kadry@gmail.com" />
+                    </div>
+                    <div class="col-sm-12 who_access">
+                        <ul>
+                            <li><span>Amr.Mohammed@gmail.com</span><i class="fa fa-times"></i></li>
+                            <li><span>Amr.Mohammed@gmail.com</span><i class="fa fa-times"></i></li>
+                        </ul>
+                    </div>
+                    <app-btn
+                        [isloading]="isloading"
+                        [disabled]="FormInvitation.invalid"
+                         btn_title="Send invitation">
+                    </app-btn>
+                </form>
             </div>
 
             <div class="first_screen" *ngSwitchDefault>

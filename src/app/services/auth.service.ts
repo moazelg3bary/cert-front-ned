@@ -44,6 +44,10 @@ export class AuthService {
     return this.http.post(`password/reset/${token}`, data);
   }
 
+  invitation(data: {}) {
+    return this.http.post("auth/invite", data);
+  }
+
   public upload(formData) {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
