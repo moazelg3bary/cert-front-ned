@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -17,7 +18,7 @@ import { BoxPaymentComponent } from './box-payment/box-payment.component';
     SuccessComponent,
     BoxPaymentComponent,
   ],
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule],
   exports: [
     NavbarComponent,
     InputFiledComponent,

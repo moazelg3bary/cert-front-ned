@@ -10,6 +10,7 @@ export class SuccessComponent implements OnInit {
   // init props & input coming
   @Input("title") title: string;
   @Input("body") body: string;
+  @Input('navigate') navigate: any
 
   // init all Output data send to parent component
   @Output() eventClosePopup: EventEmitter<boolean> = new EventEmitter();
