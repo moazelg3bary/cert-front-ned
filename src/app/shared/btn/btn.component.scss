@@ -1,3 +1,25 @@
 button {
+    overflow: hidden;
+    position: relative;
     padding: 12px 20px;
+    &.slideNext {
+        color: #2673e5;
+        background: transparent;
+        span {
+            top: 0;
+            left: 0;
+            z-index: -1;
+            width: 0%;
+            height: 100%;
+            position: absolute;
+            background: #2673e5;
+            transition: all .2s ease-in-out;
+        }
+        &:hover {
+            color: #fff;
+            span {
+                width: 100%;
+            }
+        }
+    }
 }

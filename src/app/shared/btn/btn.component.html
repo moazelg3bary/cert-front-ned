@@ -1,7 +1,8 @@
 <button 
     [disabled]="disabled || isloading"
     [type]="btn_type" 
-    class="btn btn-primary"
+    class="btn btn-primary {{slideNext}}"
     [ngStyle]="{'background-color': bg_color, 'border-color': b_color, 'color': color}">
     <b>{{isloading ? 'Wait...' : btn_title}} <i [ngStyle]="{'margin-left' : icon ? '13px' : null}" [class]="'fa fa-' + icon"></i></b>
+    <span></span>
 </button>
