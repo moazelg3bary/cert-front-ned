@@ -2,9 +2,19 @@
 <div class="over_lay"></div>
 <!-- end  class over_lay -->
 
+<!-- start app-success -->
+
+<app-success
+    *ngIf="isSuccess" 
+    navigate="../"
+    title="Review my idea" 
+    body="We have received your request and we will review it carefully. <br> Please expect to hear back from us within 5 working days.">
+</app-success>
+<!-- end  app-success -->
+
 <!-- start component review-my-idea -->
-<div class="review_my_idea">
-    <form [formGroup]='FormReviewMyIdea'>
+<div *ngIf="!isSuccess" ng class="review_my_idea">
+    <form [formGroup]='FormReviewMyIdea' (ngSubmit)="ReviewMyIdea()">
         <div class="row">
             <div class="col-sm-12 title overflow-hidden">
                 <p class="float-left"><b>Review my idea</b></p>
@@ -18,24 +28,26 @@
             <div class="col-sm-12 col-md-12 input">
                 <app-input-filed
                     defInput="select"
-                    nameInput="test"
+                    nameInput="status"
                     lable="My current status is:"
                     [formGroupParent]="FormReviewMyIdea"
-                    [items]="['Tanta', 'Cairo', 'Alex']"
+                    [items]="['Innovation Process', 'Strategy', 'Business Plan', 'Minimum Viable Product', 'Brainstorming' , 'Business Case']"
                     >
                 </app-input-filed>
             </div>
             <div class="col-sm-12 col-md-12 input">
                 <app-input-filed 
                     defInput="area" 
-                    nameInput="note" 
+                    nameInput="business" 
                     lable="My business needs are:"
                     [formGroupParent]="FormReviewMyIdea">
                 </app-input-filed>
             </div>
             <div class="col-sm-12 overflow-hidden">
                 <app-btn
-                    btn_type="button"
+                    [isloading]="isLoading"
+                    [disabled]="FormReviewMyIdea.invalid || FormReviewMyIdea.value.status == 'select'"
+                    btn_type="submit"
                     btn_title="Submit request">
                 </app-btn>
             </div>

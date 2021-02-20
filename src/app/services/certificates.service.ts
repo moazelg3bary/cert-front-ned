@@ -9,6 +9,11 @@ export class CertificatesService {
 
   constructor(private http: HttpClient) { }
 
+
+  reviewIdeaEmail(data: {}) {
+    return this.http.post('auth/review-idea', data)
+  }
+
   public getCertificates() {
     return this.http.get('certificate');
   }
