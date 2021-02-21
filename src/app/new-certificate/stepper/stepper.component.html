@@ -133,13 +133,13 @@
                         </div>
 
                         <div *ngIf="currentStep == 2">
-                          <div class="upload">
+                          <div class="upload" [formGroup]="myForm" (ngSubmit)="submit()">
                             <p class="header">
                               Please upload files with details <br />
                               of your idea/design/code…
                               <span>(MAXIMUM 2 FILES)</span>
                             </p>
-                            <input hidden name="logo" type="file" #fileInput (change)="fileSelected($event.target.files)" />
+                            <input hidden name="logo" type="file" #fileInput (change)="fileSelected($event)"  formControlName="file"/>
                             <div appDragDrop (onFileDropped)="fileSelected($event)" class="profile-picture">
                               <div class="drag" *ngIf="!file">
                                 <p>Drag a file here.</p>

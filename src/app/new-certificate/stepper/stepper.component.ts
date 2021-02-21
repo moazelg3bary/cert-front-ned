@@ -13,6 +13,7 @@ import { CertificatesService } from "src/app/services/certificates.service";
 import { NgxUiLoaderService } from "ngx-ui-loader";
 import { Toaster } from "ngx-toast-notifications";
 import { DomSanitizer } from "@angular/platform-browser";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
 
 @Component({
   selector: "app-stepper",
@@ -21,6 +22,11 @@ import { DomSanitizer } from "@angular/platform-browser";
 })
 export class StepperComponent implements OnInit, OnDestroy {
   @ViewChild("rightPanel", { static: true }) rightPanel: ElementRef;
+
+  myForm = new FormGroup({
+    file: new FormControl("", [Validators.required]),
+    fileSource: new FormControl("", [Validators.required]),
+  });
 
   steps: any[] = [];
   currentStep: number = 3;
@@ -252,29 +258,18 @@ export class StepperComponent implements OnInit, OnDestroy {
   }
 
   fileSelected(event) {
-    // if (this.allowedExt.includes(event[0].name.split('.').pop())) {
-    this.file = event.item(0);
-    this.fileInfo = {
-      size: this.formatBytes(this.file.size),
-      type: this.file.name.split(".").pop(),
-      name: this.file.name,
-    };
-    let data = new FormData();
-    let save = data.append("file", this.file, this.file.name);
-    console.log(this.fileInfo);
-    this.certificatesService
-      .uploadLogo({ logo: this.fileInfo })
-      .subscribe((res: any) => {
-        console.log(res);
+
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.myForm.patchValue({
+        fileSource: file,
       });
-    // let self = this;
-    // var reader = new FileReader();
-    // reader.onload = function () {
-    //   self.avatar_background = self.sanitization.bypassSecurityTrustStyle(`url(${reader.result})`);
-    //   self.avatar = reader.result;
-    // };
-    // reader.readAsDataURL(this.files);
-    // }
+      const formData = new FormData();
+      formData.append("file", this.myForm.get("fileSource").value);
+      this.certificatesService.uploadLogo({ logo: formData}).subscribe((res: any) => {
+          console.log(res);
+        });
+    }
   }
 
   companyLogoSelected(event) {
