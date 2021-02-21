@@ -33,7 +33,7 @@ export class CertificatesService {
     const headers = new HttpHeaders();
     headers.append('Accept', 'application/json');
     headers.append('Content-Type', 'multipart/form-data');
-    return this.http.post('certificate/upload', data, { headers: headers });
+    return this.http.post("certificate/logo", data, { headers: headers });
   }
 
   public uploadLogo(data) {

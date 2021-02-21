@@ -139,7 +139,7 @@
                               of your idea/design/code…
                               <span>(MAXIMUM 2 FILES)</span>
                             </p>
-                            <input hidden type="file" #fileInput (change)="fileSelected($event.target.files)" />
+                            <input hidden name="logo" type="file" #fileInput (change)="fileSelected($event.target.files)" />
                             <div appDragDrop (onFileDropped)="fileSelected($event)" class="profile-picture">
                               <div class="drag" *ngIf="!file">
                                 <p>Drag a file here.</p>
@@ -213,6 +213,15 @@
 
                                     <p class="text-danger help-block"></p>
                                   </div>
+                                  <div class="col-lg-9">
+                                    <label for="exampleDropdownFormEmail1">FULL NAME AR (AS PER ID)</label>
+                                    <input type="text" class="form-control" name="full_name_ar" [(ngModel)]="
+                                        steps[currentStep - 1].fields.data
+                                          .full_name_ar
+                                      " placeholder="Start typing..." />
+
+                                    <p class="text-danger help-block"></p>
+                                  </div>                                  
                                   <div class="col-lg-3">
                                     <label class="tooltip-main" for="exampleDropdownFormEmail1">
                                       NATIONALITY
@@ -953,6 +962,15 @@
 
                                                   <p class="text-danger help-block"></p>
                                                 </div>
+                                                <div class="col-lg-9">
+                                                  <label for="exampleDropdownFormEmail1">FULL NAME AR (AS PER ID)</label>
+                                                  <input type="text" class="form-control" name="full_name_ar" [(ngModel)]="
+                                                      steps[2].fields.data
+                                                        .full_name_ar
+                                                    " placeholder="Start typing..." />
+
+                                                  <p class="text-danger help-block"></p>
+                                                </div>                                                 
                                                 <div class="col-lg-3 mt-0">
                                                   <label class="tooltip-main" for="exampleDropdownFormEmail1">
                                                     NATIONALITY
@@ -1433,9 +1451,10 @@
                       </div>
 
                       <div class="buton-login text-center text-lg-right">
-                        <button (click)="nextStep($event)" class="btn btn-primary next" [disabled]="checkDisabled()"
+                        <button (click)="nextStep($event)" class="btn btn-primary next slideNext" [disabled]="checkDisabled()"
                           id="send_button">
                           next <i class="fa fa-arrow-right"></i>
+                          <span></span>
                         </button>
                       </div>
                     </form>

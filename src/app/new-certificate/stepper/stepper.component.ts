@@ -163,6 +163,7 @@ export class StepperComponent implements OnInit, OnDestroy {
             recursive: false,
             fields: [
               "full_name",
+              "full_name_ar",
               "id_number",
               "email",
               "phone_number",
@@ -256,12 +257,13 @@ export class StepperComponent implements OnInit, OnDestroy {
     this.fileInfo = {
       size: this.formatBytes(this.file.size),
       type: this.file.name.split(".").pop(),
+      name: this.file.name,
     };
     let data = new FormData();
-    data.append("file", this.file, this.file.name);
-    console.log(event[0].name);
+    let save = data.append("file", this.file, this.file.name);
+    console.log(this.fileInfo);
     this.certificatesService
-      .uploadLogo({ avatar: event[0].name })
+      .uploadLogo({ logo: this.fileInfo })
       .subscribe((res: any) => {
         console.log(res);
       });

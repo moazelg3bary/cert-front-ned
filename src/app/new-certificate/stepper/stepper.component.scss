@@ -305,14 +305,15 @@
 }
 
 .next {
-  margin-top: 10px;
-  border: 1px solid #2673e5;
-  background-color: white;
-  color: #2673e5;
-  width: 130px;
-  font-weight: 700;
-  font-size: 18px;
+  position: relative;
   height: 50px;
+  width: 130px;
+  font-size: 18px;
+  color: #2673e5;
+  margin-top: 10px;
+  font-weight: 700;
+  background-color: transparent;
+  border: 1px solid #2673e5;
   i {
     margin-left: 10px;
     color: #2673e5;
@@ -320,13 +321,29 @@
     font-size: 14px;
     transform: translateY(-1px);
   }
-}
-.next:hover {
-  background-color: #2673e5;
-  color: white;
-  i {
-    color: white;
-  }
+  &.slideNext {
+      color: #2673e5;
+      background: transparent;
+      span {
+          top: 0;
+          left: 0;
+          z-index: -1;
+          width: 0%;
+          height: 100%;
+          position: absolute;
+          background: #2673e5;
+          transition: all .2s ease-in-out;
+      }
+      &:hover {
+          color: #fff;
+          i {
+            color: #fff;
+          }
+          span {
+              width: 100%;
+          }
+      }
+  }  
 }
 
 .add-owner {
