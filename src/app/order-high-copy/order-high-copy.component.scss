@@ -118,13 +118,12 @@
         button {
             float: right;
             // use var sass
-            color: $c_click;
+            color: #fff;
             margin-top: 85px;
             padding: 14px 35px;
             // use var sass
             font-size: $font_14;
             font-family: $font_bold;
-            background-color: transparent;
             &:disabled {
                 // use var sass
                 color: $c_white;

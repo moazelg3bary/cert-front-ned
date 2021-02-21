@@ -25,29 +25,45 @@
                 <div>
                     <label class="title" for=""><b>Choose from your saved cards</b></label>
                     <div class="form-row">
+                        <!-- 
+                            if api getCards is work uncomment box loop to get all cards ---|
+                        -->
+                        <!-- <div class="form-group col-12" *ngFor="let card of cards">
+                            <div class="wrap">
+                                <input class="custom_input" type="radio" name="payment" id="payment-{{card.id}}">
+                                <label class="custom_label" for="payment-{{card.id}}">
+                                    <span></span>
+                                </label>
+                                <ul>
+                                    <li>MasterCard ****{{card.number | slice: -4}}</li>
+                                    <li>{{card.name}}</li>
+                                    <li>Expires {{card["Exp-Month"] + "/" + card["Exp-year"]}}</li>
+                                </ul>
+                            </div>
+                        </div> -->
                         <div class="form-group col-12">
                             <div class="wrap">
-                                <input class="custom_input" type="radio" name="address" id="payment">
+                                <input class="custom_input" type="radio" name="payment" id="payment">
                                 <label class="custom_label" for="payment">
                                     <span></span>
                                 </label>
                                 <ul>
-                                    <li>MasterCard ****5482</li>
-                                    <li>Amr Mohammed</li>
-                                    <li>Expires 12/2025</li>
+                                    <li>MasterCard ****4632</li>
+                                    <li>Moaz Ahmed</li>
+                                    <li>Expires 12/2020</li>
                                 </ul>
                             </div>
                         </div>
                         <div class="form-group col-12">
                             <div class="wrap">
-                                <input class="custom_input" type="radio" name="address" id="payment_1">
-                                <label class="custom_label" for="payment_1">
+                                <input class="custom_input" type="radio" name="payment" id="payment-1">
+                                <label class="custom_label" for="payment-1">
                                     <span></span>
                                 </label>
                                 <ul>
-                                    <li>MasterCard ****5482</li>
-                                    <li>Amr Mohammed</li>
-                                    <li>Expires 12/2025</li>
+                                    <li>MasterCard ****4632</li>
+                                    <li>Moaz Ahmed</li>
+                                    <li>Expires 12/2020</li>
                                 </ul>
                             </div>
                         </div>
@@ -72,7 +88,12 @@
                 <li class="hr"></li>
                 <li><b>Total <span>$15</span></b></li>
             </ul>
-            <button disabled class="btn btn-primary"><b>Place order</b></button>
+            <button 
+                (click)="sendPrice(15)" 
+                class="btn btn-primary"
+                [disabled]="!getIdAddress || isloading" >
+                <b>{{isloading ? 'Wait' : 'Place order'}}</b>
+            </button>
         </div>        
     </div>
 </div>

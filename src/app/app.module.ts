@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -71,6 +72,7 @@ import { HomeComponent } from './home/home.component';
     FormsModule,
     Ng2SearchPipeModule,
     ReactiveFormsModule,
+    RouterModule,
     NgbModule,
     ToastNotificationsModule,
     NgxUiLoaderModule,

@@ -51,5 +51,9 @@ export class EditProfileService {
   deleteCard(cardID: {}) {
     return this.http.post("auth/cards/delete", cardID);
   }
+
+  procesPrice(data: {}) {
+    return this.http.post("auth/process", data);
+  }
   //end post api cards
 }

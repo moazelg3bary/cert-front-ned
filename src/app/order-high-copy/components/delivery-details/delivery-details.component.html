@@ -6,27 +6,19 @@
         <form action="">
             <label class="title" for=""><b>Choose from your address book:</b></label>
             <div class="form-row">
-                <div class="form-group col-12">
+                <div class="form-group col-12" *ngFor="let address of addressUser">
                     <div class="wrap">
-                        <input class="custom_input" type="radio" name="address" id="address">
-                        <label for="address" class="custom_label">
+                        <input
+                            class="custom_input"
+                            type="radio" 
+                            name="address" 
+                            id="address-{{address.id}}">
+                        <label for="address-{{address.id}}" class="custom_label" (click)="sendIdAddress(address.id)">
                             <span></span>
                         </label>
                         <ul>
-                            <li>30-03-10</li>
-                            <li>Franz Mehring Platz 3, 10243, Berlin</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="form-group col-12">
-                    <div class="wrap">
-                        <input class="custom_input" type="radio" name="address" id="address_2">
-                        <label for="address_2" class="custom_label">
-                            <span></span>
-                        </label>
-                        <ul>
-                            <li>30-03-10</li>
-                            <li>Franz Mehring Platz 3, 10243, Berlin</li>
+                            <li>{{address.created_at | date: 'd-M-y'}}</li>
+                            <li>{{address.address}}</li>
                         </ul>
                     </div>
                 </div>
@@ -39,7 +31,10 @@
             </a>
         </h4>
         <app-btn
+            [disabled]="!getIdAddress"
+            btn_type="submit"
             routerLink="payment"
+            [queryParams]="{addresId: getIdAddress}"
             slideNext="slideNext"
             icon="arrow-right" 
             btn_title="next">
