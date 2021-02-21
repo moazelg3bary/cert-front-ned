@@ -93,9 +93,9 @@
                               <div class="col-lg-6">
                                 <div class="control-group">
                                   <label for="exampleDropdownFormEmail1">TITLE OF YOUR WORK - ENGLISH</label>
-                                  <input [(ngModel)]="
-                                      steps[currentStep - 1].fields.title
-                                    " type="text" class="form-control" name="title" placeholder="Start typing..."
+                                  <input (keyup)="test_1($event.target.value)"
+                             
+                                      type="text" class="form-control" name="title" placeholder="Start typing..."
                                     data-validation-required-message="Please enter your Email." />
                                   <p class="text-danger help-block"></p>
                                   <div style="color: #a3abbd">

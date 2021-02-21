@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Injectable, NgModule } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpHeaders, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -8,7 +9,14 @@ const SERVER = environment.production ? 'http://iprotect-mena.com/api' : 'http:/
 
 @Injectable()
 export class HttpsRequestInterceptor implements HttpInterceptor {
+
+    constructor(private router: Router) {}
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+
+        // if (localStorage.getItem("login") == null) {
+        //     this.router.navigate(["login"]);
+        // }
+
         if(req.url.includes('countries')) return next.handle(req);
         const dupReq = req.clone({
             url: `${SERVER}/${req.url}`,
@@ -16,7 +24,8 @@ export class HttpsRequestInterceptor implements HttpInterceptor {
                 'Authorization': `Bearer ${localStorage.getItem('iprotect__token')}`,
             }),
         });
-        console.log(dupReq);
+        console.log(dupReq, '132131');
+        console.log(localStorage.getItem("iprotect__token"), "132131");
         return next.handle(dupReq);
     }
 };

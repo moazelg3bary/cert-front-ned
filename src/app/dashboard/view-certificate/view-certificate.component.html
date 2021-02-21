@@ -12,7 +12,7 @@
             </div>
             <div class="col-sm-12 col-md-8">
                 <div class="content">
-                    <div class="row">
+                    <div class="row mx-0">
                         <div class="col-sm-12">
                             <h6 (click)="back('dashboard')">
                                 <span class="back">
@@ -38,6 +38,9 @@
                         <ng-container>
 
                         </ng-container>
+                        <div>
+
+                        </div>
                         <div class="col-6 col-sm-4 col-md-6 col-lg-4">
                             <p [routerLink]="['order', certificate[0]?.id]" class="desc" style="color: #000; cursor: pointer;" >
                                 <img style="margin-right: 8px;" src="../../../assets/img/iprotect/Group 182.png" alt="" srcset="">
@@ -50,19 +53,26 @@
                                 <b style="vertical-align: middle">Review my idea</b>
                             </p>
                         </div>
-                    </div>
-                    <div class="attachments text-center text-md-left">
-                        <p class="head">Attachments</p>
-                        <div class="row">
-                            <div class="col-12 mb-4 col-md-6 col-lg-3 attachments__title">My research work.pdf</div>
-                            <div class="col-12 mb-4 col-md-6 col-lg-3 attachments__size">9.34 MB <img class="download-icon"
-                                    src="assets/img/dashboard/download.svg"></div>
-                            <div class="col-12 mb-4 col-md-6 col-lg-3 attachments__date">Uploaded on: 07.09.2020, 15:34</div>
-                            <div [routerLink]="['sharing', certificate[0]?.id]" class="col-12 mb-4 col-md-6 col-lg-3 attachments__sharing"> 
-                                <img class="download-icon"src="assets/img/dashboard/share.svg" alt=""> Secure sharing
+                        <div class="attachments text-center text-md-left">
+                            <p class="head">Attachments</p>
+                            <div class="row">
+                                <ng-container *ngFor="let cert of certificate">
+                                    <div class="col-12 mb-4 col-md-6 col-lg-3 attachments__title">My {{cert.property_type}} work.pdf</div>
+                                    <div class="col-12 mb-4 col-md-6 col-lg-3 attachments__size">9.34 MB <img class="download-icon"
+                                            src="assets/img/dashboard/download.svg"></div>
+                                    <div class="col-12 mb-4 col-md-6 col-lg-3 attachments__date">Uploaded on: {{cert.updated_at | date: 'MM.d.yyyy, h.mm'}}</div>
+                                    <div [routerLink]="['sharing', cert.id]" class="col-12 mb-4 col-md-6 col-lg-3 attachments__sharing"> 
+                                        <img class="download-icon"src="assets/img/dashboard/share.svg" alt=""> Secure sharing
+                                    </div>
+                                </ng-container>
                             </div>
                         </div>
                     </div>
+                    <div class="update">
+                        <span>Want to upload new files?</span>
+                        <h4 routerLink="/new-certificate/stepper" [queryParams]="{certId: certId}">Update certificate</h4>
+                    </div>
+                    
 
                 </div>
             </div>

@@ -41,6 +41,7 @@ export class LoginComponent {
     this.loader.start();
     this.authService.login(this.user).subscribe(
       (res: any) => {
+        console.log(res)
         const accessToken = res.data.token;
         const userData = res.data;
         localStorage.setItem("iprotect__token", accessToken);

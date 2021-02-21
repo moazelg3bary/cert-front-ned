@@ -49,6 +49,7 @@ export class DashboardComponent implements OnInit {
     this.certificatesService.getCertificates().subscribe((res: any) => {
       this.loading = false;
       // this.certificates = [];
+      console.log(res)
       this.certificates = res.data;
       this.drafts = this.certificatesService.getDrafts();
       this.loader.stop();

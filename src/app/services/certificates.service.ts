@@ -3,48 +3,53 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as uuid from 'uuid';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class CertificatesService {
-
-  constructor(private http: HttpClient) { }
-
+  constructor(private http: HttpClient) {}
 
   reviewIdeaEmail(data: {}) {
-    return this.http.post('auth/review-idea', data)
+    return this.http.post("auth/review-idea", data);
   }
 
   public getCertificates() {
-    return this.http.get('certificate');
+    return this.http.get("certificate");
   }
 
   public getCertificateById(id) {
-    return this.http.get('certificate/' + id);
+    return this.http.get("certificate/" + id);
   }
 
   public newCertificate(data) {
     const headers = new HttpHeaders();
-    headers.append('Accept', 'application/json');
-    headers.append('Content-Type', 'multipart/form-data');
-    return this.http.post('certificate', data, {headers: headers});
+    headers.append("Accept", "application/json");
+    headers.append("Content-Type", "multipart/form-data");
+    return this.http.post("certificate", data, { headers: headers });
+  }
+
+  public updateCertificate(id, data) {
+    const headers = new HttpHeaders();
+    headers.append("Accept", "application/json");
+    headers.append("Content-Type", "multipart/form-data");
+    return this.http.post(`certificate/update/${id}`, data, { headers: headers });
   }
 
   public upload(data) {
     const headers = new HttpHeaders();
-    headers.append('Accept', 'application/json');
-    headers.append('Content-Type', 'multipart/form-data');
+    headers.append("Accept", "application/json");
+    headers.append("Content-Type", "multipart/form-data");
     return this.http.post("certificate/logo", data, { headers: headers });
   }
 
   public uploadLogo(data) {
     const headers = new HttpHeaders();
-    headers.append('Accept', 'application/json');
-    headers.append('Content-Type', 'multipart/form-data');
-    return this.http.post('certificate/logo', data, { headers: headers });
+    headers.append("Accept", "application/json");
+    headers.append("Content-Type", "multipart/form-data");
+    return this.http.post("certificate/logo", data, { headers: headers });
   }
 
   public getDrafts() {
-    let drafts = localStorage['iprotect__drafts'] || '[]';
+    let drafts = localStorage["iprotect__drafts"] || "[]";
     drafts = JSON.parse(drafts);
     return drafts;
   }
@@ -57,45 +62,45 @@ export class CertificatesService {
   public saveDraftById(draft, id) {
     let drafts = this.getDrafts();
     drafts = drafts.map((d) => {
-      if(d.id == id) {
+      if (d.id == id) {
         d = draft;
         console.log(d);
       }
       return d;
-    })
+    });
     console.log(drafts);
-    localStorage['iprotect__drafts'] = JSON.stringify(drafts);
+    localStorage["iprotect__drafts"] = JSON.stringify(drafts);
   }
 
   public deleteDraftById(id) {
     let drafts = this.getDrafts();
     drafts = drafts.filter((d) => d.id !== id);
-    localStorage['iprotect__drafts'] = JSON.stringify(drafts);
+    localStorage["iprotect__drafts"] = JSON.stringify(drafts);
   }
 
   public saveDraft(steps, currentStep, draftId = null) {
-    if(draftId) {
+    if (draftId) {
       let draft = this.getDraftTemplate(steps, currentStep);
       this.saveDraftById(draft, draftId);
-      console.log('esxisting');
+      console.log("esxisting");
       return;
     }
-    let title = steps[0].fields['title'];
-    if(!title) return;
+    let title = steps[0].fields["title"];
+    if (!title) return;
     let drafts = this.getDrafts();
     let draft = this.getDraftTemplate(steps, currentStep);
     drafts.push(draft);
-    localStorage['iprotect__drafts'] = JSON.stringify(drafts);
+    localStorage["iprotect__drafts"] = JSON.stringify(drafts);
   }
 
   private getDraftTemplate(steps, currentStep) {
-    let title = steps[0].fields['title'];
+    let title = steps[0].fields["title"];
     return {
       id: uuid.v4(),
       title: title,
       created_at: new Date().getTime(),
       currentStep: currentStep,
-      steps: steps
-    }
+      steps: steps,
+    };
   }
 }

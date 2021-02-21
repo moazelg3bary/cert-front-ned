@@ -13,6 +13,7 @@ const SERVER = environment.production ? 'http://iprotect-mena.com/api' : 'http:/
   styleUrls: ['./view-certificate.component.scss']
 })
 export class ViewCertificateComponent implements OnInit {
+  certId: string | number;
   certificate: any = {};
   loading: boolean = true;
 
@@ -21,6 +22,9 @@ export class ViewCertificateComponent implements OnInit {
   ngOnInit() {
     this.loader.start();
     this.route.params.subscribe((params) => {
+      
+      this.certId = params["id"];
+
       this.certificateService.getCertificateById(params['id']).subscribe((res: any) => {
         this.certificate = res.data;
         console.log(res);

@@ -44,6 +44,8 @@ export class StepperComponent implements OnInit, OnDestroy {
   property_type: string | number = 0;
   owner_details: string | number = 0;
   owner_detailsValue: string = "individual";
+  updateCertID: string | number;
+  getSingaleCert: any;
   constructor(
     private location: Location,
     private route: ActivatedRoute,
@@ -55,6 +57,10 @@ export class StepperComponent implements OnInit, OnDestroy {
     private sanitization: DomSanitizer
   ) {}
 
+  test_1(e) {
+    console.log('event' ,e)
+    console.log(this.steps[0].fields);
+  }
   ngOnInit() {
     this.loader.start();
     setTimeout(() => {
@@ -63,6 +69,18 @@ export class StepperComponent implements OnInit, OnDestroy {
     window.onbeforeunload = () => {
       alert("aa");
     };
+    this.route.queryParamMap.subscribe((param: any) => {
+      this.updateCertID = param.params["certId"];
+      this.updateCertID ? (this.currentStep = 3) : "";
+    });
+
+    this.certificatesService
+      .getCertificateById(this.updateCertID)
+      .subscribe((res: any) => {
+        this.getSingaleCert = res.data[0];
+        console.log(this.getSingaleCert);
+      });
+
     this.rightPanel.nativeElement.style.width = window.innerWidth - 480 + "px";
     this.getCountries();
     this.steps = [
@@ -258,15 +276,17 @@ export class StepperComponent implements OnInit, OnDestroy {
   }
 
   fileSelected(event) {
-
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       this.myForm.patchValue({
         fileSource: file,
       });
+      console.log(file);
       const formData = new FormData();
       formData.append("file", this.myForm.get("fileSource").value);
-      this.certificatesService.uploadLogo({ logo: formData}).subscribe((res: any) => {
+      this.certificatesService
+        .uploadLogo({ logo: formData, id: 12 })
+        .subscribe((res: any) => {
           console.log(res);
         });
     }
@@ -390,22 +410,28 @@ export class StepperComponent implements OnInit, OnDestroy {
     this.steps.map((step) => {
       data = { ...data, ...step.fields };
     });
-    this.certificatesService.newCertificate(data).subscribe(
-      (res: any) => {
-        if (this.draftId)
-          this.certificatesService.deleteDraftById(this.draftId);
-        this.router.navigate(["dashboard/done"]);
-        this.loader.stop();
-        this.dontSave = true;
-      },
-      (err) => {
-        this.loader.stop();
-        this.toast.open({
-          text: "Make sure you fill all the fields.",
-          type: "danger",
-        });
-      }
-    );
+    if (this.updateCertID) {
+      this.certificatesService
+        .updateCertificate(this.updateCertID, data)
+        .subscribe((res) => console.log(res));
+    } else {
+      this.certificatesService.newCertificate(data).subscribe(
+        (res: any) => {
+          if (this.draftId)
+            this.certificatesService.deleteDraftById(this.draftId);
+          this.router.navigate(["dashboard/done"]);
+          this.loader.stop();
+          this.dontSave = true;
+        },
+        (err) => {
+          this.loader.stop();
+          this.toast.open({
+            text: "Make sure you fill all the fields.",
+            type: "danger",
+          });
+        }
+      );
+    }
   }
 
   back() {
