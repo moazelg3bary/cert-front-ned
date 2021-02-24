@@ -1,7 +1,7 @@
 <div>
-    <app-navbar></app-navbar>
+    <app-navbar bg_color="#EBECED"></app-navbar>
     <div class="">
-        <div class="row mx-0 flex-column-reverse flex-md-row">
+        <div class="row mx-0 flex-column-reverse flex-md-row mt-5">
             <div class="col-sm-12 col-md-4">
                 <div class="view">
                     <img class="certificate" width="100%" src="assets/img/dashboard/view.png" alt="">
@@ -27,13 +27,8 @@
                             </div>
                         </div>
 
-                        <div class="col-sm-12">
-                            <p class="title">{{certificate[0]?.title}}</p>
-                        </div>
                         <div class="col-6 col-sm-4 col-md-12 col-lg-4">
-                            <p class="desc">
-                                {{certificate[0]?.description}}
-                            </p>
+                            <p class="title m-0">{{certificate[0]?.title}}</p>
                         </div>
                         <ng-container>
 
@@ -53,17 +48,24 @@
                                 <b style="vertical-align: middle">Review my idea</b>
                             </p>
                         </div>
+                        <div class="col-12">
+                            <p class="desc">
+                                {{certificate[0]?.description}}
+                            </p>
+                        </div>
                         <div class="attachments text-center text-md-left">
-                            <p class="head">Attachments</p>
+                            <p class="head"><span>Attachments</span> <span></span></p>
                             <div class="row">
                                 <ng-container *ngFor="let cert of certificate">
-                                    <div class="col-12 mb-4 col-md-6 col-lg-3 attachments__title">My {{cert.property_type}} work.pdf</div>
-                                    <div class="col-12 mb-4 col-md-6 col-lg-3 attachments__size">9.34 MB <img class="download-icon"
+                                    <div class="col-12 mb-4 mt-3 col-md-6 col-lg-3 attachments__title">My {{cert.property_type}} work.pdf</div>
+                                    <div class="col-12 mb-4 mt-3 col-md-6 col-lg-3 attachments__size">9.34 MB <img class="download-icon"
                                             src="assets/img/dashboard/download.svg"></div>
-                                    <div class="col-12 mb-4 col-md-6 col-lg-3 attachments__date">Uploaded on: {{cert.updated_at | date: 'MM.d.yyyy, h.mm'}}</div>
-                                    <div [routerLink]="['sharing', cert.id]" class="col-12 mb-4 col-md-6 col-lg-3 attachments__sharing"> 
+                                    <div class="col-12 mb-4 mt-3 col-md-6 col-lg-3 attachments__date">Uploaded on: {{cert.updated_at | date: 'MM.d.yyyy, h.mm'}}</div>
+                                    <div [routerLink]="['sharing', cert.id]" class="col-12 mb-4 mt-3 col-md-6 col-lg-3 attachments__sharing"> 
                                         <img class="download-icon"src="assets/img/dashboard/share.svg" alt=""> Secure sharing
+                                        <span>2</span>
                                     </div>
+                                    <div class="hr"></div>
                                 </ng-container>
                             </div>
                         </div>

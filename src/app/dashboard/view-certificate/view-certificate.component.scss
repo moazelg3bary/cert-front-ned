@@ -42,10 +42,26 @@
         color: #a3abbd;
     }
     .attachments {
+        width: 100%;
         margin-top: 50px;
         .head {
             color: #a3abbd;
+            overflow: hidden;
             font-size: 1.2rem;
+            span {
+                &:first-of-type {
+                    float: left;
+                    width: 110px;
+                }
+                &:last-of-type {
+                    float: left;
+                    height: 1.5px;
+                    margin-left: 11px;
+                    margin-top: 16px;
+                    background: #EAEAEA;
+                    width: calc(89% - 135px);
+                }
+            }
         }
         &__title {
             font-size: 1.2rem;
@@ -72,6 +88,23 @@
             color: #2673E5;
             cursor: pointer;
         }
+    }
+}
+
+.attachments__sharing {
+    position: relative;
+    span {
+        color: #fff;
+        font-weight: 600;
+        text-align: center;
+        line-height: 19px;        
+        width: 19px;
+        height: 19px;
+        background: red;
+        position: absolute;
+        border-radius: 100%;
+        top: -5px;
+        left: 153px;        
     }
 }
 

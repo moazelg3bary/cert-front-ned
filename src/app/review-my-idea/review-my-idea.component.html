@@ -43,6 +43,7 @@
                     [formGroupParent]="FormReviewMyIdea">
                 </app-input-filed>
             </div>
+            <p *ngIf="errMsg" class="error">{{errMsg}}</p>
             <div class="col-sm-12 overflow-hidden">
                 <app-btn
                     [isloading]="isLoading"

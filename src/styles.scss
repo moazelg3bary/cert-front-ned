@@ -10,6 +10,21 @@
   border-radius: 5px;
   box-shadow: inset 0 0 6px #eaeaea;
 }
+
+// class error msg
+.error {
+  color: red !important;
+  margin-top: 5px !important;
+  padding-left: 15px !important;
+}
+
+.hr {
+  width: 89%;
+  height: 1.5px;
+  background: #EAEAEA;
+  margin-bottom: 5px;  
+}
+
 *:focus {
   outline: unset !important;
 }

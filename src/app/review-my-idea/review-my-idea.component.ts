@@ -12,6 +12,7 @@ export class ReviewMyIdeaComponent implements OnInit {
   isLoading: boolean;
   isDisable: boolean;
   isSuccess: boolean;
+  errMsg: string;
   FormReviewMyIdea: FormGroup;
 
   constructor(private FB: FormBuilder, private Cert: CertificatesService) {
@@ -28,18 +29,20 @@ export class ReviewMyIdeaComponent implements OnInit {
 
   // send state & business
   ReviewMyIdea() {
-
     this.isLoading = true;
 
-    this.Cert.reviewIdeaEmail({ ...this.FormReviewMyIdea.value }).subscribe((res: any) => {
-
+    this.Cert.reviewIdeaEmail({ ...this.FormReviewMyIdea.value }).subscribe(
+      (res: any) => {
         // loading response
         this.isLoading = false;
 
         // destraction es6
         const { message, success } = res;
-        // if success true show app-success component 
-        success ? this.isSuccess = true : null;
+        // if success true show app-success component
+        success ? (this.isSuccess = true) : null;
+      }, (err) => {
+        this.isLoading = false;
+        this.errMsg = err.error.message
       }
     );
   }

@@ -9,5 +9,25 @@
   </head>
   <body style="height: 100%">
     <app-root></app-root>
+    <script src="./assets/js/core.js"></script>
+    <script>
+      window.onload = () => {
+        var demo = document.getElementById('demo');
+    
+        var typewriter = new Typewriter(demo, {
+          strings: ['Secure.', 'Preformance', 'High Order'],
+          cursor: '|',
+          delay: 'natural', // 'natural' or Number
+          loop: true, // infinite loop
+          autoStart: true,
+          devMode: false,
+          wrapperClassName: 'Typewriter__wrapper',
+          cursorClassName: 'Typewriter__cursor',
+        });
+        // starts the typing animation
+        typewriter.start()
+      }
+
+    </script>
   </body>
 </html>

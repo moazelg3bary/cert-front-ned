@@ -8,33 +8,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ["./sharing.component.scss"],
 })
 export class SharingComponent implements OnInit {
-
   // init names & type vars
   typeShare: string;
   isloading: boolean;
-  isSuccess:boolean
+  isSuccess: boolean;
+  emailInf: [];
   FormInvitation: FormGroup;
 
   constructor(private FB: FormBuilder, private Auth: AuthService) {
-
     // init vaue vars
     this.FormInvitation = this.FB.group({
       email: ["", [Validators.required, Validators.email]],
     });
     this.typeShare = "def";
     this.isloading = false;
-    this.isSuccess = false
+    this.isSuccess = false;
+    this.emailInf = []
   }
 
   ngOnInit() {}
 
   invitation() {
-    
     this.isloading = true;
 
-    this.Auth.invitation({...this.FormInvitation.value}).subscribe({
+    this.Auth.invitation({ ...this.FormInvitation.value }).subscribe({
       next: (res) => {
-        this.isSuccess = true
+        this.isSuccess = true;
       },
       error: (err) => {
         console.log(err);
@@ -43,9 +42,9 @@ export class SharingComponent implements OnInit {
       },
       complete: () => {
         this.isloading = false;
-      }
-    })
-    
+      },
+    });
+
     // this.isloading = false;
 
     // const { message, success } = res
@@ -56,5 +55,13 @@ export class SharingComponent implements OnInit {
     // }
     // console.log(res)
     // console.log(this.FormInvitation);
+  }
+
+  addEmail(e: string | any) {
+    this.emailInf.push(e);
+  }
+
+  delete(index: any) {
+    this.emailInf.splice(0, index)
   }
 }

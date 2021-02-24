@@ -25,6 +25,7 @@ export class BoxForgtPasswordComponent {
 
   // names vars & types return
   email: string;
+  errMsg: string;
 
   constructor(private Auth: AuthService) {
     // init vars
@@ -36,11 +37,17 @@ export class BoxForgtPasswordComponent {
   // and run func this.Auth.forgotPassword => api will send rest password to email user
   forgotPassword() {
     this.eventIsLoading.emit(true);
-    this.Auth.forgotPassword({ email: this.email }).subscribe((res: any) => {
-      this.eventIsLoading.emit(false);
-      const { success, message } = res;
-      this.eventSucces.emit(success);
-    });
+    this.Auth.forgotPassword({ email: this.email }).subscribe(
+      (res: any) => {
+        this.eventIsLoading.emit(false);
+        const { success, message } = res;
+        this.eventSucces.emit(success);
+      },
+      (err) => {
+        this.eventIsLoading.emit(false);
+        this.errMsg = err.error.message
+      }
+    );
   }
 
   // if this func run => Output eventClosePopup will back data to parent component and

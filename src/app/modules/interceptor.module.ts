@@ -13,19 +13,20 @@ export class HttpsRequestInterceptor implements HttpInterceptor {
     constructor(private router: Router) {}
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-        // if (localStorage.getItem("login") == null) {
-        //     this.router.navigate(["login"]);
-        // }
+      if (localStorage.getItem("iprotect__token") == null) {
+        this.router.navigate(["login"]);
+        console.log("un Auth");
+      }         
 
         if(req.url.includes('countries')) return next.handle(req);
+
         const dupReq = req.clone({
             url: `${SERVER}/${req.url}`,
             headers: new HttpHeaders({
                 'Authorization': `Bearer ${localStorage.getItem('iprotect__token')}`,
             }),
         });
-        console.log(dupReq, '132131');
-        console.log(localStorage.getItem("iprotect__token"), "132131");
+        
         return next.handle(dupReq);
     }
 };

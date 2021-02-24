@@ -301,7 +301,7 @@ body {
     font-family: "Playfair Display", sans-serif;
 }
 .hero-title h3 {
-    color: #2673E5;
+    color: #FFCE00;
 }
 .hero-bg {
     background-size: cover;
@@ -687,8 +687,8 @@ span.number {
 }
 .about-img {
     transform: matrix(1, 0, 0, 1, 0, 0);
-    -webkit-transform: matrix(1, 0, 0, 1, 0, 0);
-    box-shadow: 0 9px 31px 6px rgba(0, 0, 0, 0.2);
+    -webkit-transform: matrix(1, 0, 0, 1, 100, 0);
+    // box-shadow: 0 9px 31px 6px rgba(0, 0, 0, 0.2);
 }
 .about-img:hover .about-overlay {
     opacity: 0;
@@ -1138,5 +1138,17 @@ a.phone {
 @media (max-width: 850px) {
     .auth {
         padding-top: 60px;
+    }
+}
+
+@media (max-width: 991px) {
+    .about-img {
+        transform: matrix(1, 0, 0, 1, 0, 0);
+    }
+    .copyright {
+        text-align: center;
+        h3 {
+            float: none !important;
+        }
     }
 }

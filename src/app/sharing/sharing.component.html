@@ -45,14 +45,14 @@
                     <div class="col-sm-12 email_access">
                         <label for="">Enter email address</label>
                         <input 
+                            (keyup.enter)="addEmail($event.target.value)"
                             type="email" 
                             formControlName="email"
                             placeholder="Abdulla.kadry@gmail.com" />
                     </div>
                     <div class="col-sm-12 who_access">
                         <ul>
-                            <li><span>Amr.Mohammed@gmail.com</span><i class="fa fa-times"></i></li>
-                            <li><span>Amr.Mohammed@gmail.com</span><i class="fa fa-times"></i></li>
+                            <li *ngFor="let email of emailInf; let i = index"><span>{{email}}</span><i (click)="delete(i)" class="fa fa-times"></i></li>
                         </ul>
                     </div>
                     <app-btn

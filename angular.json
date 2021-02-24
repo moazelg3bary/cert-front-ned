@@ -43,7 +43,8 @@
               "./src/assets/js/owl.carousel.min.js",
               "./src/assets/js/main.js",
               "./node_modules/bootstrap/dist/js/bootstrap.js",
-              "./node_modules/intl-tel-input/build/js/intlTelInput.js"
+              "./node_modules/intl-tel-input/build/js/intlTelInput.js",
+              "./node_modules/typewriting/dist/typewriting.min.js"
             ]
           },
           "configurations": {

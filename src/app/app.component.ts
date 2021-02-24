@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { LoaderService } from './services/loader.service';
 import { NgxUiLoaderService, SPINNER } from "ngx-ui-loader"; // Import NgxUiLoaderService
@@ -12,8 +13,10 @@ export class AppComponent implements OnInit {
   title = 'iprotect';
   public spinner = SPINNER;
 
-  constructor(private loader: LoaderService, private ngxService: NgxUiLoaderService) {}
+  constructor(private loader: LoaderService, private ngxService: NgxUiLoaderService, private router: Router) {}
 
   ngOnInit() {
+  
   }
+
 }
